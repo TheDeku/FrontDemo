@@ -1,0 +1,85 @@
+<div class="container justify-content-center center-component-login">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Bienvenido a Siglo XI</h1>
+                                </div>
+                                <form autocomplete="on" [formGroup]='formLogin'>
+                                    <div class="fields-container justify-content-center row">
+
+
+                                        <mat-form-field appearance="outline" class="text-style-size">
+                                            <mat-label>Usuario</mat-label>
+                                            <input matInput formControlName="user">
+                                            <mat-icon matSuffix>portrait</mat-icon>
+
+                                        </mat-form-field>
+                                        <!-- required[(ngModel)]="user.username" name="user" -->
+                                        <!-- required[(ngModel)]="user.password" name="password" -->
+
+                                        <mat-form-field appearance="outline" class="text-style-size">
+                                            <mat-label>Contraseña</mat-label>
+                                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+
+                                        <div>
+
+                                            <a (click)="logIn()" [disabled]="!formLogin.valid" mat-flat-button color="primary" class="text-style-size">Iniciar Sesión</a>
+
+                                            <br> <br>
+
+                                            <a href="index.html" mat-flat-button color="basic" class="text-style-size"><i class="fab fa-google fa-lg"></i> Iniciar con Google</a>
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+
+
+                                    <!-- 
+                                    <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <i class="fab fa-google fa-fw"></i> Login with Google
+                                    </a>
+                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                    </a> -->
+                                </form>
+                                <hr>
+
+                                <div class="text-center text-color">
+                                    <a mat-flat-button href="https://www.google.com/" target="_blank">Recuperar Contraseña</a>
+                                </div>
+                                <br>
+                                <div class="text-center text-color">
+                                    <a mat-flat-button href="https://www.google.com/" target="_blank">Crear Cuenta</a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
