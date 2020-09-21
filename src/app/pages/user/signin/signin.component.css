@@ -26,3 +26,30 @@ input.example-right-align {
 .center-component-login {
     padding-top: 150px;
 }
+
+.backgroundElement {
+    position: absolute;
+    opacity: 0.5;
+    width: calc(50% - 30px);
+    max-width: 300px;
+}
+
+.backgroundElement.b1 {
+    transform: rotate(-20deg);
+    left: 50px;
+    bottom: 100px;
+}
+
+.backgroundElement.b2 {
+    transform: rotate(20deg);
+    right: 50px;
+    bottom: 100px;
+}
+
+.logo {
+    width: 60%;
+    top: -8%;
+    left: 20%;
+    position: absolute;
+    z-index: 9;
+}
