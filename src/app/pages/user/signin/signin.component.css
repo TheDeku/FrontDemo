@@ -53,3 +53,13 @@ input.example-right-align {
     position: absolute;
     z-index: 9;
 }
+
+#loginContainer {
+    min-width: 500px;
+}
+
+@media (max-width: 500px) {
+    .backgroundElement {
+        display: none;
+    }
+}
