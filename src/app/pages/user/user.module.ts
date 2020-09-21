@@ -57,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
 //#endregion
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserService } from '../../shared/services/user.service';
 
 @NgModule({
     imports: [
@@ -112,6 +113,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         FontAwesomeModule
 
     ],
+    providers:[UserService],
     declarations: [SigninComponent, SignupComponent, ForgetComponent]
 })
 export class UserModule { }
