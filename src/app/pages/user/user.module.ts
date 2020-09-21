@@ -110,8 +110,7 @@ import { UserService } from '../../shared/services/user.service';
         ScrollingModule,
         ReactiveFormsModule,
         HttpClientModule,
-        FontAwesomeModule
-
+        FontAwesomeModule,
     ],
     providers:[UserService],
     declarations: [SigninComponent, SignupComponent, ForgetComponent]
