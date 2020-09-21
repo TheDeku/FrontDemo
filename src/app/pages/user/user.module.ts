@@ -109,8 +109,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         ScrollingModule,
         ReactiveFormsModule,
         HttpClientModule,
-        FontAwesomeModule
-
+        FontAwesomeModule,
     ],
     declarations: [SigninComponent, SignupComponent, ForgetComponent]
 })
