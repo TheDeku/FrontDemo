@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-n-navbar',
@@ -12,7 +13,7 @@ export class NNavbarComponent implements OnInit {
   pages:any[]=[
   {
     name:"Usuarios",
-    url:"/home",
+    url:"main/home",
     image:"../assets/icons/usuarios.svg"
   },
   {
@@ -22,7 +23,7 @@ export class NNavbarComponent implements OnInit {
   },
   {
     name:"Mesas",
-    url:"#",
+    url:"/asdafds",
     image:"../assets/icons/mesas.svg"
   },
   {
@@ -39,9 +40,13 @@ export class NNavbarComponent implements OnInit {
 
   pagesnumber:number= this.pages.length;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navigate(url:string){
+    this.router.navigate([url]);
   }
 
 }
