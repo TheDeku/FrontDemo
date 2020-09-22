@@ -26,7 +26,8 @@ export class UserService {
   }
 
   signUp = (data) => {
-    const raw = JSON.stringify({ username: data['user'], password: data['password'] });
+    const raw = JSON.stringify({ username: data['user'], password: data['pass'], email: data['email'], role:'CLIENTE' });
+    console.log(raw);
     this.body = raw;
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
