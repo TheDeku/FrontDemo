@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
-import { ForgetComponent } from './forget/forget.component';
-import { UserRoutingModule } from './user-routing.module';
 
 
 
@@ -58,11 +54,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from '../../shared/services/user.service';
+import { HomeComponent } from './home/home.component';
+import { MainRoutingModule } from './main-routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        UserRoutingModule,
+        MainRoutingModule,
         MatFormFieldModule,
         A11yModule,
         ClipboardModule,
@@ -113,6 +111,6 @@ import { UserService } from '../../shared/services/user.service';
         FontAwesomeModule,
     ],
     providers:[UserService],
-    declarations: [SigninComponent, SignupComponent, ForgetComponent]
+    declarations: [HomeComponent]
 })
-export class UserModule { }
+export class MainModule { }

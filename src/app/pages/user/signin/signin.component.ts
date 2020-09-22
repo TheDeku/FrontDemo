@@ -17,7 +17,7 @@ export class SigninComponent implements OnInit {
   user: User;
   formLogin = new FormGroup({
     user: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+    password: new FormControl('', [Validators.required, Validators.minLength(7)])
   })
 
   private jwtHelper = new JwtHelperService();
@@ -36,13 +36,13 @@ export class SigninComponent implements OnInit {
 
     console.log(md5(this.formLogin.value['password']));
 
-    this.formLogin.value['password'] = md5(this.formLogin.value['password']);
+    //this.formLogin.value['password'] = md5(this.formLogin.value['password']);
 
     this.loginService.signIn(this.formLogin.value).toPromise().then(resp => {
       console.log(resp);
       localStorage.setItem('id', resp['token']);
       if (resp['status']) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/main/home']);
       }
       console.log(this.jwtHelper.decodeToken(localStorage.getItem('id')));
     });
