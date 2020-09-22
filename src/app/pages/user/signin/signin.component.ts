@@ -42,7 +42,7 @@ export class SigninComponent implements OnInit {
       console.log(resp);
       localStorage.setItem('id', resp['token']);
       if (resp['status']) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/main/home']);
       }
       console.log(this.jwtHelper.decodeToken(localStorage.getItem('id')));
     });
