@@ -1,0 +1,20 @@
+<div class="verticalNav white-n slim-n" style="--NVnumberbtns: {{pagesnumber}};">
+    <div class="bar">
+        <div class="vnv-head">
+            <div class="userImage">
+                <img src="{{userimage}}" alt="">
+            </div>
+            <div class="NVusername">
+                Usuario
+            </div>
+        </div>
+        <a *ngFor="let page of pages" [routerLink]="[page.url]">
+            <div class="vnv-btn" routerLinkActive="activeNV">
+                <div class="NVicon">
+                    <img src="./resorces/{{page.image}}" alt="">
+                </div>
+                <div class="NVbtntext">{{page.name}}</div>
+            </div>
+        </a>
+    </div>
+</div>
