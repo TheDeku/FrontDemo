@@ -54,12 +54,12 @@ export class NNavbarComponent implements OnInit {
       {
           "name": "en preparación",
           "url": "main/home",
-          "image": "../assets/icons/usuarios.svg"
+          "image": "../assets/icons/cocinando.svg"
       },
       {
           "name": "Listos",
           "url": "/signin",
-          "image": "../assets/icons/solicitudes.svg"
+          "image": "../assets/icons/wok.svg"
       },
       {
           "name": "Mesas",
@@ -72,17 +72,17 @@ export class NNavbarComponent implements OnInit {
       {
           "name": "Cola",
           "url": "main/home",
-          "image": "../assets/icons/usuarios.svg"
+          "image": "../assets/icons/flecha-correcta.svg"
       },
       {
           "name": "Marcar listo",
           "url": "/signin",
-          "image": "../assets/icons/solicitudes.svg"
+          "image": "../assets/icons/listo.svg"
       },
       {
           "name": "solicitar",
           "url": "/asdafds",
-          "image": "../assets/icons/mesas.svg"
+          "image": "../assets/icons/pregunta.svg"
       },
       
     ],
@@ -96,12 +96,12 @@ export class NNavbarComponent implements OnInit {
       {
           "name": "Consulta stock",
           "url": "/signin",
-          "image": "../assets/icons/solicitudes.svg"
+          "image": "../assets/icons/paquetes.svg"
       },
       {
           "name": "Solicitud",
           "url": "/asdafds",
-          "image": "../assets/icons/mesas.svg"
+          "image": "../assets/icons/carro.svg"
       },
     ],
     "CLIENTE":
@@ -109,12 +109,12 @@ export class NNavbarComponent implements OnInit {
       {
           "name": "Carta",
           "url": "main/home",
-          "image": "../assets/icons/usuarios.svg"
+          "image": "../assets/icons/menu.svg"
       },
       {
           "name": "Cuenta",
           "url": "main/home",
-          "image": "../assets/icons/usuarios.svg"
+          "image": "../assets/icons/cuenta.svg"
       },
     ],
   };
