@@ -15,6 +15,8 @@ export class NNavbarComponent implements OnInit {
 
   role:string[] =this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
 
+  usuario:string = this.jwtHelper.decodeToken(localStorage.getItem('id')).username;
+
   userimage="../assets/icons/userprofile.svg";
 
   data:any=

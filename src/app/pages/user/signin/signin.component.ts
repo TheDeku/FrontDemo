@@ -19,7 +19,7 @@ export class SigninComponent implements OnInit {
   activateMethod: boolean= false;
   formLogin = new FormGroup({
     user: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(7)])
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
   private jwtHelper = new JwtHelperService();
