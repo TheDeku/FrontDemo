@@ -58,6 +58,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from '../../shared/services/user.service';
+import { EmailComponent } from './forget/email/email.component';
+import { UpdateComponent } from './forget/update/update.component';
+import { RestoreTokenComponent } from './forget/restoretoken/restoretoken.component';
 
 @NgModule({
     imports: [
@@ -113,6 +116,6 @@ import { UserService } from '../../shared/services/user.service';
         FontAwesomeModule,
     ],
     providers:[UserService],
-    declarations: [SigninComponent, SignupComponent, ForgetComponent]
+    declarations: [SigninComponent, SignupComponent, ForgetComponent,EmailComponent,UpdateComponent,RestoreTokenComponent]
 })
 export class UserModule { }
