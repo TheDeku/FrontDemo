@@ -1,20 +1,10 @@
 <form autocomplete="on" [formGroup]='formLogin'>
-    <div class="fields-container justify-content-center row ">
-
-
-        <mat-form-field appearance="outline " class="text-style-size ">
+    <div class="fields-container justify-content-center row">
+        <mat-form-field appearance="outline" class="text-style-size">
             <mat-label>Codigo</mat-label>
-            <input matInput formControlName="code ">
+            <input matInput formControlName="code">
             <mat-icon matSuffix>Code</mat-icon>
         </mat-form-field>
-
-
-
-
-        <button mat-button (click)="restoreToken() " [disabled]="!formLogin.valid " mat-flat-button color="primary " class="text-style-size ">Enviar codigo de verificación</button>
-
-
+        <button mat-button (click)="restoreToken()" [disabled]="!formLogin.valid" mat-flat-button color="primary" class="text-style-size">Enviar codigo de verificación</button>
     </div>
-
-
 </form>

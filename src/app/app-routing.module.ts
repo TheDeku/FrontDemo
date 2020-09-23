@@ -8,6 +8,11 @@ import { BlankLayoutComponent } from './shared/components/layouts/blank-layout/b
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'signin',
+    pathMatch: 'full'
+  },
+  {
     path: 'main',
     component: BlankLayoutComponent,
     children: [
@@ -26,6 +31,19 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: '',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/others/others.module').then(m => m.OthersModule)
+      }
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: '404'
+  }
 ];
 
 @NgModule({

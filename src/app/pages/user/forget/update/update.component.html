@@ -1,6 +1,5 @@
 <form autocomplete="on" [formGroup]='formLogin'>
     <div class="fields-container justify-content-center row">
-
         <mat-form-field appearance="outline" class="text-style-size">
             <mat-label>Contraseña</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass">
@@ -8,7 +7,6 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="text-style-size">
             <mat-label>Repetir contraseña</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName="repass">
@@ -17,8 +15,5 @@
             </button>
         </mat-form-field>
         <button mat-button (click)="restorePassword()" [disabled]="!formLogin.valid" mat-flat-button color="primary" class="text-style-size">Cambiar contraseña</button>
-        <!-- <a (click)=" restoreEmail() " [disabled]="!formLogin.valid " mat-flat-button color="primary " class="text-style-size ">Recuperar cuenta</a> -->
-
     </div>
-
 </form>

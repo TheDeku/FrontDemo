@@ -1,14 +1,10 @@
 <form autocomplete="on" [formGroup]='formLogin'>
     <div class="fields-container justify-content-center row">
-
         <mat-form-field appearance="outline" class="text-style-size">
             <mat-label>Correo</mat-label>
             <input matInput formControlName="email">
             <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
         <button mat-button (click)="restoreEmail()" [disabled]="!formLogin.valid" mat-flat-button color="primary" class="text-style-size">Recuperar contraseña</button>
-
     </div>
-
-
 </form>
