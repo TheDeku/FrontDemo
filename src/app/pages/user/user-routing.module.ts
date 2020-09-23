@@ -9,7 +9,7 @@ const routes: Routes = [
         component: SigninComponent
     },
     {
-        path: 'forget',
+        path: 'forget/:id',
         component: ForgetComponent
     },
     {

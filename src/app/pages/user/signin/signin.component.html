@@ -40,7 +40,7 @@
 
                                         <div>
 
-                                            <a (click)="logIn()" [disabled]="!formLogin.valid" mat-flat-button color="primary" class="text-style-size">Iniciar Sesión</a>
+                                            <a (click)="logIn()" [disabled]="!formLogin.valid" mat-flat-button color="primary" class="text-style-size" disabled>Iniciar Sesión</a>
 
                                             <br> <br>
 
@@ -64,11 +64,11 @@
                                 <hr>
 
                                 <div class="text-center text-color">
-                                    <a mat-flat-button href="https://www.google.com/" target="_blank">Recuperar Contraseña</a>
+                                    <a mat-flat-button [routerLink]="[ '/forget','email']">Recuperar Contraseña</a>
                                 </div>
                                 <br>
                                 <div class="text-center text-color">
-                                    <a mat-flat-button href="https://www.google.com/" target="_blank">Crear Cuenta</a>
+                                    <a mat-flat-button [routerLink]="[ '/signup']">Crear Cuenta</a>
                                 </div>
 
 
