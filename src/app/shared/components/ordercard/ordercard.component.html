@@ -1,0 +1,16 @@
+<div class="ncardcontainer" *ngFor="let item of items">
+
+    <div class="card Tarjeta-Pedidos" [ngClass]="{'preparing': item.preparing}">
+        <div class="card-body">
+            <h5 class="card-title tarjeta-Mesa">{{item.nomMesa}}</h5>
+            <p class="card-text Tarjeta-Porcion">{{item.porcion}} platos</p>
+            <p class="card-text Tarjeta-Nombre">{{item.nombre}}</p>
+            <p class="card-text Tarjeta-Tiempo">Tiempo Restante {{item.countdown}}</p>
+            <a href="#" class="btn btn-primary Tarjeta-boton">Iniciar Preparacion</a>
+        </div>
+        <img *ngIf="item.preparing" src="assets/icons/cocina/horneando 1.png" class="card-img-top Tarjeta-Cronometro" alt="Cronometro">
+        <img *ngIf="!item.preparing" src="assets/icons/cocina/time 1.png" class="card-img-top Tarjeta-Cronometro" alt="Cronometro">
+        <img src="{{item.imagen}}" class="card-img-top Tarjeta-Imagen" alt="choripan uwu">
+    </div>
+
+</div>
