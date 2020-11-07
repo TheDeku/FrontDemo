@@ -26,7 +26,7 @@ export class UserService {
   }
 
   signUp = (data) => {
-    const raw = JSON.stringify({ username: data['user'], password: data['pass'], email: data['email'], role:'CLIENTE' });
+    const raw = JSON.stringify({ username: data['user'], password: data['pass'], email: data['email'], rol:'CLIENTE' });
     console.log(raw);
     this.body = raw;
     this.header = new HttpHeaders()

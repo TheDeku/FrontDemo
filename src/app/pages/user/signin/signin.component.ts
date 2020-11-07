@@ -51,6 +51,7 @@ export class SigninComponent implements OnInit {
         }
         console.log(this.jwtHelper.decodeToken(localStorage.getItem('id')));
       }).catch(err =>{
+        console.log(err);
         this.formLogin.enable();
         return Swal.fire(
           'No se pudo iniciar sesión',

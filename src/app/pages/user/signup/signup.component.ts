@@ -45,14 +45,15 @@ export class SignupComponent implements OnInit {
 
     this.loginService.signUp(this.formLogin.value).toPromise().then(resp => {
       console.log(resp);
-      if (resp['status']) {
+      if (resp.state) {
         this.router.navigate(['/signin']);
       }
     }).catch(err => {
+      console.log(err);
       this.formLogin.enable();
       return Swal.fire(
         'No se pudo crear la cuenta',
-        err['error']['message'],
+        err.error.value.message,
         'error'
       )
     });
