@@ -1,0 +1,194 @@
+.Estado-Prepacion .Tarjeta-Pedidos {
+    position: relative;
+    background: rgba(255, 209, 90, 0.3);
+    border-radius: 21px;
+    padding: 7px !important;
+    width: 370px;
+    border: 0px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.Estado-Espera .Tarjeta-Pedidos {
+    position: relative;
+    background: rgba(228, 106, 106, 0.3);
+    border-radius: 21px;
+    padding: 7px !important;
+    width: 370px;
+    border: 0px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.tarjeta-Mesa {
+    position: absolute;
+    margin-top: 0px;
+    /* background-color: red; */
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.Tarjeta-boton {
+    position: absolute;
+    right: 7px;
+    bottom: 2px;
+    margin-bottom: 2%;
+    background: #3FD027;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 6px 4px 6px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    float: right;
+    border: 0;
+}
+
+.Tarjeta-boton:hover {
+    position: absolute;
+    right: 7px;
+    bottom: 2px;
+    margin-bottom: 2%;
+    background: #32a31f;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 6px 4px 6px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    float: right;
+    border: 0;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.Tarjeta-Pedidos .card-body {
+    position: relative !important;
+    border-radius: 21px;
+    padding: 0px !important;
+    margin: 0%;
+    height: 150px;
+}
+
+.Tarjeta-Imagen {
+    position: absolute;
+    margin-bottom: 0%;
+    height: 57%;
+    width: 48%;
+    /* background-color: teal; */
+    bottom: 2%;
+    left: 10px;
+}
+
+.Tarjeta-Porcion {
+    position: absolute;
+    margin-top: 12%;
+    margin-right: 0%;
+    /*  background-color: seagreen; */
+    width: 50%;
+    text-align: center;
+    right: 0%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Tarjeta-Nombre {
+    position: absolute;
+    /* background-color: violet; */
+    height: 42px;
+    right: 0%;
+    width: 50%;
+    text-align: center;
+    padding-top: 7px;
+    font-size: 20px;
+}
+
+.Tarjeta-Tiempo {
+    position: absolute;
+    /*  background-color: yellow; */
+    right: 0px;
+    width: 50%;
+    text-align: center;
+    bottom: 39px;
+}
+
+.Tarjeta-Cronometro {
+    position: absolute;
+    right: -19px;
+    top: -22px;
+    width: 20%;
+}
+
+.nline {
+    background-color: black;
+    width: 6px;
+    height: 90%;
+    float: left;
+    margin-top: 50px;
+    border-radius: 3px;
+}
+
+.Estado-Espera {
+    width: 30%;
+    float: left;
+    height: 100%;
+}
+
+.Estado-Prepacion {
+    width: 30%;
+    right: 0px;
+    float: left;
+    height: 100%;
+}
+
+.nback {
+    height: 100%;
+}
+
+.nrow {
+    height: 100%;
+}
+
+.ntitle {
+    height: 10%;
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 0;
+    line-height: 10vh;
+}
+
+.ncardcontainer {
+    height: calc(90% - 40px);
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f152;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.303);
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: rgba(85, 85, 85, 0.301);
+    border-radius: 10px;
+}

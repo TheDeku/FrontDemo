@@ -58,6 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from '../../shared/services/user.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -111,6 +112,7 @@ import { UserService } from '../../shared/services/user.service';
         ReactiveFormsModule,
         HttpClientModule,
         FontAwesomeModule,
+        RouterModule
     ],
     providers:[UserService],
     declarations: [SigninComponent, SignupComponent, ForgetComponent]
