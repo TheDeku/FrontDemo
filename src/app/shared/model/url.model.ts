@@ -13,4 +13,9 @@ export class Urls {
     public urlOrders = {
         all:"http://localhost:5008"
     }
+
+
+    public urlsToUsers ={
+        getAll:`http://localhost:5004/users`
+    }
 }

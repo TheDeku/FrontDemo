@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import {DataTablesModule} from 'angular-datatables';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { OrderToCardPipe } from './pipes/order-to-card.pipe';
+import { UserEmpyPipe } from './pipes/user-admin.pipe';
 
 
 
