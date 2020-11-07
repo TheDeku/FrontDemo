@@ -11,13 +11,15 @@ import { SharedModule } from './shared/shared.module';
 
 import {DataTablesModule} from 'angular-datatables';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { OrderToCardPipe } from './pipes/order-to-card.pipe';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DomseguroPipe
+    DomseguroPipe,
+    OrderToCardPipe
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
     DataTablesModule,
     RouterModule
   ],
-  providers: [UserService],
+  providers: [UserService,OrderToCardPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

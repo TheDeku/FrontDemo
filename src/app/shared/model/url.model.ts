@@ -1,3 +1,5 @@
+import { basePlacements } from '@popperjs/core'
+
 export class Urls {
 
     private urlBase: string = "http://api.watasoft.com"
@@ -7,5 +9,8 @@ export class Urls {
         forget: this.urlBase + "/users/forget",
         validate: this.urlBase + "/users/validate",
         restore: this.urlBase + "/users/restore",
+    }
+    public urlOrders = {
+        all:"http://localhost:5008"
     }
 }
