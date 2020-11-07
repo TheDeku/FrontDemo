@@ -25,7 +25,7 @@ export class NNavbarComponent implements OnInit {
     [ 
       {
           "name": "Usuarios",
-          "url": "main/home",
+          "url": "/admin/user",
           "image": "../assets/icons/usuarios.svg"
       },
       {

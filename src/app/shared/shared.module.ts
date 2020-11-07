@@ -12,6 +12,6 @@ import { FullscreenLayoutComponent } from './components/layouts/fullscreen-layou
     RouterModule,
     SharedComponentsModule
   ],
-  declarations: [BlankLayoutComponent,FullscreenLayoutComponent]
+  declarations: []
 })
 export class SharedModule { }

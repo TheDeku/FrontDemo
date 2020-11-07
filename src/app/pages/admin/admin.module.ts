@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LayoutModule } from './layouts/layout.module';
+import { AdminRoutingModule } from './admin-routing.module';
 
-
-const components = [
-
-];
 
 @NgModule({
+  declarations: [],
   imports: [
     CommonModule,
     RouterModule,
-    LayoutModule
-  ],
-  declarations: components,
-  exports: components
+    AdminRoutingModule
+  ]
 })
-export class SharedComponentsModule { }
+export class AdminModule { }

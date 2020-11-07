@@ -1,0 +1,24 @@
+.basiclayout {
+    --nnavportion: 100px;
+    position: absolute;
+    height: 100%;
+    width: calc(100% - var(--nnavportion));
+    right: 0;
+}
+
+@media (max-width: 1100px) {
+    .nnavco,
+    .basiclayout {
+        --nnavportion: 10px;
+    }
+}
+
+.basiclayout router-outlet {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(#C1E5ED, #FFEEE6);
+}

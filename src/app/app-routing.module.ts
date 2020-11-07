@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlankLayoutComponent } from './shared/components/layouts/blank-layout/blank-layout.component';
 
 import {FullscreenLayoutComponent} from './shared/components/layouts/fullscreen-layout/fullscreen-layout.component'
+import { NavBarLayoutComponent } from './shared/components/layouts/navbar-layout/navbar-layout.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,16 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+      }
+    ]
+  },
+  {
+    path: 'admin',
+    component: NavBarLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
       }
     ]
   },

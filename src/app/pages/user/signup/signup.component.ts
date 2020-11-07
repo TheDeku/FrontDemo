@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
 
     this.loginService.signUp(this.formLogin.value).toPromise().then(resp => {
       console.log(resp);
-      if (resp.state) {
+      if (resp['state']) {
         this.router.navigate(['/signin']);
       }
     }).catch(err => {
