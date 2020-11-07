@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlankLayoutComponent } from './blank-layout.component';
+import { BodegaComponent } from './bodega.component';
 
-describe('BlankLayoutComponent', () => {
-  let component: BlankLayoutComponent;
-  let fixture: ComponentFixture<BlankLayoutComponent>;
+describe('BodegaComponent', () => {
+  let component: BodegaComponent;
+  let fixture: ComponentFixture<BodegaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlankLayoutComponent ]
+      declarations: [ BodegaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BlankLayoutComponent);
+    fixture = TestBed.createComponent(BodegaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -40,7 +40,7 @@ export class NNavbarComponent implements OnInit {
       },
       {
           "name": "Bodega",
-          "url": "#",
+          "url": "/main/bodega",
           "image": "../assets/icons/bodega.svg"
       },
       {
@@ -65,7 +65,7 @@ export class NNavbarComponent implements OnInit {
           "name": "Mesas",
           "url": "/asdafds",
           "image": "../assets/icons/mesas.svg"
-      },
+      }
     ],
     "COCINA":
     [ 
@@ -126,10 +126,6 @@ export class NNavbarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  navigate(url:string){
-    this.router.navigate([url]);
   }
 
 }

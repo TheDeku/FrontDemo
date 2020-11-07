@@ -9,10 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './shared/services/user.service';
 import { SharedModule } from './shared/shared.module';
 
+import {DataTablesModule} from 'angular-datatables';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DomseguroPipe
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,9 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     RouterModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
+    RouterModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

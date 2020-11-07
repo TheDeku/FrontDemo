@@ -4,6 +4,7 @@
     left: 0;
     width: 0;
     width: auto;
+    z-index: 5;
 }
 
 .verticalNav .bar {
@@ -18,10 +19,23 @@
     margin: 0;
     padding: 0;
     width: var(--widthNV);
+    transition: width var(--transitiontime);
 }
 
 .verticalNav.slim-n {
-    --widthNV: 58px;
+    --widthNV: 80px;
+    --headsize: 100px;
+    --radiusNV: 10px;
+    --NVactivedesp: 5px;
+    --NVbtnpos: 5px;
+    --iconpositionvertical: 40%;
+    --userimagesize: 70%;
+    --NVfontsize: 10px;
+    --transitiontime: 100ms
+}
+
+.verticalNav.slim-n.minimized {
+    --widthNV: 50px;
     --headsize: 100px;
     --radiusNV: 10px;
     --NVactivedesp: 5px;
@@ -77,7 +91,7 @@
     font-weight: bold;
     width: 80%;
     margin: 0 10%;
-    margin-top: 25%;
+    margin-top: 20%;
     text-align: center;
     user-select: none;
 }
@@ -96,12 +110,27 @@
     max-height: 150px;
 }
 
+.verticalNav.minimized .bar .vnv-btn {
+    width: calc(100% - var(--NVbtnpos));
+    margin: 0 0 0 var(--NVactivedesp);
+    background-color: inherit;
+    height: calc(((100% - var(--headsize)) / var(--NVnumberbtns)) / 2);
+    border-top-left-radius: var(--radiusNV);
+    border-bottom-left-radius: var(--radiusNV);
+    box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.342);
+    position: relative;
+    padding-top: var(--iconpositionvertical);
+    min-height: 75px;
+    max-height: 150px;
+}
+
 .verticalNav .bar .vnv-btn:hover {
     background-color: var(--hoverbtncolor);
     transform: translateX(var(--NVactivedesp));
     border-top-right-radius: var(--NVactivedesp);
     border-bottom-right-radius: var(--NVactivedesp);
     transition: transform 200ms, border-radius 200ms;
+    padding-top: var(--iconpositionvertical);
 }
 
 .verticalNav .bar .vnv-btn:active {
@@ -123,7 +152,7 @@
     padding-top: 80%;
     background-color: var(--btniconshadow);
     border-radius: 50%;
-    box-shadow: 0 0 5px 1pxvar(--btniconshadow);
+    box-shadow: 0 0 5px 1px var(--btniconshadow);
 }
 
 .verticalNav .bar .vnv-btn .NVicon img {
@@ -141,6 +170,39 @@
     bottom: 25%;
     display: block;
     user-select: none;
+}
+
+.verticalNav .bar .vnv-btn:hover .NVbtntext {
+    font-weight: bolder;
+}
+
+.verticalNav.slim-n .bar .vnv-btn .NVbtntext {
+    opacity: 0.8;
+    transition: opacity var(--transitiontime);
+}
+
+.verticalNav.slim-n:hover .bar .vnv-btn .NVbtntext {
+    opacity: 1;
+}
+
+.verticalNav.slim-n.minimized .bar .vnv-btn .NVbtntext {
+    opacity: 0;
+    transition: unset;
+}
+
+.verticalNav.slim-n.minimized .bar .vnv-btn:hover .NVbtntext {
+    position: absolute;
+    top: var(--iconpositionvertical);
+    left: calc(var(--NVactivedesp) + var(--widthNV));
+    background-color: var(--backgrounNVcolor);
+    width: fit-content;
+    text-align: left;
+    height: 20px;
+    padding: 4px;
+    opacity: 1;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 0px var(--btniconshadow);
+    transition: opacity 200ms;
 }
 
 @media (max-height: 610px) {
