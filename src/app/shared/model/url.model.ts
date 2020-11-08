@@ -16,6 +16,7 @@ export class Urls {
 
 
     public urlsToUsers ={
-        getAll:`http://localhost:5004/users`
+        getUsers:`http://localhost:5004/users`,
+        getRoles:`http://localhost:5004/roles/WORKER`
     }
 }

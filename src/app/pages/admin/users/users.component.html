@@ -15,72 +15,96 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-2">
                         <h2>Detalle <b>Empleados</b></h2>
                     </div>
+
+
                     <div class="col-sm-4">
-                        <div style="left: 200px; z-index: 100;" class="search-box">
+                        <!-- <div style="left: 200px; z-index: 100;" class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
                             <input type="text" class="form-control" placeholder="Buscar&hellip;">
-                        </div>
+                        </div> -->
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Roles</mat-label>
+
+                            <mat-select>
+                                <mat-option *ngFor="let rol of roles" [value]="rol.nombre" (click)="searchWorkers(rol.nombre)">
+                                    {{rol.nombre}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
 
                     </div>
                     <div class="col-sm-4">
+                        <form autocomplete="on" [formGroup]='formUser'>
+                            <mat-form-field appearance="outline" class="text-style-size">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput formControlName="quantity">
+
+                            </mat-form-field>
+                        </form>
+
+                    </div>
+                    <div class="col-sm-2">
                         <a href="#addEmployeeModal" data-toggle="modal"><button style="float: right;" class="btn btn-success">Agregar Empleado</button></a>
                     </div>
+
+                </div>
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre <i class="fa fa-sort"></i></th>
+                            <th>Email</th>
+                            <th>Rol <i class="fa fa-sort"></i></th>
+                            <th>Direccion</th>
+                            <th>Telefono<i class="fa fa-sort"></i></th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aqui va arreglo de empleados -->
+                        <tr *ngFor="let user of users">
+                            <td>{{user.id | user}} </td>
+                            <td>{{user.usuDet.nombre | user}} {{user.usuDet.apellido}}</td>
+                            <td>{{user.email | user}}</td>
+                            <td *ngFor="let rol of user.roles">{{rol.nombre}}</td>
+                            <td>{{user.usuDet.direcciN | user}}</td>
+                            <td>{{user.usuDet.telefono | user}}</td>
+                            <td>
+                                <a href=" #viewEmployeeModal " class="view " data-toggle="modal ">
+                                    <i class="material-icons " data-toggle="tooltip " title="View ">&#xE417;</i></a>
+                                <a href="#editEmployeeModal " class="edit " data-toggle="modal "><i class="material-icons " data-toggle="tooltip " title="Delete ">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal " class="delete " data-toggle="modal "><i class="material-icons " data-toggle="tooltip " title="Delete ">&#xE872;</i></a>
+                            </td>
+                        </tr>
+
+
+
+
+
+                    </tbody>
+                </table>
+                <div class="clearfix ">
+                    <div class="hint-text ">Listando <b>{{workerQuantity}}</b> de <b>total</b> de empleados</div>
+                    <ul class="pagination ">
+                        <li class="page-item disabled "><a href="# "><i class="fa fa-angle-double-left "></i></a></li>
+                        <li class="page-item "><a href="# " class="page-link ">1</a></li>
+                        <li class="page-item "><a href="# " class="page-link ">2</a></li>
+                        <li class="page-item active "><a href="# " class="page-link ">3</a></li>
+                        <li class="page-item "><a href="# " class="page-link ">4</a></li>
+                        <li class="page-item "><a href="# " class="page-link ">5</a></li>
+                        <li class="page-item "><a href="# " class="page-link "><i class="fa fa-angle-double-right "></i></a></li>
+                    </ul>
                 </div>
             </div>
-
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre <i class="fa fa-sort"></i></th>
-                        <th>Email</th>
-                        <th>Rol <i class="fa fa-sort"></i></th>
-                        <th>Direccion</th>
-                        <th>Telefono<i class="fa fa-sort"></i></th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Aqui va arreglo de empleados -->
-                    <tr *ngFor="let user of users">
-                        <td>{{user.id | user}} </td>
-                        <td>{{user.usuDet.nombre | user}} {{user.usuDet.apellido}}</td>
-                        <td>{{user.email | user}}</td>
-                        <td *ngFor="let rol of user.roles">{{rol.nombre}}</td>
-                        <td>{{user.usuDet.direcciN | user}}</td>
-                        <td>{{user.usuDet.telefono | user}}</td>
-                        <td>
-                            <a href=" #viewEmployeeModal " class="view " data-toggle="modal ">
-                                <i class="material-icons " data-toggle="tooltip " title="View ">&#xE417;</i></a>
-                            <a href="#editEmployeeModal " class="edit " data-toggle="modal "><i class="material-icons " data-toggle="tooltip " title="Delete ">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal " class="delete " data-toggle="modal "><i class="material-icons " data-toggle="tooltip " title="Delete ">&#xE872;</i></a>
-                        </td>
-                    </tr>
-
-
-
-
-
-                </tbody>
-            </table>
-            <div class="clearfix ">
-                <div class="hint-text ">Listando <b>x</b> de <b>total</b> de empleados</div>
-                <ul class="pagination ">
-                    <li class="page-item disabled "><a href="# "><i class="fa fa-angle-double-left "></i></a></li>
-                    <li class="page-item "><a href="# " class="page-link ">1</a></li>
-                    <li class="page-item "><a href="# " class="page-link ">2</a></li>
-                    <li class="page-item active "><a href="# " class="page-link ">3</a></li>
-                    <li class="page-item "><a href="# " class="page-link ">4</a></li>
-                    <li class="page-item "><a href="# " class="page-link ">5</a></li>
-                    <li class="page-item "><a href="# " class="page-link "><i class="fa fa-angle-double-right "></i></a></li>
-                </ul>
-            </div>
         </div>
+
+        <app-user-modal></app-user-modal>
+
     </div>
-
-    <app-user-modal></app-user-modal>
-
-</div>

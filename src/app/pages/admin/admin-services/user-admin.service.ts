@@ -12,11 +12,19 @@ export class UserAdminService {
 
   constructor(private http: HttpClient,) { }
 
-  async getall(){
-    console.log(this.urls.urlsToUsers.getAll);
+  async getUsers(query:any) {
+    console.log(this.urls.urlsToUsers.getUsers);
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
-      .set("Authorization","Bearer "+localStorage.getItem('id'))
-    return await this.http.get(`${this.urls.urlsToUsers.getAll}`, { headers: this.header }).toPromise();
+      .set("Authorization", "Bearer " + localStorage.getItem('id'))
+    return await this.http.post(`${this.urls.urlsToUsers.getUsers}`, query, { headers: this.header }).toPromise();
+  }
+
+  async getRoles() {
+    console.log(this.urls.urlsToUsers.getRoles);
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set("Authorization", "Bearer " + localStorage.getItem('id'))
+    return await this.http.get(`${this.urls.urlsToUsers.getRoles}`, { headers: this.header }).toPromise();
   }
 }

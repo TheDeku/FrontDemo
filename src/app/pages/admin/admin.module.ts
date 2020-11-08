@@ -5,6 +5,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UserModalComponent } from './users/user-modal/user-modal.component';
 import { UsersComponent } from './users/users.component';
 import { UserEmpyPipe } from '../../pipes/user-admin.pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +17,12 @@ import { UserEmpyPipe } from '../../pipes/user-admin.pipe';
   imports: [
     CommonModule,
     RouterModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
