@@ -1,16 +1,24 @@
-<div class="ncardcontainer" *ngFor="let item of items">
-
-    <div class="card Tarjeta-Pedidos" [ngClass]="{'preparing': item.preparing}">
-        <div class="card-body">
-            <h5 class="card-title tarjeta-Mesa">{{item.nomMesa}}</h5>
-            <p class="card-text Tarjeta-Porcion">{{item.porcion}} platos</p>
-            <p class="card-text Tarjeta-Nombre">{{item.nombre}}</p>
-            <p class="card-text Tarjeta-Tiempo">Tiempo Restante {{item.countdown}}</p>
-            <a href="#" class="btn btn-primary Tarjeta-boton">Iniciar Preparacion</a>
-        </div>
-        <img *ngIf="item.preparing" src="assets/icons/cocina/horneando 1.png" class="card-img-top Tarjeta-Cronometro" alt="Cronometro">
-        <img *ngIf="!item.preparing" src="assets/icons/cocina/time 1.png" class="card-img-top Tarjeta-Cronometro" alt="Cronometro">
-        <img src="{{item.imagen}}" class="card-img-top Tarjeta-Imagen" alt="choripan uwu">
+<div *ngFor="let item of items" class="card Tarjeta-Pedidos" [ngClass]="{'preparing': item.preparing,'expand': item.expand,'multi':item.multi}">
+    <div class="card-body">
+        <h5 class="card-title tarjeta-Mesa">{{item.nomMesa}}</h5>
+        <p class="card-text Tarjeta-Porcion">{{item.porcion}} platos</p>
+        <p class="card-text Tarjeta-Nombre">{{item.nombre}}</p>
+        <p class="card-text Tarjeta-Tiempo" [ngClass]="{'delayed': item.time.delayed}">{{item.countdown}}</p>
+        <p class="card-text Tarjeta-multi">{{item.pedProds.length}} Productos</p>
+        <a (click)="onClick(item)" class="btn btn-primary Tarjeta-boton"></a>
     </div>
+    <img *ngIf="item.preparing" src="assets/icons/cocina/horneando 1.png" class="card-img-top Tarjeta-Cronometro" alt="Cronometro">
+    <img *ngIf="!item.preparing" src="assets/icons/cocina/time 1.png" class="card-img-top Tarjeta-Cronometro" alt="Cronometro">
+    <div style="background-image:url({{item.imagen}})" class="card-img-top Tarjeta-Imagen" alt="choripan uwu"></div>
+    <div class="ndetail" style="--nofch:{{item.pedProds.length}}">
 
+        <div *ngFor="let prod of item.pedProds" class="ndetailcard">
+            <div class="ndimg" style="background-image: url({{prod.producto.imagen}});"></div>
+            <p class="card-text ndname">{{prod.producto.nombre}}</p>
+            <p class="card-text ndpor">{{prod.cantidad}} porciones</p>
+        </div>
+
+
+    </div>
+    <div class="nexpander" (click)="Expand(item)" title="Ver detalle"></div>
 </div>
