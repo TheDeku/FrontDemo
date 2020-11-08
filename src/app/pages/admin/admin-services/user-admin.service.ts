@@ -7,6 +7,7 @@ import { Urls } from '../../../shared/model/url.model';
 })
 export class UserAdminService {
 
+
   private urls: Urls = new Urls();
   private header;
 
@@ -26,5 +27,13 @@ export class UserAdminService {
       .set('Content-Type', 'application/json; charset=utf-8')
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
     return await this.http.get(`${this.urls.urlsToUsers.getRoles}`, { headers: this.header }).toPromise();
+  }
+
+  async modifyUserDetail(value: any) {
+    console.log(this.urls.urlsToUsers.modUserDetail);
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set("Authorization", "Bearer " + localStorage.getItem('id'))
+    return await this.http.post(`${this.urls.urlsToUsers.modUserDetail}`,value, { headers: this.header }).toPromise();
   }
 }
