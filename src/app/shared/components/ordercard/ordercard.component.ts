@@ -37,9 +37,6 @@ export class OrdercardComponent implements OnChanges {
     if(this.items!=undefined){
       this.items.forEach(e=>{
         if(e.time!=undefined){
-          let ti = new Date(e.time.timeref).getTime();
-          let ta = new Date().getTime()
-          e.time.counter= Math.trunc((ti+(5000*60)-ta)/1000);
           e.time.interval=setInterval(()=>{
             e.time.counter-=1;
             e.time.delayed=(e.time.counter<0)?true:false;

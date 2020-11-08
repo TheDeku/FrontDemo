@@ -6,6 +6,8 @@ import { OrderService } from '../shared/services/order.service';
 })
 export class OrderToCardPipe implements PipeTransform {
 
+  manualadjust=3;
+
   transform(rawOrders:any): any {
     console.log(rawOrders);
     let orders={
@@ -43,6 +45,12 @@ export class OrderToCardPipe implements PipeTransform {
         order.time.timeref = order.tiempoIngreso;
         order.preparing = true;
         orders.prepairing.push(order)}
+
+      if(order["pedidoeId"]==2 || order["pedidoeId"]==3){
+        let ti = new Date(order.time.timeref).getTime() - this.manualadjust*3600000;
+        let ta = new Date().getTime()
+        order.time.counter= Math.trunc((ti+(5000*60)-ta)/1000);
+      }
     }
     console.log(orders);
     return orders;
