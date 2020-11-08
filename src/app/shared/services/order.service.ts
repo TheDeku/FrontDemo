@@ -19,4 +19,12 @@ export class OrderService {
       .set("Authorization","Bearer "+localStorage.getItem('id'))
     return this.http.get(`${this.urls.urlOrders.all}`, { headers: this.header });
   }
+
+  setState = (id,state) => {
+    console.log(this.urls.urlOrders.setState+id);
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set("Authorization","Bearer "+localStorage.getItem('id'))
+    return this.http.put(`${this.urls.urlOrders.setState}${id}`,{state}, { headers: this.header });
+  }
 }

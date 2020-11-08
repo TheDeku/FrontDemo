@@ -11,7 +11,8 @@ export class Urls {
         restore: this.urlBase + "/users/restore",
     }
     public urlOrders = {
-        all:"http://localhost:5008"
+        all:"http://localhost:5008",
+        setState:"http://localhost:5008/"
     }
 
 

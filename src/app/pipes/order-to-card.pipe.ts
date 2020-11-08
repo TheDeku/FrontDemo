@@ -15,6 +15,7 @@ export class OrderToCardPipe implements PipeTransform {
     for (const order of rawOrders) {
       order.nomMesa = (order["mesa"]!=null)? order["mesa"]["nombre"]: "Mesa";
 
+
       if(order["pedProds"]!=null){
         if(order["pedProds"].length==1){
           order.multi=false;
@@ -23,14 +24,23 @@ export class OrderToCardPipe implements PipeTransform {
           order.nombre=order["pedProds"][0]["producto"]["nombre"];
         }
         else{
-          order.multi=true
+          order.multi=true;
+          let porciones=0;
+          for (const prod of order["pedProds"]) {
+            porciones += prod["cantidad"];
+          }
+          order.porcion=porciones;
         }
       }
 
-      if(order["pedidoeId"]==1){ 
+      if(order["pedidoeId"]==2){ 
+        order.time={};
+        order.time.timeref = order.fecha;
         order.preparing = false;
         orders.waiting.push(order)}
-      if(order["pedidoeId"]==2){ 
+      if(order["pedidoeId"]==3){ 
+        order.time={};
+        order.time.timeref = order.tiempoIngreso;
         order.preparing = true;
         orders.prepairing.push(order)}
     }
