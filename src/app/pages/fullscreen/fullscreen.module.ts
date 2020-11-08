@@ -4,15 +4,16 @@ import { FullscreenRoutingModule } from "./fullscreen-routing.module";
 import { RouterModule } from '@angular/router';
 import { CocinaComponent } from './cocina/cocina.component';
 import { OrdercardComponent } from '../../shared/components/ordercard/ordercard.component';
-import { LoadingComponent } from '../../shared/components/loading/loading.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
-  declarations: [CocinaComponent,OrdercardComponent,LoadingComponent],
+  declarations: [CocinaComponent,OrdercardComponent], 
   imports: [
     CommonModule,
     FullscreenRoutingModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class FullscreenModule { }

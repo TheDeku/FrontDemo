@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedComponentsModule } from './components/shared-components.module';
 import { BlankLayoutComponent } from './components/layouts/blank-layout/blank-layout.component';
 import { FullscreenLayoutComponent } from './components/layouts/fullscreen-layout/fullscreen-layout.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { FullscreenLayoutComponent } from './components/layouts/fullscreen-layou
     RouterModule,
     SharedComponentsModule
   ],
-  declarations: []
+  declarations: [LoadingComponent],
+  exports:[LoadingComponent]
 })
 export class SharedModule { }

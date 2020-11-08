@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NavBarLayoutComponent } from './navbar-layout/navbar-layout.component';
 import { FullscreenLayoutComponent } from './fullscreen-layout/fullscreen-layout.component';
 import { NNavbarComponent } from './n-navbar/n-navbar.component';
+import { SharedModule } from '../../shared.module';
 
 const components = [
     BlankLayoutComponent,
