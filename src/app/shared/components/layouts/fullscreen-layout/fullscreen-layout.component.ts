@@ -12,4 +12,5 @@ export class FullscreenLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }

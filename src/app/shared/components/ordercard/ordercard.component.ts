@@ -11,8 +11,7 @@ export class OrdercardComponent implements OnChanges {
   @Input() items: any[];
   @Output() buttonClick: EventEmitter<any>= new EventEmitter<any>();
 
-  constructor(private elRef:ElementRef) { 
-    console.log(new Date("2020-05-05").getTime())
+  constructor() { 
   }
 
   ngOnChanges(changes) {

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Urls } from '../../../shared/model/url.model';
 import { OrderService } from '../../../shared/services/order.service';
 import { OrderToCardPipe } from '../../../pipes/order-to-card.pipe';
 import { Router, RouterModule } from '@angular/router';
+import { data } from 'jquery';
+import { NsummarybarService,NsummaryData } from '../../../shared/components/componentComunication/nsummarybar.service';
 
 @Component({
   selector: 'app-cocina',
@@ -10,13 +12,15 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./cocina.component.css']
 })
 export class CocinaComponent implements OnInit {
+
+
   loading:boolean=true;
   orders:any={
     preparing:[],
     waiting:[]
   }
 
-  constructor(private router:Router,private orderService:OrderService, private orderPipe: OrderToCardPipe) { 
+  constructor(private nsummary:NsummarybarService,private router:Router,private orderService:OrderService, private orderPipe: OrderToCardPipe) { 
     this.load();
   }
 
@@ -40,6 +44,7 @@ export class CocinaComponent implements OnInit {
     this.loading=true;
     this.orderService.setState(order.id,order.state+1).toPromise().then(norder=>{
 
+      let dlog = new NsummaryData()
 
       let io1 = this.orders.waiting.findIndex(o=>o.id==order.id);
       let io2 = this.orders.prepairing.findIndex(o=>o.id==order.id);
@@ -53,14 +58,25 @@ export class CocinaComponent implements OnInit {
         orderold.time.counter = ordermove.time.counter;
         orderold.pedidoeId= ordermove.pedidoeId;
 
+        dlog.text = orderold["nomMesa"];
+        dlog.type = (orderold["time"]["delayed"])?"delayed":"onTime";
+
         this.orders.prepairing.push(orderold);
       }
       if(io2!=-1){
-        this.orders.prepairing.splice(io2,1);
+        let orderold = this.orders.prepairing.splice(io2,1)[0];
+
+        dlog.text = orderold["nomMesa"];
+        dlog.state="preparing"
+        dlog.type = (orderold["time"]["delayed"])?"delayed":"onTime";
       }
       this.loading=false;
 
+      this.nsummary.nsummaryLog(dlog);
+
     }).catch(e=>{console.log(e);this.navigate("/signin") });
+
+    
   }
 
   ngOnInit(): void {

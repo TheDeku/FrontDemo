@@ -48,6 +48,7 @@
     border-radius: 10px;
     float: right;
     border: 0;
+    color: white;
 }
 
 .Tarjeta-Pedidos .Tarjeta-boton::after {
@@ -72,6 +73,7 @@
     padding-right: 13px;
     padding-top: 7px;
     padding-bottom: 7px;
+    color: rgb(255, 240, 158);
 }
 
 .Tarjeta-Pedidos .card-body {
