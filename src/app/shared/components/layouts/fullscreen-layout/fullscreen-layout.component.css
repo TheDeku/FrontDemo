@@ -1,7 +1,10 @@
+:host {
+    --nbasewidth: 280px
+}
+
 .nnavco {
-    --nnavportion: 280px;
+    --nnavportion: var(--nbasewidth);
     position: fixed;
-    background-color: red;
     height: 100%;
     width: var(--nnavportion);
     left: 0;
@@ -9,7 +12,7 @@
 }
 
 .basiclayout {
-    --nnavportion: 280px;
+    --nnavportion: var(--nbasewidth);
     position: absolute;
     height: 100%;
     width: calc(100% - var(--nnavportion));

@@ -14,7 +14,7 @@ export class NotFoundComponent implements OnInit {
   }
 
   backToIndex(){
-    this.router.navigate(['/dashboard/v1']);
+    this.router.navigate(['/']);
   }
 
 }

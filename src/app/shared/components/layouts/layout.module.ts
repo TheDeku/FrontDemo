@@ -7,12 +7,14 @@ import { NavBarLayoutComponent } from './navbar-layout/navbar-layout.component';
 import { FullscreenLayoutComponent } from './fullscreen-layout/fullscreen-layout.component';
 import { NNavbarComponent } from './n-navbar/n-navbar.component';
 import { SharedModule } from '../../shared.module';
+import { NsummarybarComponent } from './nsummarybar/nsummarybar.component';
 
 const components = [
     BlankLayoutComponent,
     NavBarLayoutComponent,
     FullscreenLayoutComponent,
-    NNavbarComponent
+    NNavbarComponent,
+    NsummarybarComponent
 ];
 
 @NgModule({
