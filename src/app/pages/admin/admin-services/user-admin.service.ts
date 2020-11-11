@@ -36,4 +36,26 @@ export class UserAdminService {
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
     return await this.http.post(`${this.urls.urlsToUsers.modUserDetail}`,value, { headers: this.header }).toPromise();
   }
+
+
+  
+  async createWorker(user){
+    const raw = JSON.stringify({ username: user.user, password: user.pass, email: user.email, rol:user.rol });
+    console.log(raw);
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+
+      console.log(this.urls.urlsToLogin.signUp);
+    await this.http.post(`${this.urls.urlsToLogin.signUp}`, raw, { headers: this.header }).toPromise().then(async resp=>{
+      console.log(resp['value'].id);
+      user.usuarioId = parseInt( resp['value'].id);
+      await this.modifyUserDetail(user).then(resp=>{
+        console.log(resp);
+      }).catch(err=>{
+        console.error(err);
+      });
+    }).catch(err=>{
+      return err;
+    });
+  }
 }

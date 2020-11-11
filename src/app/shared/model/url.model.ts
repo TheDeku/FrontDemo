@@ -19,6 +19,6 @@ export class Urls {
     public urlsToUsers ={
         getUsers:`${this.urlBase}/auth/users`,
         getRoles:`${this.urlBase}/auth/roles/WORKER`,
-        modUserDetail:`http://localhost:5004/users/updetail`
+        modUserDetail:`${this.urlBase}/auth/users/updetail`
     }
 }

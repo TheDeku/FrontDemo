@@ -94,7 +94,7 @@
                 </table>
                 <div class="clearfix ">
                     <div class="hint-text ">Listando <b>{{workerQuantity}}</b> de <b>total</b> de empleados</div>
-                    <ul class="pagination ">
+                    <!-- <ul class="pagination ">
                         <li class="page-item disabled "><a href="# "><i class="fa fa-angle-double-left "></i></a></li>
                         <li class="page-item "><a href="# " class="page-link ">1</a></li>
                         <li class="page-item "><a href="# " class="page-link ">2</a></li>
@@ -102,7 +102,7 @@
                         <li class="page-item "><a href="# " class="page-link ">4</a></li>
                         <li class="page-item "><a href="# " class="page-link ">5</a></li>
                         <li class="page-item "><a href="# " class="page-link "><i class="fa fa-angle-double-right "></i></a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -174,36 +174,89 @@
                     <h4 class="modal-title">Añadir Empleado</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="Roladd">Rol</label>
-                        <select class="form-control" id="Roladd">
-                        <option>Cocinero</option>
-                        <option>Bodeguero</option>
-                        <option>Mesero</option>
-                        <option>Something else here</option>
-                    </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Direccion</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Telefono</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
+                <form autocomplete="on" [formGroup]='formEditUser'>
+
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Correo</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput formControlName="user">
+                        <mat-icon matSuffix>portrait</mat-icon>
+                    </mat-form-field>
+
+                    <!-- required[(ngModel)]="user.username" name="user" -->
+                    <!-- required[(ngModel)]="user.password" name="password" -->
+
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Repetir contraseña</mat-label>
+                        <input matInput [type]="hiderepass ? 'password' : 'text'" formControlName="repass">
+                        <button mat-icon-button matSuffix (click)="hiderepass = !hiderepass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hiderepass">
+                            <mat-icon>{{hiderepass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="text-style-size  col-md-12">
+                        <mat-label>Rol</mat-label>
+
+                        <mat-select>
+                            <mat-option *ngFor="let rol of roles" [value]="rol.nombre" (click)="onSelectedRole(rol.nombre)">
+                                {{rol.nombre}}
+                            </mat-option>
+                        </mat-select>
+
+
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput formControlName="apellido">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput formControlName="telefono">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Dirección</mat-label>
+                        <input matInput formControlName="direcciN">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Ciudad</mat-label>
+                        <input matInput formControlName="ciudad">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="text-style-size col-md-6">
+                        <mat-label>Comuna</mat-label>
+                        <input matInput formControlName="comuna">
+
+                    </mat-form-field>
+
+
+                </form>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-success" value="Añadir">
+                    <input type="submit" class="btn btn-success" value="Añadir" (click)="onCreateWorker()">
                 </div>
             </form>
         </div>

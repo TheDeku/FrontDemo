@@ -17,7 +17,8 @@ export class UsersComponent implements OnInit {
   tempUserId: number = 0;
   roleFilter: string;
   loading:boolean=true;
-
+  hide = true;
+  hiderepass=true;
   @ContentChild(MatFormFieldControl) _control: MatFormFieldControl<any>;
   @ViewChild(MatFormField) _matFormField: MatFormField;
   formUser = new FormGroup({
@@ -31,7 +32,13 @@ export class UsersComponent implements OnInit {
     direcciN: new FormControl("", [Validators.required]),
     ciudad: new FormControl("", [Validators.required]),
     comuna: new FormControl("", [Validators.required]),
+    user: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    pass: new FormControl('', [Validators.required, Validators.minLength(7)]),
+    repass: new FormControl('', [Validators.required, Validators.minLength(7)]),
   })
+
+  selectedRole;
   constructor(private _userAdmService: UserAdminService) {
   }
 
@@ -84,6 +91,26 @@ export class UsersComponent implements OnInit {
     }).catch(err => {
 
     })
+
+  }
+
+  onSelectedRole(role:string){
+    this.selectedRole = role;
+  }
+
+  async onCreateWorker(){
+    console.log(this.selectedRole);
+    if (this.selectedRole===undefined) {
+      return Swal.fire({
+        icon: 'warning',
+        title: 'Debe seleccionar un rol',
+        text: `Seleccione un rol`
+      })
+    }else{
+      this.formEditUser.value.rol=this.selectedRole;
+      console.log(this.formEditUser.value);
+      await this._userAdmService.createWorker(this.formEditUser.value);
+    }
 
   }
 
