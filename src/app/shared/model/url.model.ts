@@ -2,7 +2,7 @@ import { basePlacements } from '@popperjs/core'
 
 export class Urls {
 
-    private urlBase: string = "http://api.watasoft.com"
+    private urlBase: string = "https://api.watasoft.com"
     public urlsToLogin = {
         signIn: this.urlBase + "/auth/signin",
         signUp: this.urlBase + "/auth/signup",
