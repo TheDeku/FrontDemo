@@ -11,8 +11,8 @@ export class Urls {
         restore: this.urlBase + "/users/restore",
     }
     public urlOrders = {
-        all:"http://api.watasoft.com/order",
-        setState:"http://api.watasoft.com/order"
+        all:"https://api.watasoft.com/order",
+        setState:"https://api.watasoft.com/order"
     }
 
 
