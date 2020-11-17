@@ -6,7 +6,7 @@ import { OrderService } from '../shared/services/order.service';
 })
 export class OrderToCardPipe implements PipeTransform {
 
-  manualadjust=3;
+  manualadjust=-3;
 
   transform(rawOrders:any): any {
     console.log(rawOrders);

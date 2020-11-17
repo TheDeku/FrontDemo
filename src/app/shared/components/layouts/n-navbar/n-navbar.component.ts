@@ -24,33 +24,43 @@ export class NNavbarComponent implements OnInit {
     "ADMIN":
     [ 
       {
-          "name": "Usuarios",
+        "name": "Home",
+        "url": "/main/home",
+        "image": "../assets/icons/usuarios.svg"
+      },
+      {
+          "name": "Users",
           "url": "/admin/user",
           "image": "../assets/icons/usuarios.svg"
       },
       {
-          "name": "Solicitudes",
-          "url": "/signin",
+          "name": "Requeriments",
+          "url": "/admin/requeriments",
           "image": "../assets/icons/solicitudes.svg"
       },
       {
-          "name": "Mesas",
-          "url": "/asdafds",
+          "name": "Tables",
+          "url": "/admin/tables",
           "image": "../assets/icons/mesas.svg"
       },
       {
-          "name": "Bodega",
-          "url": "/main/bodega",
+          "name": "Warehouse",
+          "url": "/admin/warehouse",
           "image": "../assets/icons/bodega.svg"
       },
       {
-          "name": "Finanzas",
-          "url": "#",
+          "name": "Finance",
+          "url": "/admin/finance",
           "image": "../assets/icons/finanzas.svg"
       }
     ],
     "GARZON":
     [ 
+      {
+        "name": "Home",
+        "url": "/main/home",
+        "image": "../assets/icons/usuarios.svg"
+      },
       {
           "name": "en preparación",
           "url": "main/home",
@@ -69,6 +79,11 @@ export class NNavbarComponent implements OnInit {
     ],
     "COCINA":
     [ 
+      {
+        "name": "Home",
+        "url": "/main/home",
+        "image": "../assets/icons/usuarios.svg"
+      },
       {
           "name": "Cola",
           "url": "main/home",
@@ -89,6 +104,11 @@ export class NNavbarComponent implements OnInit {
     "BODEGA":
     [ 
       {
+        "name": "Home",
+        "url": "/main/home",
+        "image": "../assets/icons/usuarios.svg"
+      },
+      {
           "name": "Agregar stock",
           "url": "main/home",
           "image": "../assets/icons/usuarios.svg"
@@ -106,6 +126,11 @@ export class NNavbarComponent implements OnInit {
     ],
     "CLIENTE":
     [ 
+      {
+        "name": "Home",
+        "url": "/main/home",
+        "image": "../assets/icons/usuarios.svg"
+      },
       {
           "name": "Carta",
           "url": "main/home",

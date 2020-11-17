@@ -11,8 +11,8 @@ export class Urls {
         restore: this.urlBase + "/users/restore",
     }
     public urlOrders = {
-        all:"https://api.watasoft.com/order",
-        setState:"https://api.watasoft.com/order"
+        all:`${this.urlBase}/order/`,
+        setState:`${this.urlBase}/order/`
     }
 
 
@@ -20,5 +20,15 @@ export class Urls {
         getUsers:`${this.urlBase}/auth/users`,
         getRoles:`${this.urlBase}/auth/roles/WORKER`,
         modUserDetail:`${this.urlBase}/auth/users/updetail`
+    }
+    public urlsToWarehouse ={
+        getCategories:`${this.urlBase}/ingredient/categories`,
+        getUnits:`${this.urlBase}/ingredient/units`,
+        getIngredients:`${this.urlBase}/ingredient`,
+        createUnits:`${this.urlBase}/ingredient/unit`,
+        createCategory:`${this.urlBase}/ingredient/category`,
+        findByCategory:`${this.urlBase}/ingredient/bycategory`,
+        createIngredient:`${this.urlBase}/ingredient`,
+        createIngredientDetail:`${this.urlBase}/ingredient/detail`,
     }
 }

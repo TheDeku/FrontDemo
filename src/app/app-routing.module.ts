@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    component: BlankLayoutComponent,
+    component: NavBarLayoutComponent,
     children: [
       {
         path:'',

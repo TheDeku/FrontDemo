@@ -56,7 +56,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from '../../shared/services/user.service';
 import { HomeComponent } from './home/home.component';
 import { MainRoutingModule } from './main-routing.module';
-import { BodegaComponent } from './bodega/bodega.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -114,6 +113,6 @@ import { RouterModule } from '@angular/router';
         RouterModule
     ],
     providers:[UserService],
-    declarations: [HomeComponent, BodegaComponent]
+    declarations: [HomeComponent]
 })
 export class MainModule { }

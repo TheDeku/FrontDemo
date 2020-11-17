@@ -16,9 +16,15 @@ export class UsersComponent implements OnInit {
   workerQuantity: number = 0;
   tempUserId: number = 0;
   roleFilter: string;
-  loading:boolean=true;
+  loading: boolean = true;
   hide = true;
-  hiderepass=true;
+  hiderepass = true;
+
+  viewImageInfoUser: {
+    urlImage: "",
+    name: string,
+    description: ""
+  }
   @ContentChild(MatFormFieldControl) _control: MatFormFieldControl<any>;
   @ViewChild(MatFormField) _matFormField: MatFormField;
   formUser = new FormGroup({
@@ -45,11 +51,11 @@ export class UsersComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this._userAdmService.getRoles().then(resp => {
       this.roles = resp;
-   
+
     })
 
 
-  
+
   }
 
   async searchWorkers(filter: any) {
@@ -65,6 +71,10 @@ export class UsersComponent implements OnInit {
     console.log(user);
     this.formEditUser.value.nombre = user.username
     this.tempUserId = user.id
+    this.viewImageInfoUser.name = `${user.usuDet.nombre} ${user.usuDet.apellido}`
+    this.viewImageInfoUser.description = user.email;
+    this.viewImageInfoUser.urlImage = user.usuDet.imagen;
+    console.log(this.viewImageInfoUser);
     console.log(this.formEditUser);
     this.formEditUser = new FormGroup({
       nombre: new FormControl(user.usuDet.nombre, [Validators.required]),
@@ -94,20 +104,20 @@ export class UsersComponent implements OnInit {
 
   }
 
-  onSelectedRole(role:string){
+  onSelectedRole(role: string) {
     this.selectedRole = role;
   }
 
-  async onCreateWorker(){
+  async onCreateWorker() {
     console.log(this.selectedRole);
-    if (this.selectedRole===undefined) {
+    if (this.selectedRole === undefined) {
       return Swal.fire({
         icon: 'warning',
         title: 'Debe seleccionar un rol',
         text: `Seleccione un rol`
       })
-    }else{
-      this.formEditUser.value.rol=this.selectedRole;
+    } else {
+      this.formEditUser.value.rol = this.selectedRole;
       console.log(this.formEditUser.value);
       await this._userAdmService.createWorker(this.formEditUser.value);
     }
