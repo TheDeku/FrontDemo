@@ -31,4 +31,6 @@ export class Urls {
         createIngredient:`${this.urlBase}/ingredient`,
         createIngredientDetail:`${this.urlBase}/ingredient/detail`,
     }
+
+    public urlToTable=`${this.urlBase}/table`;
 }

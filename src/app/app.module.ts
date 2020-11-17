@@ -15,6 +15,7 @@ import { OrderToCardPipe } from './pipes/order-to-card.pipe';
 import { UserEmpyPipe } from './pipes/user-admin.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './shared/components/loading/loading.component';
+import { PipeTableState } from './pipes/tablestate.pipe';
 
 
 
@@ -22,7 +23,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
   declarations: [
     AppComponent,
     DomseguroPipe,
-    OrderToCardPipe,
+    OrderToCardPipe
   ],
   imports: [
     BrowserModule,

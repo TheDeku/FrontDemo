@@ -14,9 +14,10 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 import { RequerimentsComponent } from './requeriments/requeriments.component';
 import { TablesComponent } from './tables/tables.component';
 import { FinanceComponent } from './finance/finance.component';
+import { PipeTableState } from '../../pipes/tablestate.pipe';
 
 @NgModule({
-  declarations: [UsersComponent,UserEmpyPipe, WarehouseComponent, RequerimentsComponent, TablesComponent, FinanceComponent],
+  declarations: [UsersComponent,UserEmpyPipe,PipeTableState, WarehouseComponent, RequerimentsComponent, TablesComponent, FinanceComponent],
   exports:[UsersComponent],
   imports: [
     CommonModule,

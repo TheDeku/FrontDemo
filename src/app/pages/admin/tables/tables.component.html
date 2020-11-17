@@ -1,1 +1,231 @@
-<p>tables works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="position: relative; float:right; margin-top: 50px;">
+            <div style="display: inline-block;"><img style="height:80px; width:auto;" src="../../../../assets/icons/mesa-de-cocina.svg" />
+                <h2 style="display: inline-block; margin-left: 30px;"> Vista de Mesas</h2>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Detalle <b>Mesas</b></h2>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#addTable" data-toggle="modal"><button style="float: right;" class="btn btn-success">Agregar Mesa</button></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre
+                            <th>Capacidad<i class="fa fa-sort"></i></th>
+                            <th>Agrupar</th>
+                            <th>Estado<i class="fa fa-sort"></i></th>
+                            <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let table of tables">
+                        <td>{{table.id}}</td>
+                        <td>{{table.name}}</td>
+                        <td>{{table.capacity}}</td>
+                        <td>{{table.grouped | user}}</td>
+                        <td>{{table.mesaeId | tablestate}}</td>
+                        <td>
+                            <a href="#viewTable" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xE417;</i></a>
+                            <a href="#editTable" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE254;</i></a>
+                            <a href="#deleteTable" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Listando <b>{{quanitytTables}}</b> de <b>total</b> de mesas</div>
+                <!-- <ul class="pagination">
+                    <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Modal HTML -->
+
+
+<div id="viewTable" class="modal fade">
+    <div class="modal-dialog" style="padding:30px">
+        <div class="modal-content">
+            <div class="center">
+                <img style="margin: 50px;" class="image-user" src="https://cdn.ticbeat.com/src/uploads/2019/01/mesa-sucia-restaurante-810x538.jpg">
+            </div>
+
+            <div class="center">
+
+                <div class="file-input">
+                    <input type="file" name="file-input" id="file-input" class="file-input__input" />
+
+                    <label class="file-input__label" for="file-input">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="upload"
+                    class="svg-inline--fa fa-upload fa-w-16"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                    ></path>
+                  </svg>
+                  <span>Cambiar foto</span></label>
+
+                </div>
+            </div>
+
+
+            <br>
+            <div class="center">
+                <h4>Descripción</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sagittis felis, laoreet montes quisque dapibus nunc enim malesuada eleifend, nisi taciti mauris porttitor velit gravida cum orci. Nisi himenaeos sodales egestas vitae libero molestie
+                    felis feugiat cubilia, non a scelerisque suspendisse habitant urna facilisis sagittis, consequat dictumst tincidunt enim nascetur vel porttitor erat. Ridiculus phasellus lacus litora pretium a et condimentum, semper augue lectus luctus
+                    placerat mattis eleifend, tristique tincidunt sociis aliquam inceptos ut</p>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Add Modal HTML -->
+<div id="addTable" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Añadir Mesa</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Capacidad</label>
+                <input type="number" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Agrupar</label>
+                <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="sel1">Rol</label>
+                <select class="form-control" id="sel1" required>
+                        <option>Reservada</option>
+                        <option>Disponible</option>
+                        <option>En Uso</option>
+                    </select>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+            <input type="submit" class="btn btn-success" value="Añadir">
+        </div>
+
+    </div>
+</div>
+
+<!-- Edit Modal HTML -->
+
+<div id="editTable" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Mesa</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div style="display: none;" class="form-group">
+                            <label>Id</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Capacidad</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Agrupar</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Rol</label>
+                        <select class="form-control" id="sel1">
+                        <option>Reservada</option>
+                        <option>Disponible</option>
+                        <option>En Uso</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteTable" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Borrar Mesa</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Estas seguro que deseas borrar a esta Mesa?</p>
+                    <p class="text-warning"><small>Esta accion no se puede deshacer</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-danger" value="Borrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

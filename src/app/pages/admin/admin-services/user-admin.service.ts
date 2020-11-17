@@ -192,4 +192,26 @@ export class UserAdminService {
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
     return await this.http.get(`${this.urls.urlsToWarehouse.findByCategory}/${id}`, { headers: this.header, observe: 'response' }).toPromise();
   }
+
+
+  async createTable(){
+
+  }
+
+  async updateTable(){
+    
+  }
+
+  async deleteTable(){
+    
+  }
+
+  async getTables(){
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set("Authorization", "Bearer " + localStorage.getItem('id'))
+  return await this.http.get(`${this.urls.urlToTable}`, { headers: this.header }).toPromise();
+  }
+
+
 }
