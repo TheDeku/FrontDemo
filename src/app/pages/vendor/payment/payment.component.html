@@ -1,26 +1,107 @@
-<mat-tab-group>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-            First
-        </ng-template>
-        Content 1
-    </mat-tab>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="position: relative; float:right; margin-top: 50px;">
+            <div style="display: inline-block;"><img style="height:90px; width:auto;" src="../../../../assets/icons/cuenta.svg" />
+                <h2 style="display: inline-block; margin-left: 40px;"> Punto de Venta</h2>
+            </div>
 
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-            Second
-        </ng-template>
-        Content 2
-    </mat-tab>
+        </div>
+    </div>
+</div>
 
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-            Third
-        </ng-template>
 
-        Content 3
-    </mat-tab>
-</mat-tab-group>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-md-12 center">
+
+                        <mat-accordion class="example-headers-align">
+                            <mat-expansion-panel [disabled]="isDisabled0" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Detalle Pedido.
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Ingrese pedido.
+                                        <mat-icon>restaurant</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+
+                                <div class="example-flex-container">
+                                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                                      <mat-icon>qr_code_scanner</mat-icon>
+                                    </button>
+                                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                                        <mat-icon>search</mat-icon>
+                                      </button>
+                                </div>
+
+
+
+
+                                <mat-action-row>
+                                    <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+                                </mat-action-row>
+
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel [disabled]="isDisabled1" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Formas de pago
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Seleccione una forma de pago
+                                        <mat-icon>payment</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <mat-form-field>
+                                    <mat-label>Country</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+
+                                <mat-action-row>
+                                    <button mat-button color="warn" (click)="prevStep()">Regresar</button>
+                                    <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+                                </mat-action-row>
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel [disabled]="isDisabled2" [expanded]="step === 2" hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Finalización
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Comprobante de pago
+                                        <mat-icon>receipt</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <mat-form-field>
+                                    <mat-label>Date</mat-label>
+                                    <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+                                </mat-form-field>
+                                <mat-datepicker #picker></mat-datepicker>
+
+                                <mat-action-row>
+                                    <button mat-button color="warn" (click)="prevStep()">Regresar</button>
+                                    <button mat-button color="primary" (click)="nextStep()">Finalizar</button>
+                                </mat-action-row>
+                            </mat-expansion-panel>
+
+                        </mat-accordion>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
