@@ -19,6 +19,17 @@
                         <h2>Detalle <b>Mesas</b></h2>
                     </div>
                     <div class="col-sm-4">
+
+                        <mat-form-field appearance="outline" class="col-md-12">
+                            <mat-label>Categorias</mat-label>
+
+                            <mat-select>
+                                <mat-option *ngFor="let cat of categories" [value]="cat.descripcion" (click)="onFindByState(cat.id)">
+                                    {{cat.descripcion}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
                     </div>
                     <div class="col-sm-4">
                         <a href="#addTable" data-toggle="modal"><button style="float: right;" class="btn btn-success">Agregar Mesa</button></a>
@@ -45,8 +56,8 @@
                         <td>{{table.mesaeId | tablestate}}</td>
                         <td>
                             <a href="#viewTable" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xE417;</i></a>
-                            <a href="#editTable" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE254;</i></a>
-                            <a href="#deleteTable" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            <a href="#editTable" class="edit" (click)="selectedTableID(table)" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE254;</i></a>
+                            <a href="#deleteTable" (click)="selectedTableID(table)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
 
@@ -131,33 +142,39 @@
                 <h4 class="modal-title">Añadir Mesa</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
-            <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>Capacidad</label>
-                <input type="number" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>Agrupar</label>
-                <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="sel1">Rol</label>
-                <select class="form-control" id="sel1" required>
-                        <option>Reservada</option>
-                        <option>Disponible</option>
-                        <option>En Uso</option>
-                    </select>
+            <form autocomplete="on" [formGroup]='formTable'>
+
+
+                <mat-form-field appearance="outline" class="text-style-size col-md-12">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name" placeholder="Frutas">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="text-style-size col-md-12">
+                    <mat-label>Capacidad</mat-label>
+                    <input matInput formControlName="capacity" placeholder="Frutas">
+                </mat-form-field>
+                <!-- 
+                <mat-form-field appearance="outline" class="col-md-12">
+                    <mat-label>Categorias</mat-label>
+
+                    <mat-select>
+                        <mat-option *ngFor="let cat of categories" [value]="cat.descripcion">
+                            {{cat.descripcion}}
+                        </mat-option>
+                    </mat-select>
+
+                </mat-form-field> -->
+
+
+
+            </form>
+
+            <div class="modal-footer ">
+                <input type="button " class="btn btn-default " data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
+                <input type="submit " class="btn btn-info " value="Guardar" (click)="onCreateTable()" data-dismiss="modal">
             </div>
         </div>
-
-        <div class="modal-footer">
-            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-            <input type="submit" class="btn btn-success" value="Añadir">
-        </div>
-
     </div>
 </div>
 
@@ -168,40 +185,52 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar Mesa</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title ">Editar Mesa</h4>
+                    <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-body">
                         <div style="display: none;" class="form-group">
                             <label>Id</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text " class="form-control" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Capacidad</label>
-                        <input type="number" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Agrupar</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="sel1">Rol</label>
-                        <select class="form-control" id="sel1">
-                        <option>Reservada</option>
-                        <option>Disponible</option>
-                        <option>En Uso</option>
-                    </select>
-                    </div>
+
+                    <form autocomplete="on" [formGroup]='formTable'>
+
+
+                        <mat-form-field appearance="outline" class="text-style-size col-md-12">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput formControlName="name" placeholder="Frutas">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="text-style-size col-md-12">
+                            <mat-label>Capacidad</mat-label>
+                            <input matInput formControlName="capacity" placeholder="Frutas">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="col-md-12">
+                            <mat-label>Estado</mat-label>
+
+                            <mat-select>
+                                <mat-option *ngFor="let cat of categories" [value]="cat.descripcion" (click)="selectStateTable(cat.id)">
+                                    {{cat.descripcion}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+
+
+                    </form>
+
+
+
+
                 </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-info" value="Guardar">
+                <div class="modal-footer ">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
+                    <input type="submit" class="btn btn-info" value="Guardar" (click)="onUpdateTable()" data-dismiss="modal">
                 </div>
             </form>
         </div>
@@ -214,16 +243,16 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Borrar Mesa</h4>
+                    <h4 class="modal-title ">Borrar Mesa</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <p>Estas seguro que deseas borrar a esta Mesa?</p>
-                    <p class="text-warning"><small>Esta accion no se puede deshacer</small></p>
+                    <p class="text-warning "><small>Esta accion no se puede deshacer</small></p>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-danger" value="Borrar">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
+                    <input type="submit" class="btn btn-danger" value="Borrar" data-dismiss="modal" (click)="onDeleteTable()">
                 </div>
             </form>
         </div>

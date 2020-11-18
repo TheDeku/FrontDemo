@@ -39,6 +39,11 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
+      },
+      {
+        path: '',
+        component:FullscreenLayoutComponent,
+        loadChildren: () => import('./pages/fullscreen/fullscreen.module').then(m => m.FullscreenModule)
       }
     ]
   },
@@ -49,6 +54,16 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('./pages/fullscreen/fullscreen.module').then(m => m.FullscreenModule)
+      }
+    ]
+  },
+  {
+    path: 'vendor',
+    component:  NavBarLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/vendor/vendor.module').then(m => m.VendorModule)
       }
     ]
   },

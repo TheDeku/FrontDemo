@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { A11yModule } from '@angular/cdk/a11y';
@@ -54,16 +53,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from '../../shared/services/user.service';
-
-import { MainRoutingModule } from './main-routing.module';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './close/home.component';
-import { CloseComponent } from './home/close.component';
+import { SharedModule } from '../../shared/shared.module';
+import { PaymentComponent } from './payment/payment.component';
+import { VendorRoutingModule } from './vendor-routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        MainRoutingModule,
         MatFormFieldModule,
         A11yModule,
         ClipboardModule,
@@ -112,9 +109,10 @@ import { CloseComponent } from './home/close.component';
         ReactiveFormsModule,
         HttpClientModule,
         FontAwesomeModule,
-        RouterModule
+        RouterModule,
+        VendorRoutingModule
     ],
-    providers:[UserService],
-    declarations: [HomeComponent,CloseComponent]
+    providers:[],
+    declarations: [PaymentComponent]
 })
-export class MainModule { }
+export class VendorModule { }

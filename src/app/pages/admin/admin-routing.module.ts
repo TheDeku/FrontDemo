@@ -4,6 +4,7 @@ import { UsersComponent } from './users/users.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
 import { RequerimentsComponent } from './requeriments/requeriments.component';
 import { TablesComponent } from './tables/tables.component';
+import { FinanceComponent } from './finance/finance.component';
 
 const routes: Routes = [
     {
@@ -25,7 +26,7 @@ const routes: Routes = [
     , 
     {
         path: 'finance',
-        component: TablesComponent
+        component: FinanceComponent
     }
 
 ];

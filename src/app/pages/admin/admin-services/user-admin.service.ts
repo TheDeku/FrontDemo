@@ -194,16 +194,35 @@ export class UserAdminService {
   }
 
 
-  async createTable(){
-
+  async createTable(table){
+    let raw= JSON.stringify({
+      name:table.name,
+      capacity:table.capacity
+    })
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set("Authorization", "Bearer " + localStorage.getItem('id'))
+  return await this.http.post(`${this.urls.urlToTable}/`,raw, { headers: this.header }).toPromise();
   }
 
-  async updateTable(){
-    
+  async updateTable(table){
+    let raw= JSON.stringify({
+      id:table.id,
+      name:table.name,
+      capacity:table.capacity,
+      mesaE:table.state
+    })
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set("Authorization", "Bearer " + localStorage.getItem('id'))
+  return await this.http.put(`${this.urls.urlToTable}/`,raw, { headers: this.header }).toPromise();
   }
 
-  async deleteTable(){
-    
+  async deleteTable(id:number){
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set("Authorization", "Bearer " + localStorage.getItem('id'))
+  return await this.http.delete(`${this.urls.urlToTable}/${id}`, { headers: this.header }).toPromise();
   }
 
   async getTables(){
@@ -211,6 +230,20 @@ export class UserAdminService {
     .set('Content-Type', 'application/json; charset=utf-8')
     .set("Authorization", "Bearer " + localStorage.getItem('id'))
   return await this.http.get(`${this.urls.urlToTable}`, { headers: this.header }).toPromise();
+  }
+
+  async getTablesStates(){
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set("Authorization", "Bearer " + localStorage.getItem('id'));
+  return await this.http.post(`${this.urls.urlToTable}/states`, { headers: this.header }).toPromise();
+  }
+
+  async getTablesByStates(id){
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set("Authorization", "Bearer " + localStorage.getItem('id'));
+  return await this.http.post(`${this.urls.urlToTable}/states/${id}`,{}, { headers: this.header }).toPromise();
   }
 
 

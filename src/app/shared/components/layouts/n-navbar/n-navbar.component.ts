@@ -24,35 +24,40 @@ export class NNavbarComponent implements OnInit {
     "ADMIN":
     [ 
       {
-        "name": "Home",
-        "url": "/main/home",
-        "image": "../assets/icons/usuarios.svg"
-      },
-      {
-          "name": "Users",
+          "name": "Usuarios",
           "url": "/admin/user",
           "image": "../assets/icons/usuarios.svg"
       },
       {
-          "name": "Requeriments",
+          "name": "Solicitudes",
           "url": "/admin/requeriments",
           "image": "../assets/icons/solicitudes.svg"
       },
       {
-          "name": "Tables",
+          "name": "Mesas",
           "url": "/admin/tables",
           "image": "../assets/icons/mesas.svg"
       },
       {
-          "name": "Warehouse",
+          "name": "Bodega",
           "url": "/admin/warehouse",
           "image": "../assets/icons/bodega.svg"
       },
       {
-          "name": "Finance",
+          "name": "Finanzas",
           "url": "/admin/finance",
           "image": "../assets/icons/finanzas.svg"
-      }
+      },
+      {
+        "name": "Cocina",
+        "url": "/admin/cocina",
+        "image": "../assets/icons/cocinando.svg"
+    },
+      {
+        "name": "Cerrar Sesión",
+        "url": "/main/close",
+        "image": "../assets/icons/flecha-correcta.svg"
+    }
     ],
     "GARZON":
     [ 
@@ -75,30 +80,30 @@ export class NNavbarComponent implements OnInit {
           "name": "Mesas",
           "url": "/asdafds",
           "image": "../assets/icons/mesas.svg"
-      }
+      },
+      {
+        "name": "Cerrar Sesión",
+        "url": "/main/close",
+        "image": "../assets/icons/flecha-correcta.svg"
+    }
     ],
-    "COCINA":
+    "CAJERO":
     [ 
       {
-        "name": "Home",
-        "url": "/main/home",
-        "image": "../assets/icons/usuarios.svg"
+        "name": "Caja",
+        "url": "/vendor/payment",
+        "image": "../assets/icons/cuenta.svg"
       },
       {
-          "name": "Cola",
+          "name": "Historial",
           "url": "main/home",
-          "image": "../assets/icons/flecha-correcta.svg"
-      },
-      {
-          "name": "Marcar listo",
-          "url": "/signin",
-          "image": "../assets/icons/listo.svg"
-      },
-      {
-          "name": "solicitar",
-          "url": "/asdafds",
           "image": "../assets/icons/pregunta.svg"
       },
+      {
+        "name": "Cerrar Sesión",
+        "url": "/main/close",
+        "image": "../assets/icons/flecha-correcta.svg"
+    }
       
     ],
     "BODEGA":
@@ -110,7 +115,7 @@ export class NNavbarComponent implements OnInit {
       },
       {
           "name": "Agregar stock",
-          "url": "main/home",
+          "url": "/main/home",
           "image": "../assets/icons/usuarios.svg"
       },
       {
@@ -123,24 +128,19 @@ export class NNavbarComponent implements OnInit {
           "url": "/asdafds",
           "image": "../assets/icons/carro.svg"
       },
+      {
+        "name": "Cerrar Sesión",
+        "url": "/main/close",
+        "image": "../assets/icons/flecha-correcta.svg"
+    }
     ],
-    "CLIENTE":
+    "COCINA":
     [ 
       {
         "name": "Home",
         "url": "/main/home",
         "image": "../assets/icons/usuarios.svg"
-      },
-      {
-          "name": "Carta",
-          "url": "main/home",
-          "image": "../assets/icons/menu.svg"
-      },
-      {
-          "name": "Cuenta",
-          "url": "main/home",
-          "image": "../assets/icons/cuenta.svg"
-      },
+      }
     ],
   };
 

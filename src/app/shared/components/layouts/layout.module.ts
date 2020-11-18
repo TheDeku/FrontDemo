@@ -8,13 +8,15 @@ import { FullscreenLayoutComponent } from './fullscreen-layout/fullscreen-layout
 import { NNavbarComponent } from './n-navbar/n-navbar.component';
 import { SharedModule } from '../../shared.module';
 import { NsummarybarComponent } from './nsummarybar/nsummarybar.component';
+import { FooterComponent } from './footer/footer.component';
 
 const components = [
     BlankLayoutComponent,
     NavBarLayoutComponent,
     FullscreenLayoutComponent,
     NNavbarComponent,
-    NsummarybarComponent
+    NsummarybarComponent,
+    FooterComponent
 ];
 
 @NgModule({
