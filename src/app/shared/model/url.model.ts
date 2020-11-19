@@ -1,4 +1,3 @@
-import { basePlacements } from '@popperjs/core'
 
 export class Urls {
 
@@ -12,14 +11,17 @@ export class Urls {
     }
     public urlOrders = {
         all:`${this.urlBase}/order/`,
-        setState:`${this.urlBase}/order/`
+        setState:`${this.urlBase}/order/`,
+        byUser:`${this.urlBase}/order/stateUser`,
+        byTable:`${this.urlBase}/order/stateTable`
     }
 
 
     public urlsToUsers ={
         getUsers:`${this.urlBase}/auth/users`,
         getRoles:`${this.urlBase}/auth/roles/WORKER`,
-        modUserDetail:`${this.urlBase}/auth/users/updetail`
+        modUserDetail:`${this.urlBase}/auth/users/updetail`,
+        userByMail:`${this.urlBase}/auth/users/byMail`
     }
     public urlsToWarehouse ={
         getCategories:`${this.urlBase}/ingredient/categories`,
@@ -33,4 +35,6 @@ export class Urls {
     }
 
     public urlToTable=`${this.urlBase}/table`;
+
+    public urlToPay=`${this.urlBase}/payment/pay`;
 }

@@ -57,6 +57,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { PaymentComponent } from './payment/payment.component';
 import { VendorRoutingModule } from './vendor-routing.module';
+import { VendorService } from './services/vender.service';
 
 @NgModule({
     imports: [
@@ -112,7 +113,7 @@ import { VendorRoutingModule } from './vendor-routing.module';
         RouterModule,
         VendorRoutingModule
     ],
-    providers:[],
+    providers:[VendorService],
     declarations: [PaymentComponent]
 })
 export class VendorModule { }
