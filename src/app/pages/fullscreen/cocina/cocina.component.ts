@@ -30,7 +30,10 @@ export class CocinaComponent implements OnInit {
 
   load(){
     this.loading=true;
-    this.orderService.getall().toPromise().then(ordrs=>{
+    this.orderService.getall().toPromise().then(o=>{
+      console.log(o.status);
+      let ordrs=o.body;
+      console.log(ordrs);
       this.orders=[];
       this.orders = this.orderPipe.transform(ordrs); 
       this.loading=false;
@@ -43,7 +46,6 @@ export class CocinaComponent implements OnInit {
   changestate(order){
     this.loading=true;
     this.orderService.setState(order.id,order.state+1).toPromise().then(norder=>{
-
       let dlog = new NsummaryData()
 
       let io1 = this.orders.waiting.findIndex(o=>o.id==order.id);
@@ -52,6 +54,7 @@ export class CocinaComponent implements OnInit {
       if(io1!=-1){
         let orderold = this.orders.waiting.splice(io1,1)[0];
         let ordermove = this.orderPipe.transform([norder]).prepairing[0];
+        console.log(ordermove);
 
         orderold.preparing=ordermove.preparing;
         orderold.time.timeref = ordermove.time.timeref;

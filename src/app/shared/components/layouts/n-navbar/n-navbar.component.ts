@@ -90,6 +90,7 @@ export class NNavbarComponent implements OnInit {
     "CAJERO":
     [ 
       {
+<<<<<<< Updated upstream
         "name": "Caja",
         "url": "/vendor/payment",
         "image": "../assets/icons/cuenta.svg"
@@ -97,6 +98,15 @@ export class NNavbarComponent implements OnInit {
       {
           "name": "Historial",
           "url": "main/home",
+=======
+          "name": "Cola",
+          "url": "/fullscreen/cocina",
+          "image": "../assets/icons/flecha-correcta.svg"
+      },
+      {
+          "name": "solicitar",
+          "url": "/asdafds",
+>>>>>>> Stashed changes
           "image": "../assets/icons/pregunta.svg"
       },
       {
