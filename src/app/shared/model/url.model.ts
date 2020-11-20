@@ -33,8 +33,14 @@ export class Urls {
         createIngredient:`${this.urlBase}/ingredient`,
         createIngredientDetail:`${this.urlBase}/ingredient/detail`,
     }
-
     public urlToTable=`${this.urlBase}/table`;
-
     public urlToPay=`${this.urlBase}/payment/pay`;
+
+    public urlToRequeriment = {
+        new:`${this.urlBase}/requeriments/new`,
+        update:`${this.urlBase}/requeriments/update`,
+        states:`${this.urlBase}/requeriments/states`,
+        getById:`${this.urlBase}/requeriments/`,
+        getAll:`${this.urlBase}/requeriments`
+    };
 }

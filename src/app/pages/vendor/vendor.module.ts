@@ -116,5 +116,6 @@ import { VendorService } from './services/vender.service';
     ],
     providers:[VendorService],
     declarations: [PaymentComponent]
+    
 })
 export class VendorModule { }

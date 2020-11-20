@@ -9,6 +9,7 @@ import { NNavbarComponent } from './n-navbar/n-navbar.component';
 import { SharedModule } from '../../shared.module';
 import { NsummarybarComponent } from './nsummarybar/nsummarybar.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatCardModule } from '@angular/material/card';
 
 const components = [
     BlankLayoutComponent,

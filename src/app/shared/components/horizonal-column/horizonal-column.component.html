@@ -1,0 +1,17 @@
+<div class="horizontal-card">
+    <mat-card *ngFor=" let state of horizontalItems" class="example-card">
+        <mat-card-header>
+            <mat-card-title>{{state.descripcion}}</mat-card-title>
+            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+
+            <app-vertical-row [idState]="state.id"></app-vertical-row>
+
+        </mat-card-content>
+        <!-- <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+    </mat-card>
+</div>

@@ -9,6 +9,9 @@ import { QrInputComponent } from './components/io/qr-input/qr-input.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DomseguroPipe } from '../pipes/domseguro.pipe';
 import { QrOutputComponent } from './components/io/qr-output/qr-output.component';
+import { HorizonalColumnComponent } from './components/horizonal-column/horizonal-column.component';
+import { MatCardModule } from '@angular/material/card';
+import { VerticalRowComponent } from './components/vertical-row/vertical-row.component';
 
 
 
@@ -16,9 +19,10 @@ import { QrOutputComponent } from './components/io/qr-output/qr-output.component
   imports: [
     CommonModule,
     RouterModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    MatCardModule
   ],
-  declarations: [LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent],
-  exports:[LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent]
+  declarations: [LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent],
+  exports:[LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent]
 })
 export class SharedModule { }

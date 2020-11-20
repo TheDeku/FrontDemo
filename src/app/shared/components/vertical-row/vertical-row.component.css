@@ -1,0 +1,20 @@
+.example-card {
+    min-width: 250px;
+    margin-top: 15px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.vertical-card {
+    overflow-x: scroll;
+    display: block;
+    max-height: calc(100% - 70px);
+    box-sizing: border-box;
+    position: absolute;
+    top: 70px;
+    left: 5px;
+    right: 5px;
+}
