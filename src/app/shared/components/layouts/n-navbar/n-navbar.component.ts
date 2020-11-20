@@ -59,34 +59,6 @@ export class NNavbarComponent implements OnInit {
         "image": "../assets/icons/flecha-correcta.svg"
     }
     ],
-    "GARZON":
-    [ 
-      {
-        "name": "Home",
-        "url": "/main/home",
-        "image": "../assets/icons/usuarios.svg"
-      },
-      {
-          "name": "en preparación",
-          "url": "main/home",
-          "image": "../assets/icons/cocinando.svg"
-      },
-      {
-          "name": "Listos",
-          "url": "/signin",
-          "image": "../assets/icons/wok.svg"
-      },
-      {
-          "name": "Mesas",
-          "url": "/asdafds",
-          "image": "../assets/icons/mesas.svg"
-      },
-      {
-        "name": "Cerrar Sesión",
-        "url": "/main/close",
-        "image": "../assets/icons/flecha-correcta.svg"
-    }
-    ],
     "CAJERO":
     [ 
       {

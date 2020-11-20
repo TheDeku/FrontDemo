@@ -2,7 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { VendorService } from '../services/vender.service';
-
+import html2canvas from 'html2canvas';
+import { jsPDF } from "jspdf";
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -18,6 +19,9 @@ export class PaymentComponent implements OnInit {
   tables;
   costototal: number;
   searchOrder = false;
+  voucher={
+    id:0
+  };
   payments = [
     {
       nombre: "Efectivo",
@@ -62,6 +66,8 @@ export class PaymentComponent implements OnInit {
     propina: new FormControl("", [Validators.required])
   })
 
+  
+
   selectedPayment = false;
   constructor(private _vendorService: VendorService) { }
 
@@ -77,8 +83,7 @@ export class PaymentComponent implements OnInit {
     this.totalAmount = 0;
     let userID:number=0;
     let type;
-    console.log(this.filtersConfig);
-    console.log(type);
+ 
     if (this.filtersConfig.mail) {
       type = "user";
       
@@ -102,9 +107,19 @@ export class PaymentComponent implements OnInit {
 
     await this._vendorService.findOrderByUserOrTable(type,filters).then(resp => {
       this.order = resp;
-      this.searchOrder = true;
-      console.log(resp);
-      this.onTotalAmount();
+      if (this.order.length<=0) {
+        this.searchOrder = false;
+        return Swal.fire({
+          icon: 'warning',
+          title: 'No se encontro ninguna orden',
+          text: `Intente nuevamente`
+        });
+      }else{
+        this.searchOrder = true;
+        console.log(resp);
+        this.onTotalAmount();
+      }
+
     })
   }
 
@@ -139,6 +154,7 @@ export class PaymentComponent implements OnInit {
     await this._vendorService.doNewPayment(this.infoToPay).then(resp => {
       console.log(resp);
       if (resp["code"] === 201) {
+        this.voucher = resp['value'];
         this.nextStep();
         this.isDisabled0 = true;
         this.isDisabled1 = true;
@@ -155,12 +171,25 @@ export class PaymentComponent implements OnInit {
         });
       }
     }).catch(err => {
+      console.log(err);
+      this.prevStep();
       return Swal.fire({
         icon: 'error',
         title: 'Informacion de pago',
-        text: `${err}`
+        text: `Existe un error en el pago - codigo:${err.status}`
       });
     })
+  }
+
+  onPrintVoucher(){
+    let data = document.getElementById('voucher')
+    html2canvas(data).then(function(canvas) {
+      let imgData = canvas.toDataURL(
+        'image/png');              
+    let doc = new jsPDF('p', 'mm');
+    doc.addImage(imgData,'PNG',10,10,0,0,);
+    doc.save('sample-file.pdf');
+  });
   }
 
   onSelectFilter(id) {
