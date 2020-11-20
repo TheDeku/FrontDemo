@@ -11,25 +11,15 @@ export class Urls {
         restore: this.urlBase + "/users/restore",
     }
     public urlOrders = {
-<<<<<<< Updated upstream
         all:`${this.urlBase}/order/`,
         setState:`${this.urlBase}/order/`
-=======
-        all:"https://api.watasoft.com/order/",
-        setState:"https://api.watasoft.com/order/"
->>>>>>> Stashed changes
     }
 
 
     public urlsToUsers ={
-<<<<<<< Updated upstream
         getUsers:`${this.urlBase}/auth/users`,
         getRoles:`${this.urlBase}/auth/roles/WORKER`,
         modUserDetail:`${this.urlBase}/auth/users/updetail`
-=======
-        getUsers:`https://api.watasoft.com/users`,
-        getRoles:`https://api.watasoft.com/roles/WORKER`
->>>>>>> Stashed changes
     }
     public urlsToWarehouse ={
         getCategories:`${this.urlBase}/ingredient/categories`,

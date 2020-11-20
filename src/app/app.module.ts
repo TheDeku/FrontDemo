@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,19 +10,19 @@ import { UserService } from './shared/services/user.service';
 import { SharedModule } from './shared/shared.module';
 
 import {DataTablesModule} from 'angular-datatables';
-import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { OrderToCardPipe } from './pipes/order-to-card.pipe';
 import { UserEmpyPipe } from './pipes/user-admin.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { PipeTableState } from './pipes/tablestate.pipe';
+import { QRCode } from 'qrcode-generator-ts';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DomseguroPipe,
     OrderToCardPipe
   ],
   imports: [
@@ -34,9 +34,9 @@ import { PipeTableState } from './pipes/tablestate.pipe';
     HttpClientModule,
     DataTablesModule,
     RouterModule,
-    NgbModule
+    NgbModule,
   ],
-  providers: [UserService,OrderToCardPipe],
+  providers: [UserService,OrderToCardPipe,QRCode],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { } 
