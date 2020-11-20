@@ -17,7 +17,7 @@ export class OrderService {
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set("Authorization","Bearer "+localStorage.getItem('id'))
-    return this.http.get(`${this.urls.urlOrders.all}`, { headers: this.header });
+    return this.http.get(`${this.urls.urlOrders.all}`, { headers: this.header , observe: 'response'});
   }
 
   setState = (id,state) => {

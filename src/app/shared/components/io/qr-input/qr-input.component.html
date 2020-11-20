@@ -1,0 +1,29 @@
+<!-- <input (change)="setvalue(inp.value)" #inp type="text"> -->
+
+<div class="blackice">
+
+    <div class="QRwindow" style="--qrwh: 500px;">
+        <div class="QRheader" #qrhead (mousedown)="headeron($event,qrhead)" (mouseup)="headeroff($event,qrhead)" (mouseleave)="headeroff($event,qrhead)" (mousemove)="headermove($event,qrhead)">
+            <div class="QRclose" (click)="Close()"></div>
+        </div>
+
+        <img class="QRmain" [src]="img | domseguro" alt="">
+
+        <div class="QRframe H T" (mousedown)="frameon($event,qrhead)" (mouseup)="frameoff($event,qrhead)" (mouseleave)="frameoff($event,qrhead)" (mousemove)="framemove($event,qrhead)"></div>
+        <div class="QRframe H B" (mousedown)="frameon($event,qrhead)" (mouseup)="frameoff($event,qrhead)" (mouseleave)="frameoff($event,qrhead)" (mousemove)="framemove($event,qrhead)"></div>
+        <div class="QRframe V L" (mousedown)="frameon($event,qrhead)" (mouseup)="frameoff($event,qrhead)" (mouseleave)="frameoff($event,qrhead)" (mousemove)="framemove($event,qrhead)"></div>
+        <div class="QRframe V R" (mousedown)="frameon($event,qrhead)" (mouseup)="frameoff($event,qrhead)" (mouseleave)="frameoff($event,qrhead)" (mousemove)="framemove($event,qrhead)"></div>
+
+        <div class="QRframe corner TL" (mousedown)="corneron($event,qrhead)" (mouseup)="corneroff($event,qrhead)" (mouseleave)="corneroff($event,qrhead)" (mousemove)="cornermove($event,qrhead)"></div>
+        <div class="QRframe corner TR" (mousedown)="corneron($event,qrhead)" (mouseup)="corneroff($event,qrhead)" (mouseleave)="corneroff($event,qrhead)" (mousemove)="cornermove($event,qrhead)"></div>
+        <div class="QRframe corner BL" (mousedown)="corneron($event,qrhead)" (mouseup)="corneroff($event,qrhead)" (mouseleave)="corneroff($event,qrhead)" (mousemove)="cornermove($event,qrhead)"></div>
+        <div class="QRframe corner BR" (mousedown)="corneron($event,qrhead)" (mouseup)="corneroff($event,qrhead)" (mouseleave)="corneroff($event,qrhead)" (mousemove)="cornermove($event,qrhead)"></div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+</style>

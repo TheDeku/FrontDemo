@@ -10,8 +10,8 @@ export class DomseguroPipe implements PipeTransform {
 
   }
 
-  transform(value: string, url: string): any {
-    return this.domsanitizer.bypassSecurityTrustResourceUrl(url+value);
+  transform(url: string): any {
+    return this.domsanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }

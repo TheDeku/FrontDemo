@@ -67,4 +67,10 @@
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
   }
+    "browser": {
+        "crypto": false,
+        "fs": false,
+        "path": false
+    }
+        "qrcode-generator-ts": "0.0.4",
 }

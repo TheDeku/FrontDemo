@@ -59,6 +59,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './close/home.component';
 import { CloseComponent } from './home/close.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -112,7 +113,8 @@ import { CloseComponent } from './home/close.component';
         ReactiveFormsModule,
         HttpClientModule,
         FontAwesomeModule,
-        RouterModule
+        RouterModule,
+        SharedModule
     ],
     providers:[UserService],
     declarations: [HomeComponent,CloseComponent]
