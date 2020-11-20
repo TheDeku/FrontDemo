@@ -111,7 +111,8 @@ import { VendorService } from './services/vender.service';
         HttpClientModule,
         FontAwesomeModule,
         RouterModule,
-        VendorRoutingModule
+        VendorRoutingModule,
+        SharedModule
     ],
     providers:[VendorService],
     declarations: [PaymentComponent]

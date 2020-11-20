@@ -1,3 +1,4 @@
+<app-qr-output *ngIf="openCamera" (close)="openCamera=false" (dataOutput)="onQrOutput($event)"></app-qr-output>
 <div class="container">
     <div class="row">
         <div class="col-md-6" style="position: relative; float:right; margin-top: 50px;">
@@ -31,7 +32,7 @@
 
 
                                 <div class="example-flex-container">
-                                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="onOpenCamera()">
                                       <mat-icon>qr_code_scanner</mat-icon>
                                     </button>
                                     <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" href="#addTable" data-toggle="modal">

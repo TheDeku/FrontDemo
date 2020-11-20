@@ -13,6 +13,7 @@ export class PaymentComponent implements OnInit {
   isDisabled0 = false;
   isDisabled1 = true;
   isDisabled2 = true;
+  openCamera = false;
   step = 0;
   order;
   totalAmount:number=0;
@@ -78,6 +79,48 @@ export class PaymentComponent implements OnInit {
     })
   }
 
+  onOpenCamera(){
+    this.openCamera = true;
+    console.log(this.openCamera);
+  }
+
+  async onQrOutput(event){
+  
+    if (event.hasOwnProperty('usuarioId')) {
+        let type = "user"
+        console.log(event);
+        this.openCamera = false;
+        
+        let filters={
+          usuarioId:event.usuarioId,
+          pedidoeId:5
+        }
+    
+        console.log(filters);
+        console.log(type);
+    
+        await this._vendorService.findOrderByUserOrTable(type,filters).then(resp => {
+          this.order = resp;
+          if (this.order.length<=0) {
+            this.searchOrder = false;
+            return Swal.fire({
+              icon: 'warning',
+              title: 'No se encontro ninguna orden',
+              text: `Intente nuevamente`
+            });
+          }else{
+            this.searchOrder = true;
+            console.log(resp);
+            this.onTotalAmount();
+          }
+    
+        })
+      
+    }else{
+
+    }
+
+  }
 
   async findOrder() {
     this.totalAmount = 0;

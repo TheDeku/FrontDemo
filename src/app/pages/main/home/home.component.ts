@@ -19,11 +19,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  /* test:boolean=true;
-  test2:boolean=false;
-  output(obj){
-    console.log(obj);
-  } */
+  // test:boolean=true;
+  // test2:boolean=false;
+  // output(obj){
+  //   console.log(obj);
+  // } 
 
   ngOnInit(): void {
   }

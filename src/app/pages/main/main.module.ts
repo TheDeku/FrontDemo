@@ -57,9 +57,10 @@ import { UserService } from '../../shared/services/user.service';
 
 import { MainRoutingModule } from './main-routing.module';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './close/home.component';
-import { CloseComponent } from './home/close.component';
+
 import { SharedModule } from '../../shared/shared.module';
+import { HomeComponent } from './home/home.component';
+import { CloseComponent } from './close/close.component';
 
 @NgModule({
     imports: [
