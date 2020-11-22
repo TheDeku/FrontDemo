@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LayoutModule } from './layouts/layout.module';
 import { DomseguroPipe } from '../../pipes/domseguro.pipe';
+import { MatCardModule } from '@angular/material/card';
 
 
 const components = [
@@ -13,7 +14,8 @@ const components = [
   imports: [
     CommonModule,
     RouterModule,
-    LayoutModule
+    LayoutModule,   
+
   ],
   declarations: components,
   exports: components

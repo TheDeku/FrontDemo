@@ -24,7 +24,8 @@ const components = [
   imports: [
     RouterModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatCardModule,
   ],
   declarations: components,
   exports: components

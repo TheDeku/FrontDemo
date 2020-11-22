@@ -15,6 +15,7 @@ export class TablesComponent implements OnInit {
   selectState: number = 0;
   idTable: number;
   categories;
+  loading: boolean = true;
 
   formTable = new FormGroup({
     id: new FormControl("", [Validators.required]),
@@ -30,6 +31,7 @@ export class TablesComponent implements OnInit {
   }
 
   async onChargeList() {
+    this.loading = true;
     await this._userAdmService.getTables().then(resp => {
       console.log(resp);
       this.tables = resp;
@@ -39,6 +41,7 @@ export class TablesComponent implements OnInit {
     await this._userAdmService.getTablesStates().then(resp => {
       this.categories = resp;
     })
+    this.loading = false;
   }
 
   async onCreateTable() {
@@ -81,14 +84,17 @@ export class TablesComponent implements OnInit {
   }
 
   async onDeleteTable() {
+    this.loading = false;
     this._userAdmService.deleteTable(this.idTable).then(resp => {
       this.onChargeList();
+      this.loading = true;
       return Swal.fire({
         icon: 'success',
         title: 'Se ah borrado la mesa seleccionada',
         text: ` ${resp["value"].message}`
       });
     }).catch(err => {
+      this.loading = true;
       return Swal.fire({
         icon: 'error',
         title: 'No pudo ser eliminada la mesa',
@@ -116,8 +122,10 @@ export class TablesComponent implements OnInit {
   }
 
   onFindByState(id){
+    this.loading = true;
     this._userAdmService.getTablesByStates(id).then(resp=>{
       this.tables = resp;
+      this.loading = false;
     })
   }
 

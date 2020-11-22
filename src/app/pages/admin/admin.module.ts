@@ -15,6 +15,7 @@ import { RequerimentsComponent } from './requeriments/requeriments.component';
 import { TablesComponent } from './tables/tables.component';
 import { FinanceComponent } from './finance/finance.component';
 import { PipeTableState } from '../../pipes/tablestate.pipe';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [UsersComponent,UserEmpyPipe,PipeTableState, WarehouseComponent, RequerimentsComponent, TablesComponent, FinanceComponent],
@@ -29,7 +30,8 @@ import { PipeTableState } from '../../pipes/tablestate.pipe';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

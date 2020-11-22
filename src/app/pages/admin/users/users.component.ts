@@ -51,7 +51,7 @@ export class UsersComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this._userAdmService.getRoles().then(resp => {
       this.roles = resp;
-
+      this.loading = false;
     })
 
 
@@ -59,11 +59,13 @@ export class UsersComponent implements OnInit {
   }
 
   async searchWorkers(filter: any) {
+    this.loading = true;
     this.roleFilter = filter;
     filter = { role: filter, size: parseInt(this.formUser.value.quantity) };
     await this._userAdmService.getUsers(filter).then(resp => {
       this.users = resp;
       this.workerQuantity = this.users.length;
+      this.loading = false;
     })
   }
 
@@ -87,11 +89,13 @@ export class UsersComponent implements OnInit {
   }
 
   async onModify() {
+    this.loading = true;
     let value = this.formEditUser.value;
     value.usuarioId = this.tempUserId
     await this._userAdmService.modifyUserDetail(this.formEditUser.value).then(resp => {
       console.log(resp);
       this.searchWorkers(this.roleFilter);
+      this.loading = false;
       return Swal.fire({
         icon: 'success',
         title: resp['message'],

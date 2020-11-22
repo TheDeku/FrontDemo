@@ -11,15 +11,28 @@ export class HorizonalColumnComponent implements OnInit {
 
 
 
+  loading:boolean=true;
   horizontalItems:any=[];
 
   constructor(private _requerimentService:RequerimentService) { }
 
   async ngOnInit(): Promise<void> {
-   await this._requerimentService.getStates().then(resp=>{
-     console.log(resp.body);
-      this.horizontalItems = resp.body;
-    })
+    this.getData();
+  }
+
+  async getData(){
+    await this._requerimentService.getStates().then(resp=>{
+      console.log(resp.body);
+       this.horizontalItems = resp.body;
+       this.loading = false;
+     })
+  }
+
+  output(doS){
+    console.log(doS);
+    if (doS) {
+      this.getData();
+    }
   }
 
 }

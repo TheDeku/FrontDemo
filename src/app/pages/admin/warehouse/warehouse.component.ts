@@ -10,6 +10,7 @@ import { UserAdminService } from '../admin-services/user-admin.service';
 })
 export class WarehouseComponent implements OnInit {
 
+  loading: boolean = true;
   categories:any;
   units;
   ingredients:any;
@@ -99,18 +100,22 @@ export class WarehouseComponent implements OnInit {
   }
 
   async searchByCategory(id) {
+    this.loading = true;
     await this._userAdmService.getIngByCat(id).then(resp => {
       this.ingredients = resp.body;
+      this.loading = false;
     }).catch(err => { });
     this.ingredtientQuantity = this.ingredients.length;
   }
 
 
   async onCreateResource() {
+    this.loading = true;
     this.formWarehouse.value.selected = this.typeOpt.selected;
     this.formWarehouse.value.idCat = this.tempValues.idCat;
     this.formWarehouse.value.idUnit = this.tempValues.idUnit;
     await this._userAdmService.createResource(this.formWarehouse.value).then(resp => {
+      this.loading = false;
       if (resp.status===201){
         if (this.typeOpt.selected === 'MED') {
           resp.body.nombre = resp.body.sufix;
@@ -122,6 +127,7 @@ export class WarehouseComponent implements OnInit {
           text: ` Creado recurso ${resp.body.nombre} correctamente`
         });
       }else{
+        this.loading = false;
         this.oncleanForm();
         return Swal.fire({
           icon: 'error',
@@ -137,6 +143,7 @@ export class WarehouseComponent implements OnInit {
   }
 
   async onDeleteResource(){
+    this.loading = true;
     await this._userAdmService.deleteIng(this.ingredientToDelete).then(resp=>{
       console.log(resp);
       if (resp.ok) {
@@ -168,6 +175,7 @@ export class WarehouseComponent implements OnInit {
   }
 
   async onUpateResource(){
+    this.loading = true;
     this.formWarehouse.value.selected = this.typeOpt.selected;
     this.formWarehouse.value.idCat = this.tempValues.idCat;
     this.formWarehouse.value.idUnit = this.tempValues.idUnit;
@@ -175,6 +183,7 @@ export class WarehouseComponent implements OnInit {
     this.formWarehouse.value.idDet = this.tempValues.idDet;
     await this._userAdmService.updateIng(this.formWarehouse.value).then(resp => {
       if (resp.ok) {
+        this.loading = false;
         return Swal.fire({
           icon: 'success',
           title: 'Ingrediente Actualizado',
@@ -230,6 +239,7 @@ export class WarehouseComponent implements OnInit {
   }
 
   async mappingComboBoxs() {
+    this.loading = true;
     await this._userAdmService.getCategories().then(resp => {
       this.categories = resp;
     })
@@ -240,6 +250,7 @@ export class WarehouseComponent implements OnInit {
       this.ingredients = resp;
     })
     this.ingredtientQuantity = this.ingredients.length;
+    this.loading = false;
   }
 
 }
