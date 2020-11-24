@@ -13,112 +13,118 @@ export class NNavbarComponent implements OnInit {
 
   private jwtHelper = new JwtHelperService();
 
-  role:string[] =this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
+  role: string[] = this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
 
-  usuario:string = this.jwtHelper.decodeToken(localStorage.getItem('id')).username;
+  usuario: string = this.jwtHelper.decodeToken(localStorage.getItem('id')).username;
 
-  userimage="../assets/icons/userprofile.svg";
+  userimage = "../assets/icons/userprofile.svg";
 
-  data:any=
-  {
-    "ADMIN":
-    [ 
-      {
-          "name": "Usuarios",
-          "url": "/admin/user",
-          "image": "../assets/icons/usuarios.svg"
-      },
-      {
-          "name": "Solicitudes",
-          "url": "/admin/requeriments",
-          "image": "../assets/icons/solicitudes.svg"
-      },
-      {
-          "name": "Mesas",
-          "url": "/admin/tables",
-          "image": "../assets/icons/mesas.svg"
-      },
-      {
-          "name": "Bodega",
-          "url": "/admin/warehouse",
-          "image": "../assets/icons/bodega.svg"
-      },
-      {
-          "name": "Finanzas",
-          "url": "/admin/finance",
-          "image": "../assets/icons/finanzas.svg"
-      },
-      {
-        "name": "Cocina",
-        "url": "/admin/cocina",
-        "image": "../assets/icons/cocinando.svg"
-    },
-      {
-        "name": "Cerrar Sesión",
-        "url": "/main/close",
-        "image": "../assets/icons/flecha-correcta.svg"
-    }
-    ],
-    "CAJERO":
-    [ 
-      {
-        "name": "Caja",
-        "url": "/vendor/payment",
-        "image": "../assets/icons/cuenta.svg"
-      },
-      {
-          "name": "Historial",
-          "url": "main/home",
-          "image": "../assets/icons/pregunta.svg"
-      },
-      {
-        "name": "Cerrar Sesión",
-        "url": "/main/close",
-        "image": "../assets/icons/flecha-correcta.svg"
-    }
-      
-    ],
-    "BODEGA":
-    [ 
-      {
-        "name": "Home",
-        "url": "/main/home",
-        "image": "../assets/icons/usuarios.svg"
-      },
-      {
-          "name": "Agregar stock",
-          "url": "/main/home",
-          "image": "../assets/icons/usuarios.svg"
-      },
-      {
-          "name": "Consulta stock",
-          "url": "/signin",
-          "image": "../assets/icons/paquetes.svg"
-      },
-      {
-          "name": "Solicitud",
-          "url": "/asdafds",
-          "image": "../assets/icons/carro.svg"
-      },
-      {
-        "name": "Cerrar Sesión",
-        "url": "/main/close",
-        "image": "../assets/icons/flecha-correcta.svg"
-    }
-    ],
-    "COCINA":
-    [ 
-      {
-        "name": "Home",
-        "url": "/main/home",
-        "image": "../assets/icons/usuarios.svg"
-      }
-    ],
-  };
+  data: any =
+    {
+      "ADMIN":
+        [
+          {
+            "name": "Usuarios",
+            "url": "/admin/user",
+            "image": "../assets/icons/usuarios.svg"
+          },
+          {
+            "name": "Solicitudes",
+            "url": "/admin/requeriments",
+            "image": "../assets/icons/solicitudes.svg"
+          },
+          {
+            "name": "Mesas",
+            "url": "/admin/tables",
+            "image": "../assets/icons/mesas.svg"
+          },
+          {
+            "name": "Bodega",
+            "url": "/admin/warehouse",
+            "image": "../assets/icons/bodega.svg"
+          },
+          {
+            "name": "Finanzas",
+            "url": "/admin/finance",
+            "image": "../assets/icons/finanzas.svg"
+          },
+          {
+            "name": "Cocina",
+            "url": "/admin/cocina",
+            "image": "../assets/icons/cocinando.svg"
+          },
+          {
+            "name": "Cerrar Sesión",
+            "url": "/main/close",
+            "image": "../assets/icons/flecha-correcta.svg"
+          }
+        ],
+      "CAJERO":
+        [
+          {
+            "name": "Caja",
+            "url": "/vendor/payment",
+            "image": "../assets/icons/cuenta.svg"
+          },
+          {
+            "name": "Historial",
+            "url": "main/home",
+            "image": "../assets/icons/pregunta.svg"
+          },
+          {
+            "name": "Cerrar Sesión",
+            "url": "/main/close",
+            "image": "../assets/icons/flecha-correcta.svg"
+          }
 
-  pages:any = this.data[this.role[this.role.length-1]]
+        ],
+      "BODEGA":
+        [
+          {
+            "name": "Agregar stock",
+            "url": "/main/home",
+            "image": "../assets/icons/usuarios.svg"
+          },
+          {
+            "name": "Consulta stock",
+            "url": "/signin",
+            "image": "../assets/icons/paquetes.svg"
+          },
+          {
+            "name": "Solicitud",
+            "url": "/warehouse/requeriments",
+            "image": "../assets/icons/carro.svg"
+          },
+          {
+            "name": "Cerrar Sesión",
+            "url": "/main/close",
+            "image": "../assets/icons/flecha-correcta.svg"
+          }
+        ],
+      "COCINA":
+        [
+          {
+            "name": "Pedidos",
+            "url": "/kitchen/cocina",
+            "image": "../assets/icons/usuarios.svg"
+          },
+          {
+            "name": "Solicitudes",
+            "url": "/admin/requeriments",
+            "image": "../assets/icons/solicitudes.svg"
+          },
+          {
+            "name": "Pantalla Completa",
+            "url": "/fullscreen/cocina",
+            "image": "../assets/icons/cocinando.svg"
+          },
 
-  pagesnumber:number= this.pages.length;
+        ],
+    };
+
+  pages: any = this.data[this.role[this.role.length - 1]]
+
+  pagesnumber: number = this.pages.length;
 
   constructor(private router: Router) { }
 

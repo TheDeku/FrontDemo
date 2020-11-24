@@ -71,8 +71,6 @@ export class UserAdminService {
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
     return await this.http.get(`${this.urls.urlsToWarehouse.getIngredients}`, { headers: this.header }).toPromise();
   }
-
-
   async getUnits() {
 
     this.header = new HttpHeaders()

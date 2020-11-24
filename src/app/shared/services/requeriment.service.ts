@@ -23,7 +23,7 @@ export class RequerimentService {
   }
 
   async getStates() {
-    console.log(`${this.urls.urlToRequeriment.states}`);
+    //console.log(`${this.urls.urlToRequeriment.states}`);
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
@@ -31,13 +31,20 @@ export class RequerimentService {
   }
 
   async getRequerimentsByStates(id) {
-    console.log(`${this.urls.urlToRequeriment.states}`);
+    //console.log(`${this.urls.urlToRequeriment.states}`);
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
     return this.http.get(`${this.urls.urlToRequeriment.getById}${id}`, { headers: this.header, observe: 'response' }).toPromise();
   }
-
+  async getRequerimentsByStatesAndType(values) {
+    let raw = JSON.stringify(values);
+    //console.log(`${this.urls.urlToRequeriment.states}`);
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set("Authorization", "Bearer " + localStorage.getItem('id'))
+    return this.http.post(`${this.urls.urlToRequeriment.getByIdAndType}`,raw, { headers: this.header, observe: 'response' }).toPromise();
+  }
 
 
   async updState(item, estado) {
@@ -82,7 +89,23 @@ export class RequerimentService {
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
-    // return this.http.put(`${this.urls.urlToRequeriment.update}`,raw, { headers: this.header, observe: 'response' }).toPromise();
-    return this.http.put(`http://localhost:5012/update`,raw, { headers: this.header, observe: 'response' }).toPromise();
+    return this.http.put(`${this.urls.urlToRequeriment.update}`,raw, { headers: this.header, observe: 'response' }).toPromise();
+    // return this.http.put(`http://localhost:5012/update`,raw, { headers: this.header, observe: 'response' }).toPromise();
+  }
+
+
+
+  async getCategories() {
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set("Authorization", "Bearer " + localStorage.getItem('id'))
+    return await this.http.get(`${this.urls.urlsToWarehouse.getCategories}`, { headers: this.header }).toPromise();
+  }
+
+  async getIngByCat(id) {
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set("Authorization", "Bearer " + localStorage.getItem('id'))
+    return await this.http.get(`${this.urls.urlsToWarehouse.findByCategory}/${id}`, { headers: this.header, observe: 'response' }).toPromise();
   }
 }

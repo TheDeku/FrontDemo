@@ -54,7 +54,12 @@ export class UsersComponent implements OnInit {
       this.loading = false;
     })
 
-
+    await this._userAdmService.getUsers(JSON.stringify({})).then(resp => {
+      console.log(resp);
+      this.users = resp;
+      this.workerQuantity = this.users.length;
+      this.loading = false;
+    })
 
   }
 

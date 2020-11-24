@@ -13,10 +13,9 @@ export class HomeComponent implements OnInit {
 
   role:string[] =this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
   constructor(private router: Router) { 
-    console.log(this.role);
-    if (this.role.includes("COCINA")) {
-      this.router.navigateByUrl("/fullscreen/cocina");
-    }
+    // if (this.role.includes("COCINA")) {
+    //   this.router.navigateByUrl("/fullscreen/cocina");
+    // }
   }
 
   // test:boolean=true;

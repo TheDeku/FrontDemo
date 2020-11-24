@@ -41,6 +41,7 @@ export class Urls {
         update:`${this.urlBase}/requeriments/update`,
         states:`${this.urlBase}/requeriments/states`,
         getById:`${this.urlBase}/requeriments/`,
+        getByIdAndType:`${this.urlBase}/requeriments/findByType`,
         getAll:`${this.urlBase}/requeriments`
     };
     public deviceUrl = "https://restaurapp-pushnotify-utils.herokuapp.com/"

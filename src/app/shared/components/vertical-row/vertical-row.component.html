@@ -35,6 +35,13 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <table *ngIf="item.showCostsWarehouse" class="table col-md-12" style="right: 5px;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: end;">Costo: {{item.costo| currency:'CLP':'symbol'}} </th>
+                                </tr>
+                            </thead>
+                        </table>
                     </mat-expansion-panel>
 
                 </mat-accordion>
@@ -44,7 +51,7 @@
 
 
 
-            <a mat-stroked-button color="primary" class="col-md-12" [href]="onOpenModal(item)" data-toggle="modal" (click)="onSelectedItem(item)"><i data-toggle="tooltip">Actualizar estado</i></a>
+            <a *ngIf="item.showButtonActu" mat-stroked-button color="primary" class="col-md-12" [href]="onOpenModal(item)" data-toggle="modal" (click)="onSelectedItem(item)"><i data-toggle="tooltip">Actualizar estado</i></a>
 
 
             <div id="{{'updateState'+item.id}}" class="modal fade">
@@ -127,10 +134,12 @@
                     </div>
                 </div>
             </div>
+
         </mat-card-content>
         <!-- <mat-card-actions>
             <button mat-button>LIKE</button>
             <button mat-button>SHARE</button>
         </mat-card-actions> -->
+
     </mat-card>
 </div>

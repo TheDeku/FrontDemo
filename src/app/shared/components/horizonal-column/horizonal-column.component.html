@@ -1,4 +1,8 @@
+<a href="#addRequeriment" data-toggle="modal" mat-fab color="primary" style="position: fixed; margin-top: 800px; z-index: 10;">
+    <mat-icon style=" transform: scale(2.4);">add</mat-icon>
+</a>
 <div class="horizontal-card">
+
     <mat-card *ngFor=" let state of horizontalItems" class="example-card">
         <mat-card-header>
             <mat-card-title>{{state.descripcion}}</mat-card-title>
@@ -14,4 +18,97 @@
             <button mat-button>SHARE</button>
         </mat-card-actions> -->
     </mat-card>
+</div>
+
+
+<div id="addRequeriment" class="modal fade" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Nueva solicitud</h4>
+            </div>
+            <div class="modal-content">
+
+                <div class="center" style="margin-top: 10px;">
+                    <form autocomplete="on" [formGroup]='formHorizonalRow'>
+
+                        <mat-form-field appearance="outline" class="col-md-12">
+                            <mat-label>Selecione operación</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let select of dataToSelect" [value]="select.item" (click)="showItem()">
+                                    {{select.item}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                        <div *ngIf="showItems">
+                            <div *ngFor="let item of items">
+
+                                <div *ngIf="item.showInfo">
+
+
+                                    <mat-form-field appearance="outline" class="col-md-4">
+                                        <mat-label>Categoria</mat-label>
+                                        <mat-select>
+                                            <mat-option *ngFor="let category of item.categoryData" [value]="category.id" (click)="findIngredients(item,category.id)">
+                                                {{category.nombre}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" *ngIf="item.showIngredients" class="col-md-4">
+                                        <mat-label>Ingrediente</mat-label>
+                                        <mat-select>
+                                            <mat-option *ngFor="let ingredient of item.ingredients" [value]="ingredient.id" (click)="selectIngredient(item,ingredient.id)">
+                                                {{ingredient.nombre}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" class="col-md-3" *ngIf="item.showform">
+                                        <mat-label>Cantidad</mat-label>
+                                        <input matInput [formControlName]="setIDForm(item)" [type]="'number'">
+                                        <button mat-icon-button matSuffix (click)="saveItem(item)">
+                                            <mat-icon>save</mat-icon>
+                                        </button>
+                                    </mat-form-field>
+
+                                    <a mat-mini-fab color="warn" class="text-center" (click)="deleteItem(item)">
+                                        <mat-icon>clear</mat-icon>
+                                    </a>
+
+
+
+
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="center col-md-12" style="margin-bottom: 10px;">
+                                <button mat-stroked-button class="col-md-12" color="primary" (click)="newItem()">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                <input type="submit" class="btn btn-success" value="Añadir">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
 </div>
