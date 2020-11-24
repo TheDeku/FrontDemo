@@ -1,10 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
 import { Urls } from '../../../shared/model/url.model';
 import { OrderService } from '../../../shared/services/order.service';
 import { OrderToCardPipe } from '../../../pipes/order-to-card.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { data } from 'jquery';
 import { NsummarybarService,NsummaryData } from '../../../shared/components/componentComunication/nsummarybar.service';
+import { MessagingService } from '../../../shared/services/messaging.service';
+import { Subscription } from 'rxjs';
+import { AngularFireMessaging } from '@angular/fire/messaging';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cocina',
@@ -13,6 +17,7 @@ import { NsummarybarService,NsummaryData } from '../../../shared/components/comp
 })
 export class CocinaComponent implements OnInit {
 
+  msg= new Subscription();
 
   loading:boolean=true;
   orders:any={
@@ -20,7 +25,14 @@ export class CocinaComponent implements OnInit {
     waiting:[]
   }
 
-  constructor(private nsummary:NsummarybarService,private router:Router,private orderService:OrderService, private orderPipe: OrderToCardPipe) { 
+  constructor(
+    private nsummary:NsummarybarService,
+    private router:Router,
+    private orderService:OrderService, 
+    private orderPipe: OrderToCardPipe,
+    private mesaggingService:MessagingService
+    
+  ) { 
     this.load();
   }
 
@@ -82,8 +94,16 @@ export class CocinaComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {
-    
+  async ngOnInit(){
+    await this.mesaggingService.requestPermission();
+    this.mesaggingService.receiveMessage();
+    this.msg = this.mesaggingService.currentMessage.subscribe((mensaje)=>{
+      console.log(mensaje);
+      this.load();
+    }) 
+  }
+  OnDestroy(){
+    this.msg.unsubscribe()
   }
 
 }

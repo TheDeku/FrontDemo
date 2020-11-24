@@ -17,6 +17,12 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
 import { PipeTableState } from './pipes/tablestate.pipe';
 import { QRCode } from 'qrcode-generator-ts';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { MessagingService } from './shared/services/messaging.service';
+import { AngularFireMessaging, AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AsyncPipe } from '@angular/common';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -35,8 +41,12 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
     DataTablesModule,
     RouterModule,
     NgbModule,
+    ServiceWorkerModule.register('firebase-messaging-sw.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireMessagingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [UserService,OrderToCardPipe,QRCode],
+  providers: [UserService,OrderToCardPipe,QRCode,MessagingService,AsyncPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { } 
