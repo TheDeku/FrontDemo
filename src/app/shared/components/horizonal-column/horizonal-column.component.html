@@ -93,10 +93,11 @@
                                 </button>
                             </div>
 
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="cleanItems()">
-                                <input type="submit" class="btn btn-success" value="Añadir" data-dismiss="modal" (click)="createRequeriment()">
-                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" value="Cancelar" (click)="cleanItems()" data-dismiss="modal">
+                            <input type="submit" *ngIf="showItems" class="btn btn-success" value="Añadir" data-dismiss="modal" (click)="createRequeriment()">
                         </div>
                     </form>
 

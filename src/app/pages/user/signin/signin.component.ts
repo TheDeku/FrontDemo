@@ -53,6 +53,7 @@ export class SigninComponent implements OnInit {
       }).catch(err =>{
         console.log(err);
         this.formLogin.enable();
+        this.activateMethod = false;
         return Swal.fire(
           'No se pudo iniciar sesión',
           err['error']['message'],

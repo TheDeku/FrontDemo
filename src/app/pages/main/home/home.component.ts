@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
           if (result.isConfirmed) {
             localStorage.removeItem("id");
             router.navigateByUrl("/signin");
-            Swal.fire('Saved!', '', 'success')
           }
         })
       }
