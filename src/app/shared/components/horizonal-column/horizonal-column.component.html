@@ -35,7 +35,7 @@
                         <mat-form-field appearance="outline" class="col-md-12">
                             <mat-label>Selecione operación</mat-label>
                             <mat-select>
-                                <mat-option *ngFor="let select of dataToSelect" [value]="select.item" (click)="showItem()">
+                                <mat-option *ngFor="let select of dataToSelect" [value]="select.item" (click)="showItem(select.type)">
                                     {{select.item}}
                                 </mat-option>
                             </mat-select>
@@ -94,8 +94,8 @@
                             </div>
 
                             <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                                <input type="submit" class="btn btn-success" value="Añadir">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="cleanItems()">
+                                <input type="submit" class="btn btn-success" value="Añadir" data-dismiss="modal" (click)="createRequeriment()">
                             </div>
                         </div>
                     </form>

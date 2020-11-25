@@ -15,11 +15,14 @@ export class RequerimentService {
 
 
   async newRequeriment(requeriment) {
+    console.log(`${this.urls.urlToRequeriment.new}`);
     let raw = JSON.stringify(requeriment);
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
-    return await this.http.post(`${this.urls.urlToRequeriment.new}`, raw, { headers: this.header, observe: 'response' });
+
+      console.log(raw);
+    return this.http.post(`${this.urls.urlToRequeriment.new}`, raw, { headers: this.header, observe: 'response' }).toPromise();
   }
 
   async getStates() {
@@ -92,7 +95,6 @@ export class RequerimentService {
     return this.http.put(`${this.urls.urlToRequeriment.update}`,raw, { headers: this.header, observe: 'response' }).toPromise();
     // return this.http.put(`http://localhost:5012/update`,raw, { headers: this.header, observe: 'response' }).toPromise();
   }
-
 
 
   async getCategories() {

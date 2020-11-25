@@ -69,7 +69,7 @@
                                     <mat-label>Selecione operación</mat-label>
                                     <mat-select>
                                         <mat-option *ngFor="let select of updateSelected.category" [value]="select.id" (click)="onSelectCategory(select.id)">
-                                            {{select.name}} - {{select.id}}
+                                            {{select.name}}
                                         </mat-option>
                                     </mat-select>
 
@@ -114,7 +114,7 @@
                                     <mat-form-field appearance="outline" class="col-md-12">
                                         <mat-select [(value)]="selectedState">
                                             <mat-option *ngFor="let state of states" [value]="state.id" (click)="onSelectedState(state.id)">
-                                                {{state.descripcion}} - {{state.id}}
+                                                {{state.descripcion}}
                                             </mat-option>
                                         </mat-select>
 
