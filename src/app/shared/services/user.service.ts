@@ -24,7 +24,12 @@ export class UserService {
     // console.log(localStorage.getItem('token_sesion'))
     return this.http.post(`${this.urls.urlsToLogin.signIn}`, raw, { headers: this.header });
   }
+  signInGoogle = () => {
 
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+    return this.http.get(`http://localhost:5004`, { headers: this.header });
+  }
   signUp = (data) => {
     const raw = JSON.stringify({ username: data['user'], password: data['pass'], email: data['email'], rol:'CLIENTE' });
     console.log(raw);

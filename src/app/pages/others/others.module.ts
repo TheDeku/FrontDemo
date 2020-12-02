@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { OthersRoutingModule } from './others-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     OthersRoutingModule
   ],
-  declarations: [NotFoundComponent]
+  declarations: [NotFoundComponent,PrivacyComponent]
 })
 export class OthersModule { }

@@ -13,9 +13,9 @@ export class NNavbarComponent implements OnInit {
 
   private jwtHelper = new JwtHelperService();
 
-  role: string[] = this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
+  role: string[];
 
-  usuario: string = this.jwtHelper.decodeToken(localStorage.getItem('id')).username;
+  usuario: string;
 
   userimage = "../assets/icons/userprofile.svg";
 
@@ -122,13 +122,29 @@ export class NNavbarComponent implements OnInit {
         ],
     };
 
-  pages: any = this.data[this.role[this.role.length - 1]]
+  pages: any;
 
-  pagesnumber: number = this.pages.length;
+  pagesnumber: number;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (this.jwtHelper.decodeToken(localStorage.getItem('id')).roles===undefined) {
+      console.log("No existo");
+      this.router.navigateByUrl("/signin");
+    }else{
+      this.role = this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
+      this.usuario = this.jwtHelper.decodeToken(localStorage.getItem('id')).username;
+      this.pages = this.data[this.role[this.role.length - 1]]
+      this.pagesnumber = this.pages.length;
+      let googleData = this.jwtHelper.decodeToken(localStorage.getItem('id')).googleData;
+      if (googleData!=undefined) {
+        console.log(googleData);
+        this.userimage = googleData.picture;
+      }
+    }
+
+
   }
 
 }

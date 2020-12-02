@@ -21,11 +21,18 @@ export class HomeComponent implements OnInit {
     // Will alert once, after a second.
   
     try {
-     //   this.role = this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
+      if (this.jwtHelper.decodeToken(localStorage.getItem('id')).roles===undefined) {
+        console.log("No existo");
+        this.router.navigateByUrl("/signin");
+      }else{
+        this.role = this.jwtHelper.decodeToken(localStorage.getItem('id')).roles;
         console.log(this.role);
+      }
+
     } catch (error) {
-      
+      this.router.navigateByUrl("/signin");
     }
+
     let timer = 300000;
     setInterval(function () {
       routerLink: Router;

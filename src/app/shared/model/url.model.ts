@@ -8,6 +8,7 @@ export class Urls {
         forget: this.urlBase + "/users/forget",
         validate: this.urlBase + "/users/validate",
         restore: this.urlBase + "/users/restore",
+        toGoogle: this.urlBase + "/auth",
     }
     public urlOrders = {
         all:`${this.urlBase}/order/`,

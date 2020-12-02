@@ -44,7 +44,8 @@
 
                                             <br> <br>
 
-                                            <a href="index.html" mat-flat-button color="basic" class="text-style-size"><i class="fab fa-google fa-lg"></i> Iniciar con Google</a>
+                                            <a (click)="logInGoogle()" mat-flat-button color="primary" class="text-style-size">
+                                                <mat-icon svgIcon="google" style="align-items: center; margin-bottom: 15px; margin-right: 15px;"></mat-icon>Iniciar con Google</a>
                                         </div>
 
 
@@ -53,8 +54,8 @@
 
 
 
-                                    <!-- 
-                                    <a href="index.html" class="btn btn-google btn-user btn-block">
+
+                                    <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                         <i class="fab fa-google fa-fw"></i> Login with Google
                                     </a>
                                     <a href="index.html" class="btn btn-facebook btn-user btn-block">
@@ -67,9 +68,9 @@
                                     <a mat-flat-button [routerLink]="[ '/forget','email']">Recuperar Contraseña</a>
                                 </div>
                                 <br>
-                                <div class="text-center text-color">
+                                <!-- <div class="text-center text-color">
                                     <a mat-flat-button [routerLink]="[ '/signup']">Crear Cuenta</a>
-                                </div>
+                                </div> -->
 
 
                             </div>

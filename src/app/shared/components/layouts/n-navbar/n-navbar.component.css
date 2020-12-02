@@ -167,7 +167,7 @@
     width: 100%;
     text-align: center;
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     display: block;
     user-select: none;
 }
@@ -209,4 +209,8 @@
     .verticalNav .bar .vnv-btn .NVbtntext {
         display: none;
     }
+}
+
+.img {
+    border-radius: 50%;
 }
