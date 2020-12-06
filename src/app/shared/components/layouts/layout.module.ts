@@ -10,14 +10,16 @@ import { SharedModule } from '../../shared.module';
 import { NsummarybarComponent } from './nsummarybar/nsummarybar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatCardModule } from '@angular/material/card';
+import { ChartsModule } from '@rinminase/ng-charts';
+import { BrowserModule } from '@angular/platform-browser';
 
 const components = [
-    BlankLayoutComponent,
-    NavBarLayoutComponent,
-    FullscreenLayoutComponent,
-    NNavbarComponent,
-    NsummarybarComponent,
-    FooterComponent
+  BlankLayoutComponent,
+  NavBarLayoutComponent,
+  FullscreenLayoutComponent,
+  NNavbarComponent,
+  NsummarybarComponent,
+  FooterComponent
 ];
 
 @NgModule({
@@ -25,7 +27,7 @@ const components = [
     RouterModule,
     FormsModule,
     CommonModule,
-    MatCardModule,
+    MatCardModule
   ],
   declarations: components,
   exports: components

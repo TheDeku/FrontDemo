@@ -41,12 +41,12 @@ export class NNavbarComponent implements OnInit {
           {
             "name": "Bodega",
             "url": "/admin/warehouse",
-            "image": "../assets/icons/bodega.svg"
+            "image": "../assets/icons/finanzas.svg"
           },
           {
             "name": "Finanzas",
             "url": "/admin/finance",
-            "image": "../assets/icons/finanzas.svg"
+            "image": "../assets/icons/bodega.svg"
           },
           {
             "name": "Cocina",
@@ -68,7 +68,7 @@ export class NNavbarComponent implements OnInit {
           },
           {
             "name": "Historial",
-            "url": "main/home",
+            "url": "/vendor/historical",
             "image": "../assets/icons/pregunta.svg"
           },
           {
@@ -80,16 +80,6 @@ export class NNavbarComponent implements OnInit {
         ],
       "BODEGA":
         [
-          {
-            "name": "Agregar stock",
-            "url": "/main/home",
-            "image": "../assets/icons/usuarios.svg"
-          },
-          {
-            "name": "Consulta stock",
-            "url": "/signin",
-            "image": "../assets/icons/paquetes.svg"
-          },
           {
             "name": "Solicitud",
             "url": "/warehouse/requeriments",
@@ -118,6 +108,11 @@ export class NNavbarComponent implements OnInit {
             "url": "/fullscreen/cocina",
             "image": "../assets/icons/cocinando.svg"
           },
+          {
+            "name": "Cerrar Sesión",
+            "url": "/main/close",
+            "image": "../assets/icons/flecha-correcta.svg"
+          }
 
         ],
     };

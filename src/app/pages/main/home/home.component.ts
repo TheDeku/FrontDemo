@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
           title: `Sesion expirada`,
           text: `Ah expirado la sesion`,
           showConfirmButton: true,
+          allowOutsideClick: false
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {

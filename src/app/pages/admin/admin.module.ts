@@ -16,9 +16,14 @@ import { TablesComponent } from './tables/tables.component';
 import { FinanceComponent } from './finance/finance.component';
 import { PipeTableState } from '../../pipes/tablestate.pipe';
 import { SharedModule } from '../../shared/shared.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CustomDatePipe } from 'src/app/pipes/custom-date.pipe';
+import { TypePaymentPipe } from 'src/app/pipes/payment-form.pipe';
+import { ApplicationPipesModule } from 'src/app/pipes/custom-pipe.module';
 
 @NgModule({
-  declarations: [UsersComponent,UserEmpyPipe,PipeTableState, WarehouseComponent, RequerimentsComponent, TablesComponent, FinanceComponent],
+  declarations: [UsersComponent,UserEmpyPipe,PipeTableState, WarehouseComponent, RequerimentsComponent, TablesComponent, FinanceComponent,],
   exports:[UsersComponent],
   imports: [
     CommonModule,
@@ -31,7 +36,10 @@ import { SharedModule } from '../../shared/shared.module';
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    SharedModule
+    SharedModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ApplicationPipesModule,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

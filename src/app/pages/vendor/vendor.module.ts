@@ -58,6 +58,11 @@ import { SharedModule } from '../../shared/shared.module';
 import { PaymentComponent } from './payment/payment.component';
 import { VendorRoutingModule } from './vendor-routing.module';
 import { VendorService } from './services/vender.service';
+import { HistoricalComponent } from './historical/historical.component';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import { TypePaymentPipe } from 'src/app/pipes/payment-form.pipe';
+import { CustomDatePipe } from '../../pipes/custom-date.pipe';
+import { ApplicationPipesModule } from 'src/app/pipes/custom-pipe.module';
 
 @NgModule({
     imports: [
@@ -112,10 +117,12 @@ import { VendorService } from './services/vender.service';
         FontAwesomeModule,
         RouterModule,
         VendorRoutingModule,
-        SharedModule
+        SharedModule,
+        ApplicationPipesModule,
+
     ],
-    providers:[VendorService],
-    declarations: [PaymentComponent]
-    
+    providers: [VendorService],
+    declarations: [PaymentComponent, HistoricalComponent],
+
 })
 export class VendorModule { }

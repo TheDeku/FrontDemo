@@ -23,13 +23,17 @@ import { AsyncPipe } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TypePaymentPipe } from './pipes/payment-form.pipe';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { AdminModule } from './pages/admin/admin.module';
+import { ApplicationPipesModule } from './pipes/custom-pipe.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderToCardPipe
+    OrderToCardPipe,    
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     DataTablesModule,
     RouterModule,
     NgbModule,
+    ApplicationPipesModule,
     ServiceWorkerModule.register('firebase-messaging-sw.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireMessagingModule,

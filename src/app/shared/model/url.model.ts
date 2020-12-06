@@ -5,9 +5,9 @@ export class Urls {
     public urlsToLogin = {
         signIn: this.urlBase + "/auth/signin",
         signUp: this.urlBase + "/auth/signup",
-        forget: this.urlBase + "/users/forget",
-        validate: this.urlBase + "/users/validate",
-        restore: this.urlBase + "/users/restore",
+        forget: this.urlBase + "/auth/users/forget",
+        validate: this.urlBase + "/auth/users/validate",
+        restore: this.urlBase + "/auth/users/restore",
         toGoogle: this.urlBase + "/auth",
     }
     public urlOrders = {
@@ -15,6 +15,10 @@ export class Urls {
         setState:`${this.urlBase}/order/`,
         byUser:`${this.urlBase}/order/stateUser`,
         byTable:`${this.urlBase}/order/stateTable`
+    }
+    public urlHistorical = {
+        getDataServiceHistorical:`${this.urlBase}/historical/chartValues`,
+        getDataServiceHistoricalAdmin:`${this.urlBase}/historical/chartAdmin`,
     }
 
 
@@ -45,5 +49,5 @@ export class Urls {
         getByIdAndType:`${this.urlBase}/requeriments/findByType`,
         getAll:`${this.urlBase}/requeriments`
     };
-    public deviceUrl = "https://restaurapp-pushnotify-utils.herokuapp.com/"
+    public deviceUrl = `${this.urlBase}/notifications`
 }

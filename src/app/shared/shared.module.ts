@@ -23,6 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { ChartsModule } from '@rinminase/ng-charts';
+
 
 @NgModule({
   imports: [
@@ -41,9 +44,10 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    ChartsModule
   ],
-  declarations: [LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent],
-  exports:[LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent]
+  declarations: [LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent,LineChartComponent],
+  exports:[LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent,LineChartComponent]
 })
 export class SharedModule { }
