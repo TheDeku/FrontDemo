@@ -120,6 +120,18 @@
 
                                     </mat-form-field>
 
+
+                                    <div *ngIf="updateSelected.multi">
+                                        <mat-form-field appearance="outline" class="col-md-12" *ngIf="onlyCostAdmin">
+                                            <mat-label>Costo</mat-label>
+                                            <input matInput formControlName="costo" type="'number'">
+
+                                            <mat-icon matPrefix>save</mat-icon>
+
+                                        </mat-form-field>
+                                    </div>
+
+
                                 </form>
                             </div>
 

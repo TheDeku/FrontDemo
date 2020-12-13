@@ -80,8 +80,8 @@
                             <td>{{user.usuDet.telefono | user}}</td>
                             <td>
                                 <!-- <a href="#viewEmployeeModal" (click)="onEdit(user)" class="view" data-toggle="modal"><i class="material-icons " data-toggle="tooltip " title="Delete ">&#xE417;</i></a> -->
-                                <a href="#editEmployeeModal" (click)="onEdit(user)" class="edit" data-toggle="modal"><i class="material-icons " data-toggle="tooltip " title="Delete ">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons " data-toggle="tooltip " title="Delete ">&#xE872;</i></a>
+                                <a href="#editEmployeeModal" (click)="onEdit(user)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip " title="Delete">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" (click)="onDeleteUser('selected',user)" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
                             </td>
                         </tr>
@@ -92,8 +92,8 @@
 
                     </tbody>
                 </table>
-                <div class="clearfix ">
-                    <div class="hint-text ">Listando <b>{{workerQuantity}}</b> de <b>total</b> de empleados</div>
+                <div class="clearfix">
+                    <div class="hint-text">Listando <b>{{workerQuantity}}</b> de <b>total</b> de empleados</div>
                     <!-- <ul class="pagination ">
                         <li class="page-item disabled "><a href="# "><i class="fa fa-angle-double-left "></i></a></li>
                         <li class="page-item "><a href="# " class="page-link ">1</a></li>
@@ -259,7 +259,7 @@
                 </form>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-success" value="Añadir" (click)="onCreateWorker()">
+                    <input type="submit" class="btn btn-success" value="Añadir" data-dismiss="modal" (click)="onCreateWorker()">
                 </div>
             </form>
         </div>
@@ -316,7 +316,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-info" value="Guardar" (click)="onModify()">
+                    <input type="submit" class="btn btn-info" value="Guardar" data-dismiss="modal" (click)="onModify()">
                 </div>
             </form>
         </div>
@@ -338,7 +338,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-danger" value="Borrar">
+                    <input type="submit" class="btn btn-danger" value="Borrar" data-dismiss="modal" (click)="onDeleteUser('toDelete')">
                 </div>
             </form>
         </div>

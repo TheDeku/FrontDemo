@@ -25,6 +25,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { ChartsModule } from '@rinminase/ng-charts';
+import { ProductViewComponent } from './components/product-view/product-view.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { EmpyImagePipe } from '../pipes/empyImage.pipe';
 
 
 @NgModule({
@@ -45,9 +48,11 @@ import { ChartsModule } from '@rinminase/ng-charts';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    ChartsModule
+    ChartsModule,
+    MatSidenavModule,
   ],
-  declarations: [LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent,LineChartComponent],
-  exports:[LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent,LineChartComponent]
+  providers:[EmpyImagePipe],
+  declarations: [LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent,LineChartComponent,ProductViewComponent],
+  exports:[LoadingComponent,QrInputComponent,DomseguroPipe,QrOutputComponent,HorizonalColumnComponent,VerticalRowComponent,LineChartComponent, ProductViewComponent]
 })
 export class SharedModule { }

@@ -68,6 +68,16 @@ const routes: Routes = [
     ]
   }, 
   {
+    path: 'kitchen',
+    component: NavBarLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/kitchen/kitchen.module').then(m => m.KitchenModule)
+      }
+    ]
+  }, 
+  {
     path: 'warehouse',
     component: NavBarLayoutComponent,
     children: [

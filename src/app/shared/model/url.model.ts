@@ -2,6 +2,7 @@
 export class Urls {
 
     private urlBase: string = "https://api.watasoft.com"
+    private urlBaseTest: string = "http://localhost:5021"
     public urlsToLogin = {
         signIn: this.urlBase + "/auth/signin",
         signUp: this.urlBase + "/auth/signup",
@@ -24,6 +25,7 @@ export class Urls {
 
     public urlsToUsers ={
         getUsers:`${this.urlBase}/auth/users`,
+        deleteUser:`${this.urlBase}/auth/users/`,
         getRoles:`${this.urlBase}/auth/roles/WORKER`,
         modUserDetail:`${this.urlBase}/auth/users/updetail`,
         userByMail:`${this.urlBase}/auth/users/byMail`
@@ -40,6 +42,21 @@ export class Urls {
     }
     public urlToTable=`${this.urlBase}/table`;
     public urlToPay=`${this.urlBase}/payment/pay`;
+
+
+    public urlsToProducts = {
+        getCategories:`${this.urlBase}/product/category`,
+        newCat:`${this.urlBase}/product/category`,
+        newSubCat:`${this.urlBase}/product/subcategory`,
+        newProd:`${this.urlBase}/product`,
+        delProd:`${this.urlBase}/product/`,
+        updProd:`${this.urlBase}/product/`,
+
+    }
+    public urlsToRecipe = {
+        getRecipe:`${this.urlBase}/recipe/`,
+        NewRecipe:`${this.urlBase}/recipe/`,
+    }
 
     public urlToRequeriment = {
         new:`${this.urlBase}/requeriments/new`,

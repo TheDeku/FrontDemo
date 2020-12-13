@@ -1,0 +1,427 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="position: relative; float:right; margin-top: 50px;">
+            <div style="display: inline-block;"><img style="height:80px; width:auto;" src="../../../../assets/icons/lechuga.svg" />
+                <h2 style="display: inline-block; margin-left: 30px;">Productos</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper" *ngIf="show.items.state">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2>Detalle <b>Productos</b></h2>
+                    </div>
+                    <div class="col-sm-3">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Categorias</mat-label>
+                            <mat-select>
+                                <mat-option href="#newCategory" data-toggle="modal" *ngIf="show.categories.showNew">
+                                    Añadir Nuevo
+                                </mat-option>
+                                <mat-option *ngFor="let cat of categories" [value]="cat.nombre" (click)="selectedCategory(cat)">
+                                    {{cat.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-sm-3">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Sub-Categorias</mat-label>
+                            <mat-select>
+                                <mat-option href="#newSubCategory" data-toggle="modal" *ngIf="show.categories.selected">
+                                    Añadir Nuevo
+                                </mat-option>
+                                <mat-option *ngFor="let sub of subCategories" [value]="sub.nombre" (click)="selectedSubCategory(sub)">
+                                    {{sub.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-sm-3">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Productos</mat-label>
+                            <mat-select>
+                                <mat-option href="#addProduct" data-toggle="modal" *ngIf="show.edit.new">
+                                    Añadir Nuevo
+                                </mat-option>
+                                <mat-option *ngFor="let prod of products" [value]="prod.nombre" (click)="selectedProduct(prod)">
+                                    {{prod.nombre}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+            <div class="row" style="align-items: center;" *ngIf="show.items.elements.product">
+                <!-- <img style="height:500px; width:auto;" src="{{product.imagen}}" /> -->
+
+                <div class="col-md-6" style="height:500px; width:100%; background-image: url({{product.imagen}}); background-size: contain; background-repeat: no-repeat; background-position: center;">
+
+                </div>
+                <mat-drawer-container class="col-md-6" style="width: auto; height: auto;">
+                    <mat-drawer-content>
+
+                        <div class="container" style="text-align: justify;">
+                            <h1>{{product.nombre}}</h1>
+                            <p>{{product.descripcion}}</p>
+                            <p>Valor: {{product.precio | currency:'CLP':'symbol'}}</p>
+                            <h2>Ingredientes:</h2>
+                            <p *ngFor="let item of ingredients">
+                                {{item.detIngrediente.nombre}} x {{item.cantidad}}
+                            </p>
+                            <h2>Preparación </h2>
+                            <p>{{product.preparacion}}</p>
+
+                            <div class="col-sm-3" *ngIf="show.edit.buttons">
+                                <h2>Acciones
+                                </h2>
+                            </div>
+
+                            <div *ngIf="show.edit.buttons" class="row col-sm-12">
+
+                                <div class="col-sm-6">
+                                    <a mat-raised-button color="primary" href="#editProduct" (click)="onEditProduct(product)" data-toggle="modal">Editar Producto</a>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <a mat-raised-button color="warn" href="#deleteProduct" data-toggle="modal" (click)="onDeleteProduct('modal',product)">Borrar Producto</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </mat-drawer-content>
+                </mat-drawer-container>
+            </div>
+
+
+
+            <div class="clearfix ">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Add Modal HTML -->
+<div id="addProduct" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <input matInput [formControlName]="test(ing)" [type]="'number'"> -->
+            <div class="modal-header">
+                <h4 class="modal-title">Nuevo Producto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="col-md-12 modal-body">
+                <div class="col-md-12">
+                    <button class="col-md-12" type="button" mat-raised-button (click)="fileInput.click()">Buscar Imagen</button>
+                    <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+                </div>
+
+
+                <div class="col-md-12">
+                    <div style="height:150px; width:100%; margin-top: 20px; margin-bottom: 20px;  background-image: url({{request.product.imagen}}); background-size: contain; background-repeat: no-repeat; background-position: center;">
+                    </div>
+
+                </div>
+
+
+                <form autocomplete="on" [formGroup]='formNewProduct'>
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Precio</mat-label>
+                        <input matInput type="number" formControlName="precio">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Descripción</mat-label>
+                        <textarea matInput formControlName="descripcion"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Preparación</mat-label>
+                        <textarea matInput formControlName="preparacion"></textarea>
+                    </mat-form-field>
+
+
+                    <!-- <div class="center col-md-12" style="margin-bottom: 10px;">
+                        <button mat-stroked-button class="col-md-12" color="primary" (click)="newItem()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div> -->
+                </form>
+                <form autocomplete="on" [formGroup]='formDynamicIng'>
+
+
+                    <div *ngFor="let item of ingredientsDynamic">
+                        <mat-form-field appearance="outline" class="inputModal col-md-12" *ngIf="item.showIngQuantity">
+                            <mat-label>{{item.info.nombre}}</mat-label>
+                            <input matInput [formControlName]="setIDForm(item)" [type]="'number'">
+                            <button mat-icon-button matSuffix (click)="deleteIngredient(item)">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                            <button mat-icon-button matPrefix (click)="saveItem(item)">
+                                        <mat-icon>save</mat-icon>
+                                    </button>
+                        </mat-form-field>
+
+
+                    </div>
+
+
+
+
+
+
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Categorias</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let cat of ingDataCat" [value]="cat.nombre" (click)=" selectedDataCat(cat)">
+                                {{cat.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Ingredientes</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let cat of ingData" [value]="cat.nombre" (click)=" selectedDataIng(cat)">
+                                {{cat.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </form>
+
+            </div>
+
+
+            <div class="modal-footer ">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
+                <input type="submit" class="btn btn-success" value="Añadir" data-dismiss="modal" (click)="newCatOrSubOrProduct('PROD')">
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- Edit Modal HTML -->
+
+<div id="editProduct" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <input matInput [formControlName]="test(ing)" [type]="'number'"> -->
+            <div class="modal-header">
+                <h4 class="modal-title">Nuevo Producto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="col-md-12 modal-body">
+                <div class="col-md-12">
+                    <button class="col-md-12" type="button" mat-raised-button (click)="fileInput.click()">Buscar Imagen</button>
+                    <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+                </div>
+
+
+                <div class="col-md-12">
+                    <div style="height:150px; width:100%; margin-top: 20px; margin-bottom: 20px;  background-image: url({{productEditRequest.imagen}}); background-size: contain; background-repeat: no-repeat; background-position: center;">
+                    </div>
+
+                </div>
+
+
+                <form autocomplete="on" [formGroup]='formEditProduct'>
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Precio</mat-label>
+                        <input matInput type="number" formControlName="precio">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Descripción</mat-label>
+                        <textarea matInput formControlName="descripcion"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="inputModal col-md-6">
+                        <mat-label>Preparación</mat-label>
+                        <textarea matInput formControlName="preparacion"></textarea>
+                    </mat-form-field>
+
+
+                    <!-- <div class="center col-md-12" style="margin-bottom: 10px;">
+                        <button mat-stroked-button class="col-md-12" color="primary" (click)="newItem()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div> -->
+                </form>
+                <form autocomplete="on" [formGroup]='formDynamicIng'>
+
+
+                    <div *ngFor="let item of ingredientsDynamic">
+                        <mat-form-field appearance="outline" class="inputModal col-md-12" *ngIf="item.showIngQuantity">
+                            <mat-label>{{item.info.nombre}}</mat-label>
+                            <input matInput [formControlName]="setIDForm(item)" [type]="'number'">
+                            <button mat-icon-button matSuffix (click)="deleteIngredient(item)">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                            <button mat-icon-button matPrefix (click)="saveItem(item)">
+                                        <mat-icon>save</mat-icon>
+                                    </button>
+                        </mat-form-field>
+
+
+                    </div>
+
+
+
+
+
+
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Categorias</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let cat of ingDataCat" [value]="cat.nombre" (click)=" selectedDataCat(cat)">
+                                {{cat.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Ingredientes</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let cat of ingData" [value]="cat.nombre" (click)=" selectedDataIng(cat)">
+                                {{cat.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </form>
+
+            </div>
+
+
+            <div class="modal-footer ">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
+                <input type="submit" class="btn btn-success" value="Actualizar" data-dismiss="modal">
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+
+<div id="deleteProduct" class="modal fade ">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Borrar Producto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Estas seguro que deseas borrar a este Producto?</p>
+                    <p class="text-warning"><small>Esta accion no se puede deshacer</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-danger" value="Borrar" data-dismiss="modal" (click)="onDeleteProduct('toDelete')">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="newCategory" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Nueva Categoria</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="col-md-12 modal-body">
+                <form autocomplete="on" [formGroup]='formNewCategory'>
+                    <mat-form-field appearance="outline" class="inputModal col-md-12">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="inputModal col-md-12">
+                        <mat-label>Descripción</mat-label>
+                        <textarea matInput formControlName="descripcion"></textarea>
+                    </mat-form-field>
+                </form>
+            </div>
+            <div class="modal-footer ">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
+                <input type="submit" class="btn btn-success" value="Añadir" data-dismiss="modal" (click)="newCatOrSubOrProduct('CAT')">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newSubCategory" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Nueva sub-categoria</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="col-md-12 modal-body">
+                <form autocomplete="on" [formGroup]='formNewSubCat'>
+                    <mat-form-field appearance="outline" class="inputModal col-md-12">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="inputModal col-md-12">
+                        <mat-label>Descripción</mat-label>
+                        <textarea matInput formControlName="descripcion"></textarea>
+                    </mat-form-field>
+                </form>
+            </div>
+            <div class="modal-footer ">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
+                <input type="submit" class="btn btn-success" value="Añadir" data-dismiss="modal" (click)="newCatOrSubOrProduct('SUBCAT')">
+            </div>
+        </div>
+    </div>
+</div>

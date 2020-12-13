@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TypePaymentPipe } from './payment-form.pipe';
 import { CustomDatePipe } from './custom-date.pipe';
+import { EmpyImagePipe } from './empyImage.pipe';
 
 
 @NgModule({
@@ -9,11 +10,13 @@ import { CustomDatePipe } from './custom-date.pipe';
   ],
   declarations: [ 
     TypePaymentPipe,
-    CustomDatePipe
+    CustomDatePipe,
+    EmpyImagePipe
   ],
   exports: [
     TypePaymentPipe,
-    CustomDatePipe
+    CustomDatePipe,
+    EmpyImagePipe
   ]
 })
 export class ApplicationPipesModule {}

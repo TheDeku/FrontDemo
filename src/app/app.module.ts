@@ -20,20 +20,27 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { MessagingService } from './shared/services/messaging.service';
 import { AngularFireMessaging, AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AsyncPipe } from '@angular/common';
-import { AngularFireModule } from '@angular/fire';
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask
+} from "@angular/fire/storage";
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TypePaymentPipe } from './pipes/payment-form.pipe';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { AdminModule } from './pages/admin/admin.module';
 import { ApplicationPipesModule } from './pipes/custom-pipe.module';
+import { RequerimentsComponent } from './pages/kitchen/requeriments/requeriments.component';
+import { ProductComponent } from './pages/kitchen/product/product.component';
+import { AngularFireModule } from '@angular/fire';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderToCardPipe,    
+    OrderToCardPipe,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +56,7 @@ import { ApplicationPipesModule } from './pipes/custom-pipe.module';
     ServiceWorkerModule.register('firebase-messaging-sw.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireMessagingModule,
+    AngularFireStorageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [UserService,OrderToCardPipe,QRCode,MessagingService,AsyncPipe],

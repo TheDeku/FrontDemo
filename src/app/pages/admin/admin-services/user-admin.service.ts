@@ -35,6 +35,14 @@ export class UserAdminService {
       .set("Authorization", "Bearer " + localStorage.getItem('id'))
     return await this.http.post(`${this.urls.urlsToUsers.modUserDetail}`, value, { headers: this.header }).toPromise();
   }
+
+  async deleteUser(value: any) {
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set("Authorization", "Bearer " + localStorage.getItem('id'))
+    return await this.http.delete(`${this.urls.urlsToUsers.deleteUser}${value.id}`, { headers: this.header }).toPromise();
+  }
+
   async createWorker(user) {
     const raw = JSON.stringify({ username: user.user, password: user.pass, email: user.email, rol: user.rol });
 

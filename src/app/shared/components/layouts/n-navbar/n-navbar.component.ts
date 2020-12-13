@@ -41,7 +41,7 @@ export class NNavbarComponent implements OnInit {
           {
             "name": "Bodega",
             "url": "/admin/warehouse",
-            "image": "../assets/icons/finanzas.svg"
+            "image": "../assets/icons/paquetes.svg"
           },
           {
             "name": "Finanzas",
@@ -52,6 +52,11 @@ export class NNavbarComponent implements OnInit {
             "name": "Cocina",
             "url": "/admin/cocina",
             "image": "../assets/icons/cocinando.svg"
+          },
+          {
+            "name": "Productos",
+            "url": "/admin/product",
+            "image": "../assets/icons/finanzas.svg"
           },
           {
             "name": "Cerrar Sesión",
@@ -100,8 +105,13 @@ export class NNavbarComponent implements OnInit {
           },
           {
             "name": "Solicitudes",
-            "url": "/admin/requeriments",
+            "url": "/kitchen/requeriments",
             "image": "../assets/icons/solicitudes.svg"
+          },
+          {
+            "name": "Productos",
+            "url": "/kitchen/product",
+            "image": "../assets/icons/finanzas.svg"
           },
           {
             "name": "Pantalla Completa",

@@ -85,7 +85,7 @@ export class QrOutputComponent implements OnInit {
       
   }
 
-  OnDestroy(){
+  ngOnDestroy(){
     this.scanner.stop();
   }
 

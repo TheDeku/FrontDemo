@@ -34,6 +34,10 @@
     --transitiontime: 100ms
 }
 
+.verticalNav.slim-n.saturada {
+    --iconpositionvertical: 20%;
+}
+
 .verticalNav.slim-n.minimized {
     --widthNV: 50px;
     --headsize: 100px;

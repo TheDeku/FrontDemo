@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs'
 import { Urls } from '../model/url.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { readyException } from 'jquery';
+import { FirebaseApp } from '@angular/fire';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class MessagingService {
  
 constructor(
   private angularFireMessaging: AngularFireMessaging,
+  private angularStorage:FirebaseApp,
   private http: HttpClient,
   ) { }
   private urls: Urls = new Urls();

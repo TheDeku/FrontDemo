@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { LayoutModule } from './layouts/layout.module';
 import { DomseguroPipe } from '../../pipes/domseguro.pipe';
 import { MatCardModule } from '@angular/material/card';
+import { LoadingComponent } from './loading/loading.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const components = [
@@ -14,7 +16,8 @@ const components = [
   imports: [
     CommonModule,
     RouterModule,
-    LayoutModule,   
+    LayoutModule,  
+    MatButtonModule, 
 
   ],
   declarations: components,

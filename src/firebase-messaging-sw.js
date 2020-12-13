@@ -1,5 +1,7 @@
 importScripts('https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.1.1/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js');
+
 
 // Your web app's Firebase configuration
 var firebaseConfig = {

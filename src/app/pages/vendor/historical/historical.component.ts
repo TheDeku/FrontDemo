@@ -164,8 +164,8 @@ export class HistoricalComponent implements OnInit {
     html2canvas(data).then(function(canvas) {
       let imgData = canvas.toDataURL(
         'image/png');              
-    let doc = new jsPDF('l', 'px');
-    doc.addImage(imgData,'PNG',20,20,600,0,);
+    let doc = new jsPDF('l', 'px','a4',true);
+    doc.addImage(imgData,'PNG',0,0,600,0,);
     doc.save('Informe.pdf');
   });
   }

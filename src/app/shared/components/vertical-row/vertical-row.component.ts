@@ -25,6 +25,7 @@ export class VerticalRowComponent implements OnInit {
 
   formVerticalRow = new FormGroup({
     item: new FormControl(0),
+    costo:new FormControl(0)
   })
   states;
   selectedState;
@@ -33,6 +34,7 @@ export class VerticalRowComponent implements OnInit {
   items=[];
   showButtonActu=false;
   showCostsWarehouse=false;
+  onlyCostAdmin=false;
   roleValidator:string;
   private jwtHelper = new JwtHelperService();
 
@@ -58,6 +60,7 @@ export class VerticalRowComponent implements OnInit {
         this.showButtonActu = false;
       }
       if (element === "ADMIN") {
+        this.onlyCostAdmin=true;
         this.getRequerimentByID();
       }else if(element==="BODEGA"){
         this.getRequerymentByIdAndType('cocina','bodega');
@@ -205,6 +208,7 @@ export class VerticalRowComponent implements OnInit {
       })
     }else if (this.updateSelected.multi) {
       //console.log("Actualizo estado y datos");
+      item.costo = this.formVerticalRow.value.costo
       let data={
         item:item,
         stateId:this.selectedState,

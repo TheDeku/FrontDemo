@@ -64,7 +64,7 @@ export class PaymentComponent implements OnInit {
   paymentSelect: string;
   formFinder = new FormGroup({
     mail: new FormControl("", [Validators.required,Validators.email]),
-    propina: new FormControl("", [Validators.required])
+    propina: new FormControl(0, [Validators.required])
   })
 
   
@@ -85,7 +85,7 @@ export class PaymentComponent implements OnInit {
   }
 
   async onQrOutput(event){
-  
+    console.log(event);
     if (event.hasOwnProperty('usuarioId')) {
         let type = "user"
         console.log(event);
@@ -228,11 +228,21 @@ export class PaymentComponent implements OnInit {
     let data = document.getElementById('voucher')
     html2canvas(data).then(function(canvas) {
       let imgData = canvas.toDataURL(
-        'image/png');              
-    let doc = new jsPDF('p', 'mm');
-    doc.addImage(imgData,'PNG',10,10,0,0,);
-    doc.save('sample-file.pdf');
+        'image/png');   
+        var img_w = canvas.width;
+        var img_h = canvas.height;           
+    let doc = new jsPDF('p', 'px',[img_w,img_h],true);
+
+    const imgProps= doc.getImageProperties(imgData);
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    doc.addImage(imgData,'PNG',1,1,pdfWidth,pdfHeight,'FAST');
+    doc.save('ComprobantePago.pdf');
   });
+  this.step = 0;
+  this.isDisabled1 = true;
+  this.isDisabled2 = true;
+  this.searchOrder = false;
   }
 
   onSelectFilter(id) {
