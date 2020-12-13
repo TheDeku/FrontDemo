@@ -1,4 +1,4 @@
-<div *ngFor="let item of items" class="card Tarjeta-Pedidos" [ngClass]="{'preparing': item.preparing,'expand': item.expand,'multi':item.multi}">
+<div *ngFor="let item of items" class="card Tarjeta-Pedidos" [ngClass]="{'preparing': item.preparing,'expand': item.expand,'multi':item.multi,'sat':sat}">
     <div class="card-body">
         <h5 class="card-title tarjeta-Mesa">{{item.nomMesa}}</h5>
         <p class="card-text Tarjeta-Porcion">{{item.porcion}} platos</p>

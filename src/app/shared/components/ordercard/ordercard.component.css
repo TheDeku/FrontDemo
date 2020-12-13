@@ -96,6 +96,19 @@
     background-repeat: no-repeat;
 }
 
+.Tarjeta-Pedidos.sat .Tarjeta-Imagen::after {
+    position: absolute;
+    content: " ";
+    height: 50%;
+    width: 50%;
+    background-image: url(/assets/img/satan.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: 48%;
+    top: -4%;
+    transform: rotate(20deg);
+}
+
 .Tarjeta-Porcion {
     position: absolute;
     margin-top: 12%;

@@ -41,8 +41,9 @@ export class Urls {
         createIngredientDetail:`${this.urlBase}/ingredient/detail`,
     }
     public urlToTable=`${this.urlBase}/table`;
-    public urlToPay=`${this.urlBase}/payment/pay`;
+    public urlToPay=`http://localhost:5006/pay`;//`${this.urlBase}/vendor/pay`;
 
+    public urlToNotify=`${this.urlBase}/notifications/testnotification/`;
 
     public urlsToProducts = {
         getCategories:`${this.urlBase}/product/category`,

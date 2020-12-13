@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { VendorService } from '../services/vender.service';
 import html2canvas from 'html2canvas';
 import { jsPDF } from "jspdf";
+import { DirectNotifyService } from '../../../shared/services/directNotify.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -70,7 +71,7 @@ export class PaymentComponent implements OnInit {
   
 
   selectedPayment = false;
-  constructor(private _vendorService: VendorService) { }
+  constructor(private _vendorService: VendorService, private _directNotifyService:DirectNotifyService) { }
 
   async ngOnInit(): Promise<void> {
     await this._vendorService.getTables().then(resp=>{
@@ -90,7 +91,11 @@ export class PaymentComponent implements OnInit {
         let type = "user"
         console.log(event);
         this.openCamera = false;
-        
+        ///close client qr///
+        this._directNotifyService.sendDirectPushEvent(event.usuarioId,"qrdismiss")
+        .then(()=>{console.log("dismiss client qr");})
+        .catch((er)=>{console.log("error sending push event: ",er );})
+        /////////////////////
         let filters={
           usuarioId:event.usuarioId,
           pedidoeId:5

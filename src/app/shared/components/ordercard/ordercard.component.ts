@@ -7,11 +7,15 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./ordercard.component.css']
 })
 export class OrdercardComponent implements OnChanges {
-  
   @Input() items: any[];
   @Output() buttonClick: EventEmitter<any>= new EventEmitter<any>();
-
+  
+  sat:boolean=false;
   constructor() { 
+    let date =new Date().getTime();
+    if(date>1608681600000 && date<1608940800000){
+      this.sat=true;
+    }
   }
 
   ngOnChanges(changes) {
