@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6" style="position: relative; float:right; margin-top: 50px;">
-            <div style="display: inline-block;"><img style="height:80px; width:auto;" src="../../../../assets/icons/lechuga.svg" />
+            <div style="display: inline-block;"><img style="height:80px; width:auto;" src="../../../../assets/icons/finanzas.svg" />
                 <h2 style="display: inline-block; margin-left: 30px;">Productos</h2>
             </div>
         </div>
@@ -256,7 +256,7 @@
 
 
                 <div class="col-md-12">
-                    <div style="height:150px; width:100%; margin-top: 20px; margin-bottom: 20px;  background-image: url({{productEditRequest.imagen}}); background-size: contain; background-repeat: no-repeat; background-position: center;">
+                    <div style="height:150px; width:100%; margin-top: 20px; margin-bottom: 20px;  background-image: url({{productEditRequest.product.imagen}}); background-size: contain; background-repeat: no-repeat; background-position: center;">
                     </div>
 
                 </div>
@@ -338,7 +338,7 @@
 
             <div class="modal-footer ">
                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" (click)="onCleanForm()">
-                <input type="submit" class="btn btn-success" value="Actualizar" data-dismiss="modal">
+                <input type="submit" class="btn btn-success" value="Actualizar" data-dismiss="modal" (click)="onEditData()">
             </div>
 
 

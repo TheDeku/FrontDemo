@@ -1,0 +1,30 @@
+[debug] [2020-12-13T23:06:34.957Z] ----------------------------------------------------------------------
+[debug] [2020-12-13T23:06:34.958Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-12-13T23:06:34.959Z] CLI Version:   8.16.2
+[debug] [2020-12-13T23:06:34.959Z] Platform:      darwin
+[debug] [2020-12-13T23:06:34.959Z] Node Version:  v13.7.0
+[debug] [2020-12-13T23:06:34.960Z] Time:          Sun Dec 13 2020 20:06:34 GMT-0300 (Chile Summer Time)
+[debug] [2020-12-13T23:06:34.961Z] ----------------------------------------------------------------------
+[debug] [2020-12-13T23:06:34.961Z] 
+[debug] [2020-12-13T23:06:34.967Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-13T23:06:34.968Z] > authorizing via signed-in user
+[debug] [2020-12-13T23:06:34.968Z] [iam] checking project watasoft-2ea9c for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-13T23:06:34.970Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/watasoft-2ea9c:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-12-13T23:06:36.052Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 13 Dec 2020 23:06:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=894","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-13T23:06:36.053Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/watasoft-2ea9c  
+ 
+[debug] [2020-12-13T23:06:37.093Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 13 Dec 2020 23:06:37 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'watasoft-2ea9c'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-12-13T23:06:37.098Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/watasoft-2ea9c/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-12-13T23:06:38.613Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 13 Dec 2020 23:06:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[watasoft-2ea9c]: beginning deploy... 
+[info] i  hosting[watasoft-2ea9c]: found 95 files in dist/restaurant-app 
+[debug] [2020-12-13T23:06:39.803Z] [hosting] hash cache [ZGlzdC9yZXN0YXVyYW50LWFwcA] stored for 95 files
+[debug] [2020-12-13T23:06:39.803Z] [hosting][hash queue][FINAL] {"max":1145,"min":44,"avg":166.97894736842105,"active":0,"complete":95,"success":95,"errored":0,"retried":0,"total":95,"elapsed":1164}
+[debug] [2020-12-13T23:06:39.803Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/watasoft-2ea9c/versions/ed86e1e54b1ae973:populateFiles  
+ <request body omitted>

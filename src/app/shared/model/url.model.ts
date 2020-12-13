@@ -41,7 +41,7 @@ export class Urls {
         createIngredientDetail:`${this.urlBase}/ingredient/detail`,
     }
     public urlToTable=`${this.urlBase}/table`;
-    public urlToPay=`http://localhost:5006/pay`;//`${this.urlBase}/vendor/pay`;
+    public urlToPay=`${this.urlBase}/payment/pay`;
 
     public urlToNotify=`${this.urlBase}/notifications/testnotification/`;
 
@@ -57,6 +57,8 @@ export class Urls {
     public urlsToRecipe = {
         getRecipe:`${this.urlBase}/recipe/`,
         NewRecipe:`${this.urlBase}/recipe/`,
+        DelRecipe:`${this.urlBase}/recipe/`,
+        updRecipe:`${this.urlBase}/recipe/`,
     }
 
     public urlToRequeriment = {

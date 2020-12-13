@@ -78,7 +78,7 @@ export class ProductViewComponent implements OnInit {
   formDynamicIng = new FormGroup({
     cantidad: new FormControl(0),
   })
-  productEditRequest={
+  productEditRequest={product:{
     id: 0,
     nombre: "",
     precio: "",
@@ -87,7 +87,10 @@ export class ProductViewComponent implements OnInit {
     descripcion: "",
     subcatProdId: 0,
     preparacion: "",
-  }
+  },recipe:{
+    productoId: 0,
+    ingredientes: []
+  }}
   ingredientsDynamic = [];
   request = {
     product: {
@@ -169,6 +172,12 @@ export class ProductViewComponent implements OnInit {
     this.products = [];
     this.subCategories = [];
     this.getDataInfo()
+    for (let index = 0; index < this.ingredientsDynamic.length; index++) {
+      const element = this.ingredientsDynamic[index];
+      this.formDynamicIng.removeControl(`${element.id}`)
+    }
+    this.productEditRequest.recipe.ingredientes = [];
+    this.ingredientsDynamic = [];
     this.formEditProduct = new FormGroup({
       nombre: new FormControl(""),
       precio: new FormControl(""),
@@ -305,19 +314,23 @@ export class ProductViewComponent implements OnInit {
       this.newRecipe(this.request.product);
     }
 
-    this.getDataInfo()
 
+    this.onCleanForm();
+    this.getDataInfo();
   }
 
   async newRecipe(request) {
+    console.log(this.ingredientsDynamic);
     await Promise.all(this.ingredientsDynamic.map(item => {
-      this.ingredientesRequest.cantidad = item.cantidad;
-      this.ingredientesRequest.ingredienteId = item.info.id;
-      this.request.recipe.ingredientes.push(this.ingredientesRequest)
+      console.log(item);
+      // this.ingredientesRequest.cantidad = item.cantidad;
+      // this.ingredientesRequest.ingredienteId = item.info.id;
+      this.request.recipe.ingredientes.push({cantidad:item.cantidad,ingredienteId:item.info.id})
     }))
     this.request.recipe.productoId = request.id;
     console.log(this.request.recipe);
     await this._productService.NewRecipe(this.request.recipe).then(resp => {
+      this.show.items.elements.product = false;
       console.log(resp);
     })
   }
@@ -356,15 +369,58 @@ export class ProductViewComponent implements OnInit {
     console.log(this.formDynamicIng);
   }
 
-  onEditProduct(product){
+  async onEditProduct(product){
     console.log(product);
-    this.productEditRequest.imagen = product.imagen;
+    this.productEditRequest.product.id = product.id;
+    this.productEditRequest.product.imagen = product.imagen;
+    this.productEditRequest.product.descripcion = product.descripcion;
+    this.productEditRequest.product.nombre = product.nombre;
+    this.productEditRequest.product.precio = product.precio;
+    this.productEditRequest.product.preparacion = product.prepracion;
+    this.productEditRequest.product.subcatProdId = product.subcatProdId;
+    this.productEditRequest.recipe.productoId = product.id;
+ 
     this.formEditProduct = new FormGroup({
       nombre: new FormControl(product.nombre),
       precio: new FormControl(product.precio),
       descripcion: new FormControl(product.descripcion),
       preparacion: new FormControl(product.preparacion),
     })
+    await Promise.all(this.ingredients.map(ing=>{
+      this.counterItems++;
+      this.ingredientsDynamic.push({ id: this.counterItems, showIngQuantity: true, info: ing.detIngrediente, cantidad: ing.cantidad })
+      this.formDynamicIng.addControl(`${this.counterItems}`, new FormControl(ing.cantidad))
+      console.log(ing.cantidad);
+    }))
+
+  }
+
+  async onEditData(){
+    this.productEditRequest.recipe.ingredientes = [];
+    this.productEditRequest.product.nombre = this.formEditProduct.value.nombre;
+    this.productEditRequest.product.precio = String(this.formEditProduct.value.precio);
+    this.productEditRequest.product.descripcion = this.formEditProduct.value.descripcion;
+    this.productEditRequest.product.preparacion = this.formEditProduct.value.preparacion;
+    console.log(this.ingredientsDynamic);
+    await Promise.all(this.ingredientsDynamic.map(item => {
+      console.log(item.info.id);
+      // this.ingredientesRequest.cantidad = item.cantidad;
+      // this.ingredientesRequest.ingredienteId = item.info.detIngrediente.id;
+      this.productEditRequest.recipe.ingredientes.push({cantidad:item.cantidad,ingredienteId:item.info.id})
+    }))
+
+  await this._productService.updateProduct(this.productEditRequest.product.id,this.productEditRequest.product).then(async resp=>{
+    console.log(resp);
+    await this._productService.updateRecipe(this.productEditRequest.recipe).then(resp=>{
+      console.log(resp);
+    }).catch(err=>{
+      console.log(err);
+    })
+  }).catch(err=>{
+    console.log(err);
+  })
+  this.show.items.elements.product = false;
+  this.onCleanForm();
   }
 
   onDeleteProduct(type,product?){
@@ -376,6 +432,7 @@ export class ProductViewComponent implements OnInit {
         console.log(resp);
         this.loading = false;
         this.getDataInfo();
+        this.show.items.elements.product = false;
         return Swal.fire({
           icon: 'success',
           title: 'Producto eliminado',
@@ -417,6 +474,7 @@ export class ProductViewComponent implements OnInit {
             if (url) {
               this.fb = url;
               this.request.product.imagen = url;
+              this.productEditRequest.product.imagen = url;
             }
             console.log(this.request.product.imagen);
           });
