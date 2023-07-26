@@ -1,0 +1,157 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="vertical-card">
+    <mat-card *ngFor="let item of verticalItems" class="example-card">
+        <mat-card-header>
+            <mat-card-title>{{item.tipo}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+
+            <div>
+                <mat-accordion class="col-md-12">
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Pedido Nº{{item.id}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Ver contenido
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <table class="table col-md-6" style="right: 5px;">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Solicitado<i class="fa fa-sort"></i></th>
+                                    <th>Entregado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ing of item.ingSols">
+                                    <th>{{ing.ingrediente.nombre}}<i class="fa fa-sort"></i></th>
+                                    <th>{{ing.cantidad}}<i class="fa fa-sort"></i></th>
+                                    <th>{{ing.cantidadEntregada}}<i class="fa fa-sort"></i></th>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table *ngIf="item.showCostsWarehouse" class="table col-md-12" style="right: 5px;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: end;">Costo: {{item.costo| currency:'CLP':'symbol'}} </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+            </div>
+
+
+
+
+
+            <a *ngIf="item.showButtonActu" mat-stroked-button color="primary" class="col-md-12" [href]="onOpenModal(item)" data-toggle="modal" (click)="onSelectedItem(item)"><i data-toggle="tooltip">Actualizar estado</i></a>
+
+
+            <div id="{{'updateState'+item.id}}" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">Actualizar estado pedido</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="onCancelForm()">&times;</button>
+                        </div>
+                        <div class="modal-body col-md-12">
+                            <form autocomplete="on" [formGroup]='formVerticalRow'>
+
+                                <mat-form-field appearance="outline" class="col-md-12">
+                                    <mat-label>Selecione operación</mat-label>
+                                    <mat-select>
+                                        <mat-option *ngFor="let select of updateSelected.category" [value]="select.id" (click)="onSelectCategory(select.id)">
+                                            {{select.name}}
+                                        </mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+
+                            </form>
+                            <div *ngIf="showDataSelected">
+                                <table class="table col-md-12" style="right: 5px;">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Solicitado<i class="fa fa-sort"></i></th>
+                                            <th>Entregado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let ing of item.ingSols">
+                                            <th>{{ing.ingrediente.nombre}}<i class="fa fa-sort text-center"></i></th>
+                                            <th>{{ing.cantidad}}<i class="fa fa-sort text-center"></i></th>
+                                            <th *ngIf="updateSelected.alone">{{ing.cantidadEntregada}}<i class="fa fa-sort text-center"></i></th>
+                                            <th *ngIf="updateSelected.multi">
+
+                                                <form autocomplete="on" [formGroup]='formVerticalRow'>
+                                                    <mat-form-field appearance="outline" class="inputModal">
+                                                        <mat-label>Cantidad</mat-label>
+                                                        <input matInput [formControlName]="test(ing)" [type]="'number'">
+                                                        <button mat-icon-button matSuffix (click)="onSaveNumber(ing)">
+                                                            <mat-icon>save</mat-icon>
+                                                        </button>
+                                                    </mat-form-field>
+
+                                                </form>
+                                                <i class="fa fa-sort"></i></th>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <form autocomplete="on" [formGroup]='formVerticalRow'>
+
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-select [(value)]="selectedState">
+                                            <mat-option *ngFor="let state of states" [value]="state.id" (click)="onSelectedState(state.id)">
+                                                {{state.descripcion}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+
+                                    <div *ngIf="updateSelected.multi">
+                                        <mat-form-field appearance="outline" class="col-md-12" *ngIf="onlyCostAdmin">
+                                            <mat-label>Costo</mat-label>
+                                            <input matInput formControlName="costo" type="'number'">
+
+                                            <mat-icon matPrefix>save</mat-icon>
+
+                                        </mat-form-field>
+                                    </div>
+
+
+                                </form>
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" value="Cancelar" (click)="onCancelForm()" data-dismiss="modal">
+                            <input type="submit" class="btn btn-success" value="Enviar" (click)="onSendData(item)" data-dismiss="modal">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <!-- <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+
+    </mat-card>
+</div>

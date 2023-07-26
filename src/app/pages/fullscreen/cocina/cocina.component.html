@@ -1,0 +1,31 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="container nback">
+
+    <div class="row nrow">
+        <div class="col-sm Estado-Espera">
+            <div class="ntitle" id="Titulo-Espera">Espera</div>
+
+            <div class="ncardcontainer">
+
+                <app-ordercard [items]="orders.waiting" (buttonClick)=changestate($event)></app-ordercard>
+
+            </div>
+
+
+
+        </div>
+        <div class="nline"></div>
+        <div class="col-sm Estado-Prepacion">
+            <div class="ntitle" id="Titulo-Preparacion"> Preparación</div>
+
+            <div class="ncardcontainer">
+
+                <app-ordercard [items]="orders.prepairing" (buttonClick)=changestate($event)></app-ordercard>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

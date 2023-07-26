@@ -1,0 +1,83 @@
+.nsummary {
+    height: 100%;
+    width: var(--nbasewidth);
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+}
+
+.nsummary .nlogo {
+    width: 100%;
+    height: 0;
+    padding-top: 50%;
+    background: url("/assets/img/Logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nclock {
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 3.5em;
+    line-height: 100%;
+    text-shadow: 1px 1px 2px black;
+    box-shadow: 0px 10px 7px -8px rgba(0, 0, 0, 0.522);
+}
+
+.nlog {
+    --verticalmargin: 10px;
+    width: 90%;
+    height: calc(100% - var(--nbasewidth) * 0.7 - var(--verticalmargin) * 2);
+    margin: 0 5%;
+    margin-top: var(--verticalmargin);
+    overflow-y: auto;
+}
+
+.nlogentry {
+    position: relative;
+    width: 100%;
+    height: calc(var(--nbasewidth) / 5);
+    background-color: rgba(228, 106, 106, 0.3);
+    border-radius: 5px;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+.nlogentry .time {
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    top: 35%;
+    left: 0;
+    text-align: right;
+    line-height: 100%;
+}
+
+.nlogentry .name {
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    top: 35%;
+    right: 0;
+    text-align: left;
+    line-height: 100%;
+}
+
+.nlogentry.preparing {
+    background-color: rgba(255, 209, 90, 0.3);
+}
+
+.nlogentry.onTime {
+    color: rgb(31, 218, 31);
+}
+
+.nlogentry.delayed {
+    color: red;
+}
+
+@media (max-width: 1100px) {}

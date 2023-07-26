@@ -1,0 +1,73 @@
+.nline {
+    background-color: black;
+    width: 6px;
+    height: 90%;
+    float: left;
+    margin-top: 50px;
+    border-radius: 3px;
+}
+
+.Estado-Espera {
+    width: 30%;
+    float: left;
+    height: 100%;
+}
+
+.Estado-Prepacion {
+    width: 30%;
+    right: 0px;
+    float: left;
+    height: 100%;
+}
+
+.nback {
+    height: 100%;
+}
+
+.nrow {
+    height: 100%;
+}
+
+.ntitle {
+    height: 10%;
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 0;
+    line-height: 10vh;
+}
+
+.ncardcontainer {
+    height: calc(90% - 40px);
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f152;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.303);
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: rgba(85, 85, 85, 0.301);
+    border-radius: 10px;
+}

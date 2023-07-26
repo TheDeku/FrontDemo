@@ -1,0 +1,11 @@
+.imagen {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 60%;
+    margin: auto;
+    display: block;
+    position: absolute;
+    left: 20%;
+    margin-top: 50px;
+}

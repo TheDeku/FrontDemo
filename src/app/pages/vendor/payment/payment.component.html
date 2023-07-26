@@ -1,0 +1,363 @@
+<app-qr-output *ngIf="openCamera" (close)="openCamera=false" (dataOutput)="onQrOutput($event)"></app-qr-output>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="position: relative; float:right; margin-top: 50px;">
+            <div style="display: inline-block;"><img style="height:90px; width:auto;" src="../../../../assets/icons/cuenta.svg" />
+                <h2 style="display: inline-block; margin-left: 40px;"> Punto de Venta</h2>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <mat-accordion class="example-headers-align">
+                            <mat-expansion-panel [disabled]="isDisabled0" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Detalle Pedido.
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Ingrese pedido.
+                                        <mat-icon>restaurant</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+
+                                <div class="example-flex-container">
+                                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="onOpenCamera()">
+                                      <mat-icon>qr_code_scanner</mat-icon>
+                                    </button>
+                                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" href="#addTable" data-toggle="modal">
+                                        <mat-icon>search</mat-icon>
+                                      </button>
+                                </div>
+
+                                <div *ngIf="searchOrder">
+                                    <div *ngFor="let item of order">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Producto</th>
+                                                    <th>Valor Unitario<i class="fa fa-sort"></i></th>
+                                                    <th>Cantidad</th>
+                                                    <th>Total<i class="fa fa-sort"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let order of item.pedProds">
+                                                    <td>{{order.producto.nombre}}</td>
+                                                    <td>$ {{order.producto.precio}}</td>
+                                                    <td>{{order.cantidad}}</td>
+                                                    <td>$ {{order.cantidad*order.producto.precio}}</td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pedido: {{item.id}}</th>
+                                                    <th style="text-align: right;">Subtotal: {{item.costo | currency:'CLP':'symbol'}}<i class="fa fa-sort"></i></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: right;">Total: {{totalAmount | currency:'CLP':'symbol'}}<i class="fa fa-sort"></i></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+
+                                </div>
+
+                                <!-- 
+                                <div *ngIf="searchOrder">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Nombre</th>
+                                                <th>Valor Unitario<i class="fa fa-sort"></i></th>
+                                                <th>Cantidad</th>
+                                                <th>Total<i class="fa fa-sort"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let order of order.pedProds">
+                                                <td>{{order.producto.nombre}}</td>
+                                                <td>{{order.producto.precio}}</td>
+                                                <td>{{order.cantidad}}</td>
+                                                <td>{{order.cantidad*order.producto.precio}}</td>
+
+                                            </tr>
+
+
+
+                                        </tbody>
+                                    </table>
+
+                                   
+                                </div> -->
+
+
+
+
+                                <mat-action-row *ngIf="searchOrder">
+                                    <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+                                </mat-action-row>
+
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel [disabled]="isDisabled1" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Formas de pago
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Seleccione una forma de pago
+                                        <mat-icon>payment</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <div class="row">
+                                    <div class="col-md-3 center">
+                                        <button style="background-color: transparent; border-color: transparent;" *ngFor="let payment of payments" (click)="onSelectedPayment(payment)">
+                                        
+                                            <mat-card [ngStyle]="{'padding':'auto'}">
+                                                <mat-card-content>
+                                                    <p>
+                                                      {{payment.nombre}}
+                                                    </p>
+                                                    <mat-icon> {{payment.icon}}</mat-icon>
+                                                  </mat-card-content>
+                                                </mat-card>
+                                            
+                                          </button>
+                                    </div>
+
+                                    <mat-divider [vertical]="true"></mat-divider>
+
+                                    <div class="col-md-8">
+                                        <mat-drawer-container class="example-container" *ngIf="selectedPayment">
+                                            <mat-drawer-content>
+                                                <div class="row">
+                                                    <div class="col-md-12 center">
+                                                        <h1>Monto a pagar: {{totalAmount | currency:'CLP':'symbol'}}</h1>
+                                                    </div>
+
+                                                    <div class="col-md-12 center">
+
+                                                        <form autocomplete="on" [formGroup]='formFinder'>
+                                                            <mat-form-field appearance="outline" class="text-style-size">
+                                                                <mat-label>Propina</mat-label>
+                                                                <input matInput formControlName="propina" type="number" placeholder="Propina">
+                                                            </mat-form-field>
+                                                        </form>
+
+                                                    </div>
+
+                                                    <div class="col-md-12 center">
+                                                        <button mat-raised-button color="accent" (click)="onDoPayment()">Realizar Pago</button>
+                                                    </div>
+
+                                                </div>
+
+                                            </mat-drawer-content>
+                                        </mat-drawer-container>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+
+                                <mat-action-row>
+                                    <button mat-button color="warn" (click)="prevStep()">Regresar</button>
+                                    <!-- <button mat-button color="primary" (click)="nextStep()">Siguiente</button> -->
+                                </mat-action-row>
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel [disabled]="isDisabled2" [expanded]="step === 2" hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Finalización
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Comprobante de pago
+                                        <mat-icon>receipt</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+
+                                <mat-drawer-container class="comprobante-container center" *ngIf="selectedPayment">
+                                    <mat-drawer-content class="center" style="align-items: center;">
+                                        <div id="voucher" class="rowr">
+                                            <div class="col-md-12 center">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4>Comprobante de pago</h4>
+                                                        <h5>Codigo: {{voucher.id}}</h5>
+
+                                                        <h6>Restaurante Siglo XXI </h6>
+                                                        <h6>Calle Nueva #1660</h6>
+                                                        <h6>Huechuraba, Region Metropolitana</h6>
+                                                    </div>
+
+                                                    <div class="col-md-6 center" style="align-items: flex-end; margin-top: 25px;">
+
+                                                        <img class="logo" src="../../../../assets/img/Logo.png" alt="">
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div *ngFor="let item of order">
+                                                    <table class="table table-striped table-hover table-bordered">
+                                                        <tbody>
+                                                            <tr *ngFor="let order of item.pedProds">
+                                                                <td>{{order.producto.nombre}}</td>
+                                                                <td>$ {{order.producto.precio}}</td>
+                                                                <td>{{order.cantidad}}</td>
+                                                                <td>$ {{order.cantidad*order.producto.precio}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Pedido: {{item.id}}</th>
+                                                                <th style="text-align: right;">Subtotal: {{item.costo | currency:'CLP':'symbol'}}<i class="fa fa-sort"></i></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+
+                                                </div>
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="text-align: right;">Total: {{totalAmount | currency:'CLP':'symbol'}}<i class="fa fa-sort"></i></th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="text-align: right;">Propina: {{formFinder.value.propina | currency:'CLP':'symbol'}}<i class="fa fa-sort"></i></th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="text-align: right;">Total a pagar: {{voucher.costo | currency:'CLP':'symbol'}}<i class="fa fa-sort"></i></th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </mat-drawer-content>
+                                </mat-drawer-container>
+
+                                <div class="col-md-6">
+                                    <button mat-raised-button color="accent" (click)="onPrintVoucher()">Imprimir Comprobante</button>
+                                </div>
+
+
+                                <!-- <mat-action-row>
+                                    <button mat-button color="warn" (click)="prevStep()">Regresar</button>
+                                    <button mat-button color="primary" (click)="nextStep()">Finalizar</button>
+                                </mat-action-row> -->
+                            </mat-expansion-panel>
+
+                        </mat-accordion>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Add Modal HTML -->
+<div id="addTable" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Buscar orden</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <mat-form-field appearance="outline" class="col-md-12">
+                <mat-label>Buscar por</mat-label>
+
+                <mat-select>
+                    <mat-option *ngFor="let filter of filters" [value]="filter.nombre" (click)="onSelectFilter(filter.id)">
+                        {{filter.nombre}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+
+            <div class="center" *ngIf="filtersConfig.mail">
+                <form autocomplete="on" [formGroup]=' formFinder '>
+                    <mat-form-field appearance="outline" class="text-style-size col-md-12">
+                        <mat-label>Correo</mat-label>
+                        <input matInput formControlName="mail" placeholder="Ingrese correo" type="email">
+                    </mat-form-field>
+                </form>
+            </div>
+
+            <div class="center" *ngIf="filtersConfig.table">
+                <mat-form-field appearance="outline" class="col-md-12">
+                    <!-- id: 6, name: "Mesa 2 pasillo" -->
+                    <mat-label>Seleccionar Mesa</mat-label>
+
+                    <mat-select>
+                        <mat-option *ngFor="let table of tables" [value]="table.name" (click)="onSelectTable(table.id)">
+                            {{table.name}}
+                        </mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+            </div>
+
+
+
+
+            <div class="modal-footer ">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                <input type="submit" class="btn btn-info" value="Buscar" data-dismiss="modal" (click)="findOrder()">
+            </div>
+        </div>
+    </div>
+</div>

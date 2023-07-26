@@ -1,0 +1,37 @@
+.text-60 {
+    font-size: 460px;
+    font-weight: bold;
+    text-shadow: 5px 5px 2px black;
+    color: white;
+    opacity: 0.8;
+    user-select: none;
+}
+
+.cropper {
+    margin: auto;
+    position: absolute;
+    overflow: hidden;
+    width: 66%;
+    height: 0;
+    padding-top: 43%;
+    opacity: 0.3;
+    border-radius: 30px;
+    left: 17%;
+    top: 25px;
+    user-select: none;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+iframe {
+    position: absolute;
+    height: 150%;
+    width: 150%;
+    top: -25%;
+    left: -25%;
+}
+
+p {
+    color: white;
+    font-weight: bolder;
+}

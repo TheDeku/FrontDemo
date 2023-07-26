@@ -61,6 +61,8 @@ import { UserService } from '../../shared/services/user.service';
 import { EmailComponent } from './forget/email/email.component';
 import { UpdateComponent } from './forget/update/update.component';
 import { RestoreTokenComponent } from './forget/restoretoken/restoretoken.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -114,6 +116,7 @@ import { RestoreTokenComponent } from './forget/restoretoken/restoretoken.compon
         ReactiveFormsModule,
         HttpClientModule,
         FontAwesomeModule,
+        RouterModule
     ],
     providers:[UserService],
     declarations: [SigninComponent, SignupComponent, ForgetComponent,EmailComponent,UpdateComponent,RestoreTokenComponent]

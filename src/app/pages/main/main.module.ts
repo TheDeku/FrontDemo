@@ -54,8 +54,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from '../../shared/services/user.service';
-import { HomeComponent } from './home/home.component';
+
 import { MainRoutingModule } from './main-routing.module';
+import { RouterModule } from '@angular/router';
+
+import { SharedModule } from '../../shared/shared.module';
+import { HomeComponent } from './home/home.component';
+import { CloseComponent } from './close/close.component';
 
 @NgModule({
     imports: [
@@ -109,8 +114,10 @@ import { MainRoutingModule } from './main-routing.module';
         ReactiveFormsModule,
         HttpClientModule,
         FontAwesomeModule,
+        RouterModule,
+        SharedModule
     ],
     providers:[UserService],
-    declarations: [HomeComponent]
+    declarations: [HomeComponent,CloseComponent]
 })
 export class MainModule { }

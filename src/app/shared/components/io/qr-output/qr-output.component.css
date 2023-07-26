@@ -1,0 +1,266 @@
+.blackice {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.46);
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.QRwindow {
+    --QRhead: 40px;
+    --QRbv: 30px;
+    --QRb: 15px;
+    --QRbcolor: rgba(0, 0, 0, 0);
+    --QRc: 30px;
+    position: absolute;
+    height: calc(var(--qrwh) * .8 + var(--QRhead));
+    width: var(--qrwh);
+    left: calc(50% - var(--qrwh) / 2);
+    border-radius: var(--QRc);
+    overflow: hidden;
+    filter: drop-shadow(10px 10px 2px rgba(0, 0, 0, 0.377));
+}
+
+.QRwindow .QRmain {
+    position: absolute;
+    top: calc(var(--QRhead) + var(--QRb));
+    left: var(--QRb);
+    height: calc(var(--qrwh) * .8 - 2 * var(--QRb));
+    width: calc(var(--qrwh) - 2 * var(--QRb));
+    border-bottom-left-radius: calc(var(--QRc) - var(--QRb));
+    border-bottom-right-radius: calc(var(--QRc) - var(--QRb));
+    background-color: gray;
+}
+
+.QRwindow .scanIcon {
+    --un: calc(var(--qrwh) - 2 * var(--QRb));
+    position: absolute;
+    top: calc(var(--QRhead) + var(--QRb) + var(--un) / 7);
+    left: calc(var(--QRb) + var(--un) / 4);
+    height: calc(var(--un) / 2);
+    width: calc(var(--un) / 2);
+}
+
+.QRwindow .scanIcon svg {
+    height: 100%;
+    width: 100%;
+    opacity: 0.3;
+}
+
+.QRwindow .scanIcon svg {
+    position: absolute;
+    animation-direction: alternate-reverse;
+    animation-duration: 400ms;
+    animation-iteration-count: infinite;
+    height: 30%;
+    width: 30%;
+}
+
+.QRwindow .scanIcon svg.d1 {
+    animation-name: d1;
+    left: 0;
+    top: 0;
+}
+
+.QRwindow .scanIcon svg.d2 {
+    animation-name: d2;
+    right: 0;
+    top: 0;
+}
+
+.QRwindow .scanIcon svg.d3 {
+    animation-name: d3;
+    right: 0;
+    bottom: 0;
+}
+
+.QRwindow .scanIcon svg.d4 {
+    animation-name: d4;
+    left: 0;
+    bottom: 0;
+}
+
+@keyframes d1 {
+    0% {
+        top: 20%;
+        left: 20%;
+    }
+    100% {
+        top: 0%;
+        left: 0%;
+    }
+}
+
+@keyframes d2 {
+    0% {
+        top: 20%;
+        right: 20%;
+    }
+    100% {
+        top: 0%;
+        right: 0%;
+    }
+}
+
+@keyframes d3 {
+    0% {
+        bottom: 20%;
+        right: 20%;
+    }
+    100% {
+        bottom: 0%;
+        right: 0%;
+    }
+}
+
+@keyframes d4 {
+    0% {
+        bottom: 20%;
+        left: 20%;
+    }
+    100% {
+        bottom: 0%;
+        left: 0%;
+    }
+}
+
+.QRwindow .changeCam {
+    position: absolute;
+    right: calc(var(--QRb) + var(--QRbv));
+    bottom: calc(var(--QRb) + var(--QRbv));
+    height: calc(var(--QRhead) * 1.5);
+    width: calc(var(--QRhead) * 1.5);
+}
+
+.QRwindow .changeCam svg {
+    height: 100%;
+    width: 100%;
+    fill: white;
+    stroke: black;
+    stroke-width: 25px;
+    paint-order: stroke fill;
+}
+
+.QRwindow .changeCam svg:active {
+    fill: rgb(126, 126, 126);
+    stroke: rgb(63, 37, 37);
+    transform: scale(0.9);
+}
+
+.QRwindow .QRheader {
+    position: absolute;
+    top: var(--QRb);
+    left: var(--QRb);
+    height: var(--QRhead);
+    width: calc(100% - 2 * var(--QRb));
+    background: linear-gradient(0deg, rgba(199, 199, 199, 1) 0%, rgba(177, 176, 176, 1) 34%, rgba(171, 171, 171, 1) 67%, rgba(201, 201, 201, 1) 100%);
+    border-top-left-radius: calc(var(--QRc) - var(--QRb));
+    border-top-right-radius: calc(var(--QRc) - var(--QRb));
+}
+
+.QRwindow .QRframe {
+    position: absolute;
+    background-color: var(--QRbcolor);
+}
+
+.QRwindow .QRframe.H {
+    height: var(--QRbv);
+    width: calc(100% - 2 * var(--QRc));
+    left: var(--QRc);
+    cursor: n-resize;
+}
+
+.QRwindow .QRframe.H.T {
+    top: 0;
+}
+
+.QRwindow .QRframe.H.B {
+    bottom: 0;
+}
+
+.QRwindow .QRframe.V {
+    width: var(--QRbv);
+    height: calc(100% - 2 * var(--QRc));
+    top: var(--QRc);
+    cursor: e-resize;
+}
+
+.QRwindow .QRframe.V.L {
+    left: 0;
+}
+
+.QRwindow .QRframe.V.R {
+    right: 0;
+}
+
+.QRwindow .QRframe.corner {
+    height: var(--QRc);
+    width: var(--QRc);
+}
+
+.QRwindow .QRframe.corner.TL {
+    top: 0;
+    left: 0;
+    cursor: nw-resize;
+}
+
+.QRwindow .QRframe.corner.TR {
+    top: 0;
+    right: 0;
+    cursor: ne-resize;
+}
+
+.QRwindow .QRframe.corner.BL {
+    bottom: 0;
+    left: 0;
+    cursor: sw-resize;
+}
+
+.QRwindow .QRframe.corner.BR {
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+}
+
+.QRwindow .QRheader .QRclose {
+    position: absolute;
+    height: calc(var(--QRhead) * .4);
+    width: calc(var(--QRhead) * .4);
+    top: calc(var(--QRhead) * .3);
+    left: calc(var(--QRhead) * .3);
+    background-color: red;
+    border-radius: 50%;
+}
+
+.QRwindow .QRheader .QRclose:hover {
+    background-color: rgb(255, 117, 117);
+}
+
+.QRwindow .QRheader .QRclose:active {
+    background-color: rgb(255, 161, 117);
+}
+
+.QRwindow .QRheader .QRclose:hover::after {
+    content: " ";
+    position: absolute;
+    height: 14%;
+    width: 74%;
+    top: 43%;
+    left: 13%;
+    transform: rotate(45deg);
+    background-color: rgb(0, 0, 0);
+}
+
+.QRwindow .QRheader .QRclose:hover::before {
+    content: " ";
+    position: absolute;
+    height: 14%;
+    width: 74%;
+    top: 43%;
+    left: 13%;
+    transform: rotate(-45deg);
+    background-color: rgb(0, 0, 0);
+}

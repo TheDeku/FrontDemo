@@ -1,0 +1,12 @@
+<div class="nsummary">
+    <div class="nlogo">
+
+    </div>
+    <div class="nclock">{{clock}}</div>
+    <div class="nlog">
+        <div *ngFor="let logentry of nlog" class="nlogentry {{logentry.type}} {{logentry.state}}">
+            <div class="time">{{logentry.stamp}}</div>
+            <div class="name">{{logentry.text}}</div>
+        </div>
+    </div>
+</div>

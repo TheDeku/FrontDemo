@@ -1,0 +1,304 @@
+.Tarjeta-Pedidos {
+    --borderradius: 21px;
+}
+
+.Tarjeta-Pedidos.preparing {
+    position: relative;
+    background: rgba(255, 209, 90, 0.3);
+    border-radius: 21px;
+    padding: 7px !important;
+    width: 370px;
+    border: 0px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.Tarjeta-Pedidos {
+    position: relative;
+    background: rgba(228, 106, 106, 0.3);
+    border-radius: 21px;
+    padding: 7px !important;
+    width: 370px;
+    border: 0px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.tarjeta-Mesa {
+    position: absolute;
+    margin-top: 0px;
+    /* background-color: red; */
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.Tarjeta-boton {
+    position: absolute;
+    right: 7px;
+    bottom: 2px;
+    margin-bottom: 2%;
+    background: #3FD027;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 6px 4px 6px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    float: right;
+    border: 0;
+    color: white;
+}
+
+.Tarjeta-Pedidos .Tarjeta-boton::after {
+    content: "IniciarPreparación";
+}
+
+.Tarjeta-Pedidos.preparing .Tarjeta-boton::after {
+    content: "Terminado";
+}
+
+.Tarjeta-boton:hover {
+    position: absolute;
+    right: 7px;
+    bottom: 2px;
+    margin-bottom: 2%;
+    background: #32a31f;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 6px 4px 6px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    float: right;
+    border: 0;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: rgb(255, 240, 158);
+}
+
+.Tarjeta-Pedidos .card-body {
+    position: relative !important;
+    border-radius: var(--borderradius);
+    padding: 0px !important;
+    margin: 0%;
+    height: 150px;
+}
+
+.Tarjeta-Imagen {
+    position: absolute;
+    margin-bottom: 0%;
+    height: 69%;
+    width: 45%;
+    bottom: 6%;
+    left: 10px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Tarjeta-Pedidos.sat .Tarjeta-Imagen::after {
+    position: absolute;
+    content: " ";
+    height: 50%;
+    width: 50%;
+    background-image: url(/assets/img/satan.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: 48%;
+    top: -4%;
+    transform: rotate(20deg);
+}
+
+.Tarjeta-Porcion {
+    position: absolute;
+    margin-top: 12%;
+    margin-right: 0%;
+    /*  background-color: seagreen; */
+    width: 50%;
+    text-align: center;
+    right: 0%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Tarjeta-Nombre {
+    position: absolute;
+    /* background-color: violet; */
+    height: 42px;
+    right: 0%;
+    width: 50%;
+    text-align: center;
+    padding-top: 7px;
+    font-size: 20px;
+}
+
+.Tarjeta-Tiempo {
+    position: absolute;
+    /*  background-color: yellow; */
+    right: 0px;
+    width: 53%;
+    text-align: center;
+    bottom: 39px;
+}
+
+.Tarjeta-Tiempo::before {
+    content: "Tiempo restante ";
+}
+
+.Tarjeta-Tiempo.delayed {
+    color: red;
+    font-weight: bold;
+}
+
+.Tarjeta-Tiempo.delayed::before {
+    content: "Retrasado ";
+}
+
+.Tarjeta-Cronometro {
+    position: absolute;
+    right: -19px;
+    top: -22px;
+    width: 20%;
+}
+
+#line {
+    background-color: black;
+    width: 6px;
+    height: 90%;
+    float: left;
+    margin-top: 50px;
+    border-radius: 3px;
+}
+
+#Estado-Espera {
+    width: 30%;
+    float: left;
+    height: 100%;
+}
+
+#Estado-Prepacion {
+    width: 30%;
+    right: 0px;
+    float: left;
+    height: 100%;
+}
+
+.Tarjeta-Pedidos.multi .Tarjeta-boton,
+.Tarjeta-Pedidos.multi .Tarjeta-Imagen {
+    display: none;
+}
+
+.Tarjeta-Pedidos.multi.expand .Tarjeta-boton {
+    display: unset;
+}
+
+.Tarjeta-Pedidos .nexpander {
+    display: none
+}
+
+.Tarjeta-Pedidos.multi .nexpander {
+    display: unset;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: inherit;
+    border-radius: 0 0 var(--borderradius) var(--borderradius);
+    box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.Tarjeta-Pedidos.multi .nexpander:hover {
+    box-shadow: 0px -1.5px 3px rgba(0, 0, 0, 0.473);
+}
+
+.Tarjeta-Pedidos.multi .nexpander:active {
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.473);
+}
+
+.nexpander::after {
+    --hw: 30px;
+    position: absolute;
+    content: " ";
+    background-image: url("/assets/icons/more.svg");
+    height: var(--hw);
+    width: var(--hw);
+    top: calc(50% - (var(--hw) / 2));
+    left: calc(50% - (var(--hw) / 2));
+    overflow: unset;
+    opacity: 0.5;
+}
+
+.nexpander:hover::after {
+    opacity: 1;
+}
+
+.ndetail {
+    --hndc: 60px;
+    --mndc: 2px;
+    --lmndc: 25px;
+    position: relative;
+    width: 100%;
+    height: 0px;
+    transition: height 500ms;
+    overflow: hidden;
+}
+
+.ndetail .ndetailcard {
+    position: relative;
+    width: 100%;
+    height: var(--hndc);
+    margin-bottom: var(--mndc);
+}
+
+.ndetail .ndetailcard .ndimg {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 0;
+}
+
+.ndetail .ndetailcard .ndname {
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    left: 30%;
+    top: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: var(--hndc);
+}
+
+.ndetail .ndetailcard .ndpor {
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    left: 65%;
+    top: 0;
+    text-align: center;
+    line-height: var(--hndc);
+}
+
+.Tarjeta-Pedidos.multi.expand .ndetail {
+    height: calc((var(--hndc) + var(--mndc)) * var(--nofch) + var(--lmndc));
+}
+
+.Tarjeta-multi {
+    display: none;
+}
+
+.Tarjeta-Pedidos.multi .Tarjeta-multi {
+    display: unset;
+    position: absolute;
+    margin-top: 18%;
+    margin-right: 0%;
+    width: 50%;
+    text-align: center;
+    left: 0%;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -1,0 +1,20 @@
+<div class="verticalNav white-n slim-n" style="--NVnumberbtns: {{pagesnumber}};" [ngClass]="{'saturada': pagesnumber>7}">
+    <div class="bar">
+        <div class="vnv-head">
+            <div class="userImage">
+                <img class="img" src="{{userimage}}" onclick='$(".verticalNav").toggleClass("minimized")' alt="">
+            </div>
+            <div class="NVusername">
+                {{usuario}}
+            </div>
+        </div>
+        <a *ngFor="let page of pages" [routerLink]="[page.url]">
+            <div class="vnv-btn" routerLinkActive="activeNV">
+                <div class="NVicon">
+                    <img src="./resorces/{{page.image}}" alt="">
+                </div>
+                <div class="NVbtntext">{{page.name}}</div>
+            </div>
+        </a>
+    </div>
+</div>
